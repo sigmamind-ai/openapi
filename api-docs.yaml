@@ -1,0 +1,2623 @@
+openapi: 3.0.1
+info:
+  title: SigmaMind APIs
+  description: OpenAPI documentation SigmaMind Agent Builder APIs
+  version: "1.0"
+servers:
+- url: https://api.sigmamind.ai
+  description: SigmaMind AI Agent Builder APIs
+security:
+- apiKeyAuth: []
+tags:
+- name: Call
+  description: Endpoints for managing calls
+- name: Phone Number
+  description: endpoints for managing phone numbers
+- name: Campaigns
+  description: endpoints for managing campaigns
+- name: Webhooks
+  description: Endpoints for managing webhooks
+paths:
+  /v1/calls:
+    get:
+      tags:
+      - Call
+      summary: List Phone Calls
+      description: List Phone Call records in paginated list
+      operationId: listPhoneCall
+      parameters:
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseCallResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/calls
+                    status: 400
+                    timestamp: 2025-11-14T18:18:35.134209
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/calls
+                    status: 401
+                    timestamp: 2025-11-14T18:18:35.134228
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/calls
+                    status: 403
+                    timestamp: 2025-11-14T18:18:35.134235
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/calls
+                    status: 404
+                    timestamp: 2025-11-14T18:18:35.134241
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/calls
+                    status: 422
+                    timestamp: 2025-11-14T18:18:35.134247
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/calls
+                    status: 500
+                    timestamp: 2025-11-14T18:18:35.134253
+    post:
+      tags:
+      - Call
+      summary: Create Phone Call
+      description: Create an outbound call
+      operationId: createPhoneCall
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCallRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CallResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/calls
+                    status: 400
+                    timestamp: 2025-11-14T18:18:35.113196
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/calls
+                    status: 401
+                    timestamp: 2025-11-14T18:18:35.113286
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/calls
+                    status: 403
+                    timestamp: 2025-11-14T18:18:35.113295
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/calls
+                    status: 404
+                    timestamp: 2025-11-14T18:18:35.113301
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/calls
+                    status: 422
+                    timestamp: 2025-11-14T18:18:35.113307
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/calls
+                    status: 500
+                    timestamp: 2025-11-14T18:18:35.113313
+  /v1/calls/{callId}:
+    get:
+      tags:
+      - Call
+      summary: Get Phone Call
+      description: Get Phone Call record using callId
+      operationId: getPhoneCallByCallId
+      parameters:
+      - name: callId
+        in: path
+        description: "A unique identifier for any call, whether inbound, outbound,\
+          \ or web-based."
+        required: true
+        schema:
+          type: string
+        example: AuUKK371Spr5nHJS
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CallResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/calls
+                    status: 400
+                    timestamp: 2025-11-14T18:18:35.147573
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/calls
+                    status: 401
+                    timestamp: 2025-11-14T18:18:35.147593
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/calls
+                    status: 403
+                    timestamp: 2025-11-14T18:18:35.147599
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/calls
+                    status: 404
+                    timestamp: 2025-11-14T18:18:35.147617
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/calls
+                    status: 422
+                    timestamp: 2025-11-14T18:18:35.147623
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/calls
+                    status: 500
+                    timestamp: 2025-11-14T18:18:35.147629
+    delete:
+      tags:
+      - Call
+      summary: Delete Phone Call
+      description: Delete Phone Call record using callId
+      operationId: deletePhoneCallByCallId
+      parameters:
+      - name: callId
+        in: path
+        description: "A unique identifier for any call, whether inbound, outbound,\
+          \ or web-based."
+        required: true
+        schema:
+          type: string
+        example: AuUKK371Spr5nHJS
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/calls
+                    status: 400
+                    timestamp: 2025-11-14T18:18:35.152506
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/calls
+                    status: 401
+                    timestamp: 2025-11-14T18:18:35.152536
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/calls
+                    status: 403
+                    timestamp: 2025-11-14T18:18:35.152542
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/calls
+                    status: 404
+                    timestamp: 2025-11-14T18:18:35.152548
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/calls
+                    status: 422
+                    timestamp: 2025-11-14T18:18:35.152553
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/calls
+                    status: 500
+                    timestamp: 2025-11-14T18:18:35.152558
+  /v1/chat:
+    post:
+      tags:
+      - Chat
+      summary: Create Chat
+      description: Create new chat
+      operationId: createChatCompletion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateChatCompletionRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/chat
+                    status: 400
+                    timestamp: 2026-02-16T16:35:27.792445
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/chat
+                    status: 401
+                    timestamp: 2026-02-16T16:35:27.792564
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/chat
+                    status: 403
+                    timestamp: 2026-02-16T16:35:27.792577
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/chat
+                    status: 404
+                    timestamp: 2026-02-16T16:35:27.792583
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/chat
+                    status: 422
+                    timestamp: 2026-02-16T16:35:27.792588
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/chat
+                    status: 500
+                    timestamp: 2026-02-16T16:35:27.792593
+  /v1/phone-number:
+    get:
+      tags:
+      - Phone Number
+      summary: List Phone Numbers
+      description: List all the purchased and your phone numbers
+      operationId: listPhoneNumber
+      parameters:
+      - name: active
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaginatedResponsePhoneNumberResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/phone-number
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.893870
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/phone-number
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.893891
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/phone-number
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.893897
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/phone-number
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.893901
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/phone-number
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.893906
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/phone-number
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.893910
+    post:
+      tags:
+      - Phone Number
+      summary: Create Phone Number
+      description: Purchase a new phone number or Bring your own Number and Connect
+        with SIP Trunking
+      operationId: createPhoneNumber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePhoneNumberRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PhoneNumberResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/phone-number
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.813797
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/phone-number
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.813820
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/phone-number
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.813826
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/phone-number
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.813831
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/phone-number
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.813836
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/phone-number
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.813840
+  /v1/phone-number/{phoneNumber}:
+    get:
+      tags:
+      - Phone Number
+      summary: Get Phone Number
+      description: Get Phone Number by Phone Number
+      operationId: getPhoneNumber
+      parameters:
+      - name: phoneNumber
+        in: path
+        description: The caller’s phone number in E.164 format
+        required: true
+        schema:
+          type: string
+        example: +14155552671
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PhoneNumberResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/phone-number
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.897619
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/phone-number
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.897636
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/phone-number
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.897641
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/phone-number
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.897645
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/phone-number
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.897651
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/phone-number
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.897655
+    delete:
+      tags:
+      - Phone Number
+      summary: Delete Phone Number
+      description: Delete Phone Number
+      operationId: deletePhoneNumber
+      parameters:
+      - name: phoneNumber
+        in: path
+        description: The caller’s phone number in E.164 format
+        required: true
+        schema:
+          type: string
+        example: +14155552671
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/phone-number
+                    status: 400
+                    timestamp: 2026-02-11T18:50:03.114898
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/phone-number
+                    status: 401
+                    timestamp: 2026-02-11T18:50:03.114909
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/phone-number
+                    status: 403
+                    timestamp: 2026-02-11T18:50:03.114914
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/phone-number
+                    status: 404
+                    timestamp: 2026-02-11T18:50:03.114922
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/phone-number
+                    status: 422
+                    timestamp: 2026-02-11T18:50:03.114929
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/phone-number
+                    status: 500
+                    timestamp: 2026-02-11T18:50:03.114934
+  /v1/campaigns:
+    get:
+      tags:
+      - Campaigns
+      summary: List Campaigns
+      description: List all campaigns as a pagination
+      operationId: listCampaigns
+      parameters:
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseCampaignResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/campaigns
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.917143
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/campaigns
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.917167
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/campaigns
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.917173
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/campaigns
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.917178
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/campaigns
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.917182
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/campaigns
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.917188
+    post:
+      tags:
+      - Campaigns
+      summary: Create Campaign
+      description: Create a new campaign for outbound calls
+      operationId: createCampaign
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateCampaignRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CampaignResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/campaigns
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.852585
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/campaigns
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.852613
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/campaigns
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.852619
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/campaigns
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.852624
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/campaigns
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.852628
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/campaigns
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.852632
+  /v1/campaigns/{campaignId}:
+    get:
+      tags:
+      - Campaigns
+      summary: Get Campaign
+      description: Get a specific campaign by campaignId
+      operationId: getCampaign
+      parameters:
+      - name: campaignId
+        in: path
+        description: A unique identifier assigned to the campaign.
+        required: true
+        schema:
+          type: string
+        example: XiQEBcj9cc5TFRB4
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CampaignResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/campaigns
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.924543
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/campaigns
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.924563
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/campaigns
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.924569
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/campaigns
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.924574
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/campaigns
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.924579
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/campaigns
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.924583
+    delete:
+      tags:
+      - Campaigns
+      summary: Delete Campaign
+      description: Delete an existing campaign by campaignId
+      operationId: deleteCampaign
+      parameters:
+      - name: campaignId
+        in: path
+        description: A unique identifier assigned to the campaign.
+        required: true
+        schema:
+          type: string
+        example: XiQEBcj9cc5TFRB4
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/campaigns
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.929656
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/campaigns
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.929669
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/campaigns
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.929675
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/campaigns
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.929681
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/campaigns
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.929685
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/campaigns
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.929690
+    patch:
+      tags:
+      - Campaigns
+      summary: Update Campaign
+      description: Update an existing campaign
+      operationId: updateCampaign
+      parameters:
+      - name: campaignId
+        in: path
+        description: A unique identifier assigned to the campaign.
+        required: true
+        schema:
+          type: string
+        example: XiQEBcj9cc5TFRB4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCampaignRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CampaignResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/campaigns
+                    status: 400
+                    timestamp: 2025-09-25T16:21:51.874240
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/campaigns
+                    status: 401
+                    timestamp: 2025-09-25T16:21:51.874263
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/campaigns
+                    status: 403
+                    timestamp: 2025-09-25T16:21:51.874269
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/campaigns
+                    status: 404
+                    timestamp: 2025-09-25T16:21:51.874275
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/campaigns
+                    status: 422
+                    timestamp: 2025-09-25T16:21:51.874280
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/campaigns
+                    status: 500
+                    timestamp: 2025-09-25T16:21:51.874285
+  /v1/webhooks:
+    get:
+      tags:
+      - Webhooks
+      summary: List Webhooks
+      description: List all webhooks
+      operationId: listWebhook
+      parameters:
+      - name: agentId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: active
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseWebhookResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/webhooks
+                    status: 400
+                    timestamp: 2025-11-13T13:00:07.054716
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/webhooks
+                    status: 401
+                    timestamp: 2025-11-13T13:00:07.054737
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/webhooks
+                    status: 403
+                    timestamp: 2025-11-13T13:00:07.054743
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/webhooks
+                    status: 404
+                    timestamp: 2025-11-13T13:00:07.054748
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/webhooks
+                    status: 422
+                    timestamp: 2025-11-13T13:00:07.054755
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/webhooks
+                    status: 500
+                    timestamp: 2025-11-13T13:00:07.054759
+    post:
+      tags:
+      - Webhooks
+      summary: Create Webhook
+      description: Register a new webhook to receive realtime updates for selected
+        events
+      operationId: registerWebhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/webhooks
+                    status: 400
+                    timestamp: 2025-11-13T13:00:06.970119
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/webhooks
+                    status: 401
+                    timestamp: 2025-11-13T13:00:06.970141
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/webhooks
+                    status: 403
+                    timestamp: 2025-11-13T13:00:06.970147
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/webhooks
+                    status: 404
+                    timestamp: 2025-11-13T13:00:06.970152
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/webhooks
+                    status: 422
+                    timestamp: 2025-11-13T13:00:06.970156
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/webhooks
+                    status: 500
+                    timestamp: 2025-11-13T13:00:06.970161
+  /v1/webhooks/{webhookId}:
+    get:
+      tags:
+      - Webhooks
+      summary: Get Webhook
+      description: Get webhook by id
+      operationId: getWebhook
+      parameters:
+      - name: webhookId
+        in: path
+        description: A unique identifier for the webhook.
+        required: true
+        schema:
+          type: string
+        example: wh_BUbkx3PsbzQm5V10
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/webhooks
+                    status: 400
+                    timestamp: 2025-11-13T13:00:07.058952
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/webhooks
+                    status: 401
+                    timestamp: 2025-11-13T13:00:07.058972
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/webhooks
+                    status: 403
+                    timestamp: 2025-11-13T13:00:07.058978
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/webhooks
+                    status: 404
+                    timestamp: 2025-11-13T13:00:07.058983
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/webhooks
+                    status: 422
+                    timestamp: 2025-11-13T13:00:07.058988
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/webhooks
+                    status: 500
+                    timestamp: 2025-11-13T13:00:07.058993
+    delete:
+      tags:
+      - Webhooks
+      summary: Delete Webhook
+      description: Delete webhook by webhookId
+      operationId: deleteWebhook
+      parameters:
+      - name: webhookId
+        in: path
+        description: A unique identifier for the webhook.
+        required: true
+        schema:
+          type: string
+        example: wh_BUbkx3PsbzQm5V10
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/webhooks
+                    status: 400
+                    timestamp: 2025-11-13T13:00:07.099760
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/webhooks
+                    status: 401
+                    timestamp: 2025-11-13T13:00:07.099777
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/webhooks
+                    status: 403
+                    timestamp: 2025-11-13T13:00:07.099783
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/webhooks
+                    status: 404
+                    timestamp: 2025-11-13T13:00:07.099788
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/webhooks
+                    status: 422
+                    timestamp: 2025-11-13T13:00:07.099793
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/webhooks
+                    status: 500
+                    timestamp: 2025-11-13T13:00:07.099798
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Error timestamp in ISO format
+          format: date-time
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        error:
+          type: string
+          description: Error type or HTTP status message
+          example: Bad Request
+        message:
+          type: string
+          description: Detailed error message
+          example: Email is required
+        path:
+          type: string
+          description: Request path where error occurred
+          example: /v1/users
+        validationErrors:
+          type: object
+          additionalProperties:
+            type: string
+          description: Field validation errors (if any)
+          example: |-
+            {
+              "email": "Email is required",
+              "name": "Name is too short"
+            }
+      description: Standard error response
+    CreateChatCompletionRequest:
+      required:
+      - agentId
+      type: object
+      properties:
+        agentId:
+          type: string
+          description: The unique identifier of the Agent assigned to handle the chat
+            completion.
+          example: D5D0p7TUs66TTAEAx
+        conversation:
+          type: string
+          description: Input message of the customer or history of the conversation
+          example: "Hey, How are you?"
+        variables:
+          type: object
+          description: "A set of dynamic key-value pairs required by the selected\
+            \ Agent. These variables allow personalization of the call, such as passing\
+            \ the customer’s name or other contextual details."
+          example:
+            customer_name: Michael
+    ChatCompletionMessage:
+      type: object
+      properties:
+        id:
+          type: string
+        role:
+          type: string
+        type:
+          type: string
+        content:
+          type: array
+          items:
+            type: string
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          description: The timestamp when the call record was created.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        updatedAt:
+          type: string
+          description: The timestamp when the call record was last updated.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        status:
+          type: string
+        error:
+          type: string
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionMessage'
+    CreateCallRequest:
+      required:
+      - fromPhoneNumber
+      - toPhoneNumber
+      type: object
+      properties:
+        fromPhoneNumber:
+          type: string
+          description: The caller’s phone number in E.164 format. This number must
+            be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
+          example: +14155552671
+        toPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
+          type: string
+          description: The callee’s phone number in E.164 format. This defines the
+            recipient of the outbound call.
+          example: +14155552671
+        agentId:
+          type: string
+          description: The unique identifier of the Agent assigned to handle the outbound
+            call.
+          example: D5D0p7TUs66TTAEAx
+        variables:
+          type: object
+          description: "A set of dynamic key-value pairs required by the selected\
+            \ Agent. These variables allow personalization of the call, such as passing\
+            \ the customer’s name or other contextual details."
+          example:
+            customer_name: Michael
+    AgentResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name of the assigned agent.
+          example: New AI Agent
+        agentId:
+          type: string
+          description: The unique identifier of the agent within the system.
+          example: D5D0p7TUs66TTAEAx
+        status:
+          type: string
+          description: The current operational status of the agent.
+          example: active
+          enum:
+          - "live, testing, disabled"
+      description: Assigned agent for current campaign
+    CallResponse:
+      type: object
+      properties:
+        callId:
+          type: string
+          description: "A unique identifier for any call, whether inbound, outbound,\
+            \ or web-based."
+          example: AuUKK371Spr5nHJS
+        callType:
+          type: string
+          description: Specifies the direction or type of the call.
+          example: inbound
+          enum:
+          - "inbound, outbound, web"
+        conversationId:
+          type: integer
+          description: Unique identifier for the conversation associated with the
+            call.
+          format: int64
+          example: 123456789
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumberResponse'
+        campaign:
+          $ref: '#/components/schemas/CampaignResponse'
+        status:
+          type: string
+          description: Status of the call
+          example: ended
+          enum:
+          - "scheduled, in-progress, ended, not-connected, error"
+        startTime:
+          type: string
+          description: Timestamp indicating when the call began.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        endTime:
+          type: string
+          description: Timestamp indicating when the call ended.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        duration:
+          type: integer
+          description: Total duration of the call in seconds.
+          format: int32
+          example: 120
+        terminationReason:
+          type: string
+          description: Reason for call termination
+          example: inactivity
+          enum:
+          - "customer_ended_call, agent_ended_call, inactivity, voicemail, busy, no-answer, failed"
+        createdAt:
+          type: string
+          description: The timestamp when the call record was created.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        updatedAt:
+          type: string
+          description: The timestamp when the call record was last updated.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        variables:
+          $ref: '#/components/schemas/JsonNode'
+        recordingUrl:
+          type: string
+          description: Recording URL of the call
+          example: https://example.com/recording.mp3
+          # example: https://media.sigmamind.ai/prod/room-4du9eYo6MH9qCAM8/recording.mp3
+    CampaignResponse:
+      type: object
+      properties:
+        campaignId:
+          type: string
+          description: A unique identifier assigned to the campaign.
+          example: XiQEBcj9cc5TFRB4
+        campaignName:
+          type: string
+          description: The name given to the campaign for reference or display purposes.
+          example: My Campaign
+        campaignStatus:
+          type: string
+          description: Indicates the current status of the campaign.
+          example: live
+          enum:
+          - "live, scheduled, paused, completed"
+        scheduledDate:
+          type: string
+          description: The scheduled date and time when the campaign is set to launch
+          format: date-time
+        concurrentCalls:
+          type: integer
+          description: Specifies the maximum number of outbound calls allowed to be
+            active simultaneously within the campaign.
+          format: int32
+          example: 5
+        agent:
+          $ref: '#/components/schemas/AgentResponse'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumberResponse'
+        errors:
+          type: array
+          items:
+            type: string
+        scheduled:
+          type: boolean
+    JsonNode:
+      type: object
+      description: "A set of dynamic key-value pairs required by the selected Agent.\
+        \ These variables allow personalization of the call, such as passing the customer’\
+        s name or other contextual details."
+      example:
+        customer_name: Michael
+    PhoneNumberResponse:
+      type: object
+      properties:
+        sipPhoneNumber:
+          type: string
+          description: The caller’s phone number in E.164 format. This number must
+            be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
+          example: +14155552671
+        provider:
+          type: string
+          description: The service provider associated with the phone number.
+          example: twilio
+          enum:
+          - "twilio, telnyx, byo"
+        inboundAgentId:
+          type: string
+          description: Default agent ID assigned to handle inbound calls for this
+            phone number.
+          example: D5D0p7TUs66TTAEAx
+        outboundAgentId:
+          type: string
+          description: Default agent ID assigned to handle outbound calls for this
+            phone number.
+          example: D5D0p7TUs66TTAEAx
+        outboundPhoneNumber:
+          type: string
+          description: "The default outbound phone number of the callee, represented\
+            \ in E.164 format"
+          example: +14155552671
+        active:
+          type: boolean
+          description: Indicates whether the phone number is currently active and
+            available for use.
+          example: true
+        terminationSipURI:
+          type: string
+          description: "The SIP URI of the phone number, provided by the service provider\
+            \ for call termination."
+          example: sip.telnyx.com
+      description: Phone number details of the caller
+    PaginatedResponseCallResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+    CreateWebhookRequest:
+      required:
+      - agentId
+      - events
+      - name
+      - secret
+      - url
+      type: object
+      properties:
+        name:
+          type: string
+          description: A unique identifier for the webhook.
+          example: wh_BUbkx3PsbzQm5V10
+        agentId:
+          type: string
+          description: Unique identifier of the agent to which the webhook is associated.
+          example: D5D0p7TUs66TTAEAx
+        url:
+          pattern: https?://.+
+          type: string
+          description: The HTTPS endpoint to which the webhook payload will be sent.
+            Must be a valid HTTPS URL.
+          example: https://example.com/webhook
+        secret:
+          type: string
+          description: Secret key used to authenticate webhook payloads. This key
+            should be securely stored and verified on the receiving server.
+          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
+        events:
+          uniqueItems: true
+          type: array
+          description: List of events that will trigger the webhook. Each event name
+            corresponds to a specific type of activity in the system.
+          items:
+            type: string
+            description: List of events that will trigger the webhook. Each event
+              name corresponds to a specific type of activity in the system.
+            enum:
+            - conversation_started
+            - conversation_ended
+            - conversation_analysed
+    WebhookResponse:
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          description: A unique identifier of the workspace.
+          example: org_BUbkx3PsbzQm5V10
+        webhookId:
+          type: string
+          description: A unique identifier for the webhook.
+          example: wh_BUbkx3PsbzQm5V10
+        name:
+          type: string
+          description: The display name of the webhook for easy identification.
+          example: My Webhook
+        agentId:
+          type: string
+          description: The unique identifier of the agent to which the webhook is
+            assigned.
+          example: D5D0p7TUs66TTAEAx
+        active:
+          type: boolean
+          description: Indicates whether the webhook is currently active and able
+            to receive events.
+          example: true
+        events:
+          type: array
+          description: Specifies the list of events that trigger the webhook.
+          items:
+            type: string
+            description: Specifies the list of events that trigger the webhook.
+            enum:
+            - "conversation_started, conversation_ended, conversation_analysed"
+          enum:
+          - "conversation_started, conversation_ended, conversation_analysed"
+        url:
+          type: string
+    CreatePhoneNumberRequest:
+      required:
+      - provider
+      type: object
+      properties:
+        friendlyName:
+          type: string
+          description: A user-friendly label for the phone number.
+          example: My Phone Number
+        provider:
+          type: string
+          description: The telecom provider of the phone number.
+          example: twilio
+          enum:
+          - "twilio, telnyx, byo"
+        phoneNumber:
+          type: string
+          description: The phone number in E.164 format. Required when bringing your
+            own number.
+          example: +14155552671
+        trunkName:
+          type: string
+          description: The name of the trunk associated with this phone number.
+          example: My Trunk
+        trunkUsername:
+          type: string
+          description: The trunk username used for outbound calls. Must be set up
+            in your provider account.
+          example: username
+        trunkPassword:
+          type: string
+          description: The trunk password is used for outbound calls. Must be set
+            up in your provider account.
+          example: password
+        terminationSipURI:
+          type: string
+          description: "The SIP URI for terminating calls, provided by the telecom\
+            \ provider."
+          example: sip.telnyx.com
+    CreateApiKeyRequest:
+      required:
+      - name
+      type: object
+      properties:
+        tenantOrgId:
+          type: integer
+          format: int64
+        name:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: "A descriptive name for the API key (max length: 100)."
+          example: Default
+        description:
+          maxLength: 500
+          minLength: 0
+          type: string
+          description: "An optional description for the API key (max length: 500)."
+          example: Default API Key to access APIs
+    ApiKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of the API key.
+          format: int64
+        keyId:
+          type: string
+          description: A system-generated key identifier.
+          example: gsU1oqy8hZM
+        name:
+          type: string
+          description: The name assigned to the API key.
+          example: Default
+        description:
+          type: string
+          description: The description of the API key.
+          example: Default API Key to access APIs
+        status:
+          type: string
+          description: The current status of the API key.
+          example: active
+          enum:
+          - Active
+          - Revoked
+          - Expired
+        expiresAt:
+          type: string
+          description: The expiration date and time of the API key.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        createdAt:
+          type: string
+          description: The date and time when the API key was created.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        secretKey:
+          type: string
+          description: The secret key value used to authenticate API requests.
+          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
+    CreateCampaignRequest:
+      required:
+      - agentId
+      - file
+      - sipPhoneNumber
+      type: object
+      properties:
+        campaignName:
+          type: string
+        sipPhoneNumber:
+          type: string
+          description: Phone number of the caller in E.164 format. Must be purchased
+            from SigmaMind or SIP trunking with SigmaMind
+          example: +14155552671
+        agentId:
+          type: string
+          description: Unique id of Agent that will respond to all outbound calls
+            in this campaign
+          example: D5D0p7TUs66TTAEAx
+        file:
+          type: string
+          format: binary
+        isScheduled:
+          type: boolean
+          description: If campaign is scheduled for launch at given time
+          example: true
+        scheduledDate:
+          type: string
+          description: scheduled date is required if scheduled
+          format: date-time
+        scheduledTime:
+          type: string
+          description: Scheduled time is required if scheduled
+          format: time
+          example: 12:00:00
+        scheduledTimezone:
+          type: string
+          description: Scheduled timezone is required if scheduled
+          format: timezone
+          example: America/Los_Angeles
+        concurrentCalls:
+          type: integer
+          description: Number of outbound calls in progress at a time in a campaign
+          format: int32
+          example: 5
+        variables:
+          type: object
+          description: Dynamic variables required in Selected Agent
+          example:
+            customer_name: Michael
+    UpdateCampaignRequest:
+      type: object
+      properties:
+        campaignName:
+          type: string
+        sipPhoneNumber:
+          type: string
+        agentId:
+          type: string
+        isScheduled:
+          type: boolean
+        scheduledDate:
+          type: string
+        scheduledTime:
+          type: string
+        scheduledTimezone:
+          type: string
+        concurrentCalls:
+          type: integer
+          format: int64
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+    PaginatedResponseWebhookResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+    PaginatedResponsePhoneNumberResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumberResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+    PaginatedResponseApiKeyResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiKeyResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+    PaginatedResponseCampaignResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      description: API Key is required in header. You can find it in the settings
+      name: X-API-Key
+      in: header

@@ -18,6 +18,7 @@ tags:
 - name: Webhooks
   description: Endpoints for managing webhooks
 paths:
+  # Calls APIs
   /v1/calls:
     get:
       tags:
@@ -65,7 +66,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/calls
                     status: 400
-                    timestamp: 2026-03-06T03:47:10.050410
+                    timestamp: 2026-03-10T04:31:06.076733
         "401":
           description: Unauthorized
           content:
@@ -79,7 +80,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/calls
                     status: 401
-                    timestamp: 2026-03-06T03:47:10.050434
+                    timestamp: 2026-03-10T04:31:06.076756
         "403":
           description: Forbidden
           content:
@@ -93,7 +94,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/calls
                     status: 403
-                    timestamp: 2026-03-06T03:47:10.050441
+                    timestamp: 2026-03-10T04:31:06.076763
         "404":
           description: Not Found
           content:
@@ -107,7 +108,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/calls
                     status: 404
-                    timestamp: 2026-03-06T03:47:10.050445
+                    timestamp: 2026-03-10T04:31:06.076769
         "422":
           description: Validation Failed
           content:
@@ -121,7 +122,7 @@ paths:
                     message: Request validation failed
                     path: /v1/calls
                     status: 422
-                    timestamp: 2026-03-06T03:47:10.050450
+                    timestamp: 2026-03-10T04:31:06.076775
         "500":
           description: Internal Server Error
           content:
@@ -135,7 +136,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/calls
                     status: 500
-                    timestamp: 2026-03-06T03:47:10.050454
+                    timestamp: 2026-03-10T04:31:06.076780
     post:
       tags:
       - Calls
@@ -152,7 +153,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/CallResponse'
         "400":
@@ -168,7 +169,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/calls
                     status: 400
-                    timestamp: 2026-03-06T03:47:09.985380
+                    timestamp: 2026-03-10T04:31:06.013667
         "401":
           description: Unauthorized
           content:
@@ -182,7 +183,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/calls
                     status: 401
-                    timestamp: 2026-03-06T03:47:09.985405
+                    timestamp: 2026-03-10T04:31:06.013697
         "403":
           description: Forbidden
           content:
@@ -196,7 +197,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/calls
                     status: 403
-                    timestamp: 2026-03-06T03:47:09.985414
+                    timestamp: 2026-03-10T04:31:06.013708
         "404":
           description: Not Found
           content:
@@ -210,7 +211,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/calls
                     status: 404
-                    timestamp: 2026-03-06T03:47:09.985423
+                    timestamp: 2026-03-10T04:31:06.013716
         "422":
           description: Validation Failed
           content:
@@ -224,7 +225,7 @@ paths:
                     message: Request validation failed
                     path: /v1/calls
                     status: 422
-                    timestamp: 2026-03-06T03:47:09.985429
+                    timestamp: 2026-03-10T04:31:06.013724
         "500":
           description: Internal Server Error
           content:
@@ -238,7 +239,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/calls
                     status: 500
-                    timestamp: 2026-03-06T03:47:09.985435
+                    timestamp: 2026-03-10T04:31:06.013731
   /v1/calls/{callId}:
     get:
       tags:
@@ -448,6 +449,8 @@ paths:
                     path: /v1/calls
                     status: 500
                     timestamp: 2026-03-06T03:47:10.068142
+
+  # Chat APIs
   /v1/chats:
     get:
       tags:
@@ -495,7 +498,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-06T11:20:45.922376
+                    timestamp: 2026-03-10T04:31:06.050977
         "401":
           description: Unauthorized
           content:
@@ -509,7 +512,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-06T11:20:45.922406
+                    timestamp: 2026-03-10T04:31:06.051010
         "403":
           description: Forbidden
           content:
@@ -523,7 +526,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-06T11:20:45.922415
+                    timestamp: 2026-03-10T04:31:06.051021
         "404":
           description: Not Found
           content:
@@ -537,7 +540,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-06T11:20:45.922421
+                    timestamp: 2026-03-10T04:31:06.051030
         "422":
           description: Validation Failed
           content:
@@ -551,7 +554,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-06T11:20:45.922426
+                    timestamp: 2026-03-10T04:31:06.051038
         "500":
           description: Internal Server Error
           content:
@@ -565,7 +568,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-06T11:20:45.922431
+                    timestamp: 2026-03-10T04:31:06.051046
     post:
       tags:
       - Chats
@@ -598,7 +601,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-06T11:20:45.827216
+                    timestamp: 2026-03-10T04:31:05.980158
         "401":
           description: Unauthorized
           content:
@@ -612,7 +615,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-06T11:20:45.827330
+                    timestamp: 2026-03-10T04:31:05.980264
         "403":
           description: Forbidden
           content:
@@ -626,7 +629,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-06T11:20:45.827344
+                    timestamp: 2026-03-10T04:31:05.980291
         "404":
           description: Not Found
           content:
@@ -640,7 +643,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-06T11:20:45.827351
+                    timestamp: 2026-03-10T04:31:05.980301
         "422":
           description: Validation Failed
           content:
@@ -654,7 +657,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-06T11:20:45.827357
+                    timestamp: 2026-03-10T04:31:05.980308
         "500":
           description: Internal Server Error
           content:
@@ -668,7 +671,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-06T11:20:45.827363
+                    timestamp: 2026-03-10T04:31:05.980316
   /v1/chats/response:
     post:
       tags:
@@ -703,7 +706,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-06T11:20:45.837428
+                    timestamp: 2026-03-10T04:31:05.988007
         "401":
           description: Unauthorized
           content:
@@ -717,7 +720,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-06T11:20:45.837461
+                    timestamp: 2026-03-10T04:31:05.988029
         "403":
           description: Forbidden
           content:
@@ -731,7 +734,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-06T11:20:45.837469
+                    timestamp: 2026-03-10T04:31:05.988037
         "404":
           description: Not Found
           content:
@@ -745,7 +748,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-06T11:20:45.837475
+                    timestamp: 2026-03-10T04:31:05.988043
         "422":
           description: Validation Failed
           content:
@@ -759,7 +762,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-06T11:20:45.837481
+                    timestamp: 2026-03-10T04:31:05.988049
         "500":
           description: Internal Server Error
           content:
@@ -773,7 +776,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-06T11:20:45.837486
+                    timestamp: 2026-03-10T04:31:05.988054
   /v1/chats/{chatId}:
     get:
       tags:
@@ -905,7 +908,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/ChatResponse'
         "400":
@@ -1098,6 +1101,8 @@ paths:
                     path: /v1/chats
                     status: 500
                     timestamp: 2026-03-06T11:20:45.904916
+
+  # Phone Number APIs
   /v1/phone-numbers:
     get:
       tags:
@@ -1140,7 +1145,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-06T09:49:18.964643
+                    timestamp: 2026-03-10T04:31:17.220468
         "401":
           description: Unauthorized
           content:
@@ -1154,7 +1159,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-06T09:49:18.964664
+                    timestamp: 2026-03-10T04:31:17.220489
         "403":
           description: Forbidden
           content:
@@ -1168,7 +1173,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-06T09:49:18.964670
+                    timestamp: 2026-03-10T04:31:17.220495
         "404":
           description: Not Found
           content:
@@ -1182,7 +1187,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-06T09:49:18.964675
+                    timestamp: 2026-03-10T04:31:17.220499
         "422":
           description: Validation Failed
           content:
@@ -1196,7 +1201,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-06T09:49:18.964680
+                    timestamp: 2026-03-10T04:31:17.220504
         "500":
           description: Internal Server Error
           content:
@@ -1210,7 +1215,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-06T09:49:18.964686
+                    timestamp: 2026-03-10T04:31:17.220508
     post:
       tags:
       - Phone Numbers
@@ -1243,7 +1248,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-06T09:49:18.864187
+                    timestamp: 2026-03-10T04:31:17.119523
         "401":
           description: Unauthorized
           content:
@@ -1257,7 +1262,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-06T09:49:18.864210
+                    timestamp: 2026-03-10T04:31:17.119545
         "403":
           description: Forbidden
           content:
@@ -1271,7 +1276,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-06T09:49:18.864216
+                    timestamp: 2026-03-10T04:31:17.119551
         "404":
           description: Not Found
           content:
@@ -1285,7 +1290,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-06T09:49:18.864221
+                    timestamp: 2026-03-10T04:31:17.119555
         "422":
           description: Validation Failed
           content:
@@ -1299,7 +1304,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-06T09:49:18.864226
+                    timestamp: 2026-03-10T04:31:17.119560
         "500":
           description: Internal Server Error
           content:
@@ -1313,7 +1318,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-06T09:49:18.864231
+                    timestamp: 2026-03-10T04:31:17.119565
   /v1/phone-numbers/import:
     post:
       tags:
@@ -1347,7 +1352,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-06T09:49:18.873343
+                    timestamp: 2026-03-10T04:31:17.128792
         "401":
           description: Unauthorized
           content:
@@ -1361,7 +1366,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-06T09:49:18.873365
+                    timestamp: 2026-03-10T04:31:17.128813
         "403":
           description: Forbidden
           content:
@@ -1375,7 +1380,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-06T09:49:18.873372
+                    timestamp: 2026-03-10T04:31:17.128819
         "404":
           description: Not Found
           content:
@@ -1389,7 +1394,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-06T09:49:18.873377
+                    timestamp: 2026-03-10T04:31:17.128824
         "422":
           description: Validation Failed
           content:
@@ -1403,7 +1408,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-06T09:49:18.873382
+                    timestamp: 2026-03-10T04:31:17.128828
         "500":
           description: Internal Server Error
           content:
@@ -1417,7 +1422,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-06T09:49:18.873387
+                    timestamp: 2026-03-10T04:31:17.128833
   /v1/phone-numbers/{phoneNumber}:
     get:
       tags:
@@ -1453,7 +1458,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-06T09:49:18.969290
+                    timestamp: 2026-03-10T04:31:17.225038
         "401":
           description: Unauthorized
           content:
@@ -1467,7 +1472,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-06T09:49:18.969310
+                    timestamp: 2026-03-10T04:31:17.225056
         "403":
           description: Forbidden
           content:
@@ -1481,7 +1486,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-06T09:49:18.969316
+                    timestamp: 2026-03-10T04:31:17.225062
         "404":
           description: Not Found
           content:
@@ -1495,7 +1500,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-06T09:49:18.969322
+                    timestamp: 2026-03-10T04:31:17.225067
         "422":
           description: Validation Failed
           content:
@@ -1509,7 +1514,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-06T09:49:18.969327
+                    timestamp: 2026-03-10T04:31:17.225072
         "500":
           description: Internal Server Error
           content:
@@ -1523,7 +1528,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-06T09:49:18.969332
+                    timestamp: 2026-03-10T04:31:17.225077
     delete:
       tags:
       - Phone Numbers
@@ -1554,7 +1559,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-06T09:49:19.002363
+                    timestamp: 2026-03-10T04:31:17.260619
         "401":
           description: Unauthorized
           content:
@@ -1568,7 +1573,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-06T09:49:19.002380
+                    timestamp: 2026-03-10T04:31:17.260635
         "403":
           description: Forbidden
           content:
@@ -1582,7 +1587,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-06T09:49:19.002387
+                    timestamp: 2026-03-10T04:31:17.260641
         "404":
           description: Not Found
           content:
@@ -1596,7 +1601,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-06T09:49:19.002392
+                    timestamp: 2026-03-10T04:31:17.260647
         "422":
           description: Validation Failed
           content:
@@ -1610,7 +1615,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-06T09:49:19.002397
+                    timestamp: 2026-03-10T04:31:17.260652
         "500":
           description: Internal Server Error
           content:
@@ -1624,7 +1629,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-06T09:49:19.002402
+                    timestamp: 2026-03-10T04:31:17.260657
     patch:
       tags:
       - Phone Numbers
@@ -1666,7 +1671,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-06T09:49:18.925635
+                    timestamp: 2026-03-10T04:31:17.181823
         "401":
           description: Unauthorized
           content:
@@ -1680,7 +1685,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-06T09:49:18.925652
+                    timestamp: 2026-03-10T04:31:17.181844
         "403":
           description: Forbidden
           content:
@@ -1694,7 +1699,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-06T09:49:18.925659
+                    timestamp: 2026-03-10T04:31:17.181850
         "404":
           description: Not Found
           content:
@@ -1708,7 +1713,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-06T09:49:18.925664
+                    timestamp: 2026-03-10T04:31:17.181855
         "422":
           description: Validation Failed
           content:
@@ -1722,7 +1727,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-06T09:49:18.925669
+                    timestamp: 2026-03-10T04:31:17.181860
         "500":
           description: Internal Server Error
           content:
@@ -1736,7 +1741,9 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-06T09:49:18.925674
+                    timestamp: 2026-03-10T04:31:17.181865
+
+  # Campaign APIs
   /v1/campaigns:
     get:
       tags:
@@ -2276,6 +2283,8 @@ paths:
                     path: /v1/campaigns
                     status: 500
                     timestamp: 2025-09-25T16:21:51.874285
+
+  # Webhooks APIs
   /v1/webhooks:
     get:
       tags:
@@ -2711,42 +2720,169 @@ paths:
                     path: /v1/webhooks
                     status: 500
                     timestamp: 2025-11-13T13:00:07.099798
+
 components:
   schemas:
-    Error:
+    # Calls APIs Schemas
+    CreateCallRequest:
+      required:
+      - fromPhoneNumber
+      - toPhoneNumber
       type: object
       properties:
-        timestamp:
+        fromPhoneNumber:
           type: string
-          description: Error timestamp in ISO format
-          format: date-time
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        error:
+          description: The caller’s phone number in E.164 format. This number must
+            be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
+          example: +14155552671
+        toPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: Error type or HTTP status message
-          example: Bad Request
-        message:
+          description: The callee’s phone number in E.164 format. This defines the
+            recipient of the outbound call.
+          example: +14155552671
+        agentId:
           type: string
-          description: Detailed error message
-          example: Email is required
-        path:
-          type: string
-          description: Request path where error occurred
-          example: /v1/users
-        validationErrors:
+          description: The unique identifier of the Agent assigned to handle the outbound
+            call.
+          example: D5D0p7TUs66TTAEAx
+        variables:
           type: object
           additionalProperties:
-            type: string
-          description: Field validation errors (if any)
-          example: |-
-            {
-              "email": "Email is required",
-              "name": "Name is too short"
-            }
-      description: Standard error response
+            type: object
+            description: "A set of dynamic key-value pairs required by the selected\
+              \ Agent. These variables allow personalization of the call, such as\
+              \ passing the customer’s name or other contextual details."
+            example:
+              customer_name: Michael
+          description: "A set of dynamic key-value pairs required by the selected\
+            \ Agent. These variables allow personalization of the call, such as passing\
+            \ the customer’s name or other contextual details."
+          example:
+            customer_name: Michael
+    CallResponse:
+      type: object
+      properties:
+        callId:
+          type: string
+          description: "A unique identifier for any call, whether inbound, outbound,\
+            \ or web-based."
+          example: call-AuUKK371Spr5nHJS
+        callType:
+          type: string
+          description: Specifies the direction or type of the call.
+          example: inbound
+          enum:
+          - "inbound, outbound, web"
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumberResponse'
+        campaign:
+          $ref: '#/components/schemas/CampaignResponse'
+        status:
+          type: string
+          description: Status of the call
+          example: ended
+          enum:
+          - "scheduled, in-progress, ended, not-connected, error"
+        startTime:
+          type: string
+          description: Timestamp indicating when the call began.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        endTime:
+          type: string
+          description: Timestamp indicating when the call ended.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        duration:
+          type: integer
+          description: Total duration of the call in seconds.
+          format: int32
+          example: 120
+        terminationReason:
+          type: string
+          description: Reason for call termination
+          example: inactivity
+          enum:
+          - "customer_ended_call, agent_ended_call, inactivity, voicemail, busy, no-answer,\
+            \ failed"
+        createdAt:
+          type: string
+          description: The timestamp when the call record was created.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        updatedAt:
+          type: string
+          description: The timestamp when the call record was last updated.
+          format: date-time
+          example: 2021-04-20T10:00:00Z
+        variables:
+          $ref: '#/components/schemas/JsonNode'
+        recordingUrl:
+          type: string
+          description: Recording URL of the call
+          example: https://livekitmedia.blob.core.windows.net/recording-container-prod/room-ST_b88xWeWhaCVw-_+91XXXXXXXXXX_7d752295/recording.mp3
+        agent:
+          $ref: '#/components/schemas/AgentResponse'
+    PaginatedResponseCallResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+
+    # Chat APIs Schemas
+    CreateChatRequest:
+      required:
+      - agentId
+      - input
+      type: object
+      properties:
+        agentId:
+          type: string
+          description: The unique identifier of the Agent assigned to handle the chat
+            completion.
+          example: D5D0p7TUs66TTAEAx
+        input:
+          type: string
+          description: Input message of the customer or history of the conversation
+          example: Where is my order?
+        dynamicVariables:
+          type: object
+          additionalProperties:
+            type: object
+            description: "A set of dynamic key-value pairs required by the selected\
+              \ Agent. These variables allow personalization of the call, such as\
+              \ passing the customer’s name or other contextual details."
+            example:
+              customer_name: Michael
+          description: "A set of dynamic key-value pairs required by the selected\
+            \ Agent. These variables allow personalization of the call, such as passing\
+            \ the customer’s name or other contextual details."
+          example:
+            customer_name: Michael
+        previousChatId:
+          type: string
+          description: Unique ID of the chat that will be used as context for the
+            new chat.
+          example: chat-D5D0p7TUs66TTAEAx
     CreateChatCompletionRequest:
       required:
       - chatId
@@ -2761,19 +2897,6 @@ components:
           type: string
           description: Input message of the customer
           example: Where is my order?
-    ChatCompletionMessage:
-      type: object
-      properties:
-        id:
-          type: string
-        role:
-          type: string
-        type:
-          type: string
-        content:
-          type: array
-          items:
-            type: string
     ChatCompletionResponse:
       type: object
       properties:
@@ -2843,121 +2966,6 @@ components:
         content:
         - "Hello! My name is Grace, and I'm calling on behalf of SigmaMind AI. Am\
           \ I speaking with Michael?"
-    CreateChatRequest:
-      required:
-      - agentId
-      - input
-      type: object
-      properties:
-        agentId:
-          type: string
-          description: The unique identifier of the Agent assigned to handle the chat
-            completion.
-          example: D5D0p7TUs66TTAEAx
-        input:
-          type: string
-          description: Input message of the customer or history of the conversation
-          example: Where is my order?
-        dynamicVariables:
-          type: object
-          additionalProperties:
-            type: object
-            description: "A set of dynamic key-value pairs required by the selected\
-              \ Agent. These variables allow personalization of the call, such as\
-              \ passing the customer’s name or other contextual details."
-            example:
-              customer_name: Michael
-          description: "A set of dynamic key-value pairs required by the selected\
-            \ Agent. These variables allow personalization of the call, such as passing\
-            \ the customer’s name or other contextual details."
-          example:
-            customer_name: Michael
-        previousChatId:
-          type: string
-          description: Unique ID of the chat that will be used as context for the
-            new chat.
-          example: chat-D5D0p7TUs66TTAEAx
-    AgentResponse:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The display name of the assigned agent.
-          example: New AI Agent
-        agentId:
-          type: string
-          description: The unique identifier of the agent within the system.
-          example: D5D0p7TUs66TTAEAx
-        status:
-          type: string
-          description: The current operational status of the agent.
-          example: active
-          enum:
-          - "live, testing, disabled"
-      description: Assigned agent for current campaign
-    CallResponse:
-      type: object
-      properties:
-        callId:
-          type: string
-          description: "A unique identifier for any call, whether inbound, outbound,\
-            \ or web-based."
-          example: call-AuUKK371Spr5nHJS
-        callType:
-          type: string
-          description: Specifies the direction or type of the call.
-          example: inbound
-          enum:
-          - "inbound, outbound, web"
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumberResponse'
-        campaign:
-          $ref: '#/components/schemas/CampaignResponse'
-        status:
-          type: string
-          description: Status of the call
-          example: ended
-          enum:
-          - "scheduled, in-progress, ended, not-connected, error"
-        startTime:
-          type: string
-          description: Timestamp indicating when the call began.
-          format: date-time
-          example: 2021-04-20T10:00:00Z
-        endTime:
-          type: string
-          description: Timestamp indicating when the call ended.
-          format: date-time
-          example: 2021-04-20T10:00:00Z
-        duration:
-          type: integer
-          description: Total duration of the call in seconds.
-          format: int32
-          example: 120
-        terminationReason:
-          type: string
-          description: Reason for call termination
-          example: inactivity
-          enum:
-          - "customer_ended_call, agent_ended_call, inactivity, voicemail, busy, no-answer, failed"
-        createdAt:
-          type: string
-          description: The timestamp when the call record was created.
-          format: date-time
-          example: 2021-04-20T10:00:00Z
-        updatedAt:
-          type: string
-          description: The timestamp when the call record was last updated.
-          format: date-time
-          example: 2021-04-20T10:00:00Z
-        variables:
-          $ref: '#/components/schemas/JsonNode'
-        recordingUrl:
-          type: string
-          description: Recording URL of the call
-          example: https://livekitmedia.blob.core.windows.net/recording-container-prod/room-ST_b88xWeWhaCVw-_+91XXXXXXXXXX_7d752295/recording.mp3
-        agent:
-          $ref: '#/components/schemas/AgentResponse'
     ChatResponse:
       type: object
       properties:
@@ -3005,50 +3013,115 @@ components:
             $ref: '#/components/schemas/ChatMessage'
         dynamicVariables:
           $ref: '#/components/schemas/JsonNode'
-    CampaignResponse:
+    PaginatedResponseChatResponse:
       type: object
       properties:
-        campaignId:
-          type: string
-          description: A unique identifier assigned to the campaign.
-          example: camp-XiQEBcj9cc5TFRB4
-        campaignName:
-          type: string
-          description: The name given to the campaign for reference or display purposes.
-          example: My Campaign
-        campaignStatus:
-          type: string
-          description: Indicates the current status of the campaign.
-          example: live
-          enum:
-          - "live, scheduled, paused, completed"
-        scheduledDate:
-          type: string
-          description: The scheduled date and time when the campaign is set to launch
-          format: date-time
-        concurrentCalls:
-          type: integer
-          description: Specifies the maximum number of outbound calls allowed to be
-            active simultaneously within the campaign.
-          format: int32
-          example: 5
-        agent:
-          $ref: '#/components/schemas/AgentResponse'
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumberResponse'
-        errors:
+        data:
           type: array
           items:
-            type: string
-        scheduled:
+            $ref: '#/components/schemas/ChatResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
           type: boolean
-    JsonNode:
+        hasPrevious:
+          type: boolean
+
+    # Phone Number APIs Schemas
+    CreatePhoneNumberRequest_Telephony:
       type: object
-      description: "A set of dynamic key-value pairs required by the selected Agent.\
-        \ These variables allow personalization of the call, such as passing the customer’\
-        s name or other contextual details."
-      example:
-        customer_name: Michael
+      properties:
+        friendlyName:
+          type: string
+          description: A user-friendly label for the phone number.
+          example: My Phone Number
+        countryCode:
+          type: string
+          description: "The ISO country code (e.g., 'US', 'IN') indicating the country\
+            \ from which the number should be purchased. Required if phoneNumber is\
+            \ not provided."
+          example: US
+        areaCode:
+          type: integer
+          description: The area/region code within the specified country from which
+            the number should be purchased.
+          format: int32
+          example: 415
+        phoneNumber:
+          type: string
+          description: "The phone number to purchase, in E.164 format (e.g., `+14155552671`).\
+            \ If provided, this exact number will be purchased if available with the\
+            \ provider. If omitted, a number is automatically selected based on `countryCode`\
+            \ (and `areaCode`, if specified)."
+          example: +14155552671
+        inboundAgentId:
+          type: string
+          description: The inbound AI agent ID to be associated with this phone number.
+          example: awTw7UKhOsLGiDbt
+        outboundAgentId:
+          type: string
+          description: The outbound AI agent ID to be associated with this phone number.
+          example: awTw7UKhOsLGiDbt
+        outboundPhoneNumber:
+          type: string
+          description: "The outbound phone number, in E.164 format, used for test\
+            \ calls."
+          example: +14155552671
+    ImportPhoneNumberRequest_Byo:
+      required:
+      - phoneNumber
+      - terminationSipURI
+      - trunkPassword
+      - trunkUsername
+      type: object
+      properties:
+        friendlyName:
+          type: string
+          description: A user-friendly label for the phone number.
+          example: My Phone Number
+        phoneNumber:
+          type: string
+          description: The phone number in +E.164 format. Required when bringing your
+            own number.
+          example: +14155552671
+        inboundAgentId:
+          type: string
+          description: The inbound AI agent ID to be associated with this phone number.
+          example: awTw7UKhOsLGiDbt
+        outboundAgentId:
+          type: string
+          description: The outbound AI agent ID to be associated with this phone number.
+          example: awTw7UKhOsLGiDbt
+        trunkUsername:
+          type: string
+          description: The trunk username used for outbound calls. Must be set up
+            in your provider account.
+          example: username
+        trunkPassword:
+          type: string
+          description: The trunk password is used for outbound calls. Must be set
+            up in your provider account.
+          example: password
+        terminationSipURI:
+          type: string
+          description: "The SIP URI for terminating calls, provided by the telecom\
+            \ provider."
+          example: sip.telnyx.com
+        outboundPhoneNumber:
+          type: string
+          description: "The outbound phone number, in E.164 format, used for test\
+            \ calls."
+          example: +14155552671
     PhoneNumberResponse:
       type: object
       properties:
@@ -3167,13 +3240,46 @@ components:
           type: string
           description: A user-friendly display name assigned to this phone number.
           example: Support Line - US
-    PaginatedResponseCallResponse:
+    UpdatePhoneNumberRequest:
+      type: object
+      properties:
+        friendlyName:
+          type: string
+          description: A user-friendly label for the phone number.
+          example: Support Line
+        inboundAgentId:
+          type: string
+          description: The inbound AI agent ID associated with this phone number.
+          example: awTw7UKhOsLGiDbt
+        outboundAgentId:
+          type: string
+          description: The outbound AI agent ID associated with this phone number.
+          example: awTw7UKhOsLGiDbt
+        terminationSipUri:
+          type: string
+          description: "The SIP URI for terminating calls, provided by the telecom\
+            \ provider."
+          example: sip.telnyx.com
+        trunkUsername:
+          type: string
+          description: The username used for authenticating with the SIP trunk.
+          example: sip_user_01
+        trunkPassword:
+          type: string
+          description: The password used for authenticating with the SIP trunk.
+          example: P@ssw0rd123
+        outboundPhoneNumber:
+          type: string
+          description: "The outbound phone number, in E.164 format, used for test\
+            \ calls."
+          example: +14155552671
+    PaginatedResponsePhoneNumberResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/CallResponse'
+            $ref: '#/components/schemas/PhoneNumberResponse'
         page:
           type: integer
           format: int32
@@ -3190,6 +3296,149 @@ components:
           type: boolean
         hasPrevious:
           type: boolean
+
+    # Campaign APIs Schemas
+    CreateCampaignRequest:
+      required:
+      - agentId
+      - file
+      - sipPhoneNumber
+      type: object
+      properties:
+        campaignName:
+          type: string
+        sipPhoneNumber:
+          type: string
+          description: Phone number of the caller in E.164 format. Must be purchased
+            from SigmaMind or SIP trunking with SigmaMind
+          example: +14155552671
+        agentId:
+          type: string
+          description: Unique id of Agent that will respond to all outbound calls
+            in this campaign
+          example: D5D0p7TUs66TTAEAx
+        file:
+          type: string
+          format: binary
+        isScheduled:
+          type: boolean
+          description: If campaign is scheduled for launch at given time
+          example: true
+        scheduledDate:
+          type: string
+          description: scheduled date is required if scheduled
+          format: date-time
+        scheduledTime:
+          type: string
+          description: Scheduled time is required if scheduled
+          format: time
+          example: 12:00:00
+        scheduledTimezone:
+          type: string
+          description: Scheduled timezone is required if scheduled
+          format: timezone
+          example: America/Los_Angeles
+        concurrentCalls:
+          type: integer
+          description: Number of outbound calls in progress at a time in a campaign
+          format: int32
+          example: 5
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+            description: Dynamic variables required in Selected Agent
+            example:
+              customer_name: Michael
+          description: Dynamic variables required in Selected Agent
+          example:
+            customer_name: Michael
+    CampaignResponse:
+      type: object
+      properties:
+        campaignId:
+          type: string
+          description: A unique identifier assigned to the campaign.
+          example: camp-XiQEBcj9cc5TFRB4
+        campaignName:
+          type: string
+          description: The name given to the campaign for reference or display purposes.
+          example: My Campaign
+        campaignStatus:
+          type: string
+          description: Indicates the current status of the campaign.
+          example: live
+          enum:
+          - "live, scheduled, paused, completed"
+        scheduledDate:
+          type: string
+          description: The scheduled date and time when the campaign is set to launch
+          format: date-time
+        concurrentCalls:
+          type: integer
+          description: Specifies the maximum number of outbound calls allowed to be
+            active simultaneously within the campaign.
+          format: int32
+          example: 5
+        agent:
+          $ref: '#/components/schemas/AgentResponse'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumberResponse'
+        errors:
+          type: array
+          items:
+            type: string
+        scheduled:
+          type: boolean
+    UpdateCampaignRequest:
+      type: object
+      properties:
+        campaignName:
+          type: string
+        sipPhoneNumber:
+          type: string
+        agentId:
+          type: string
+        isScheduled:
+          type: boolean
+        scheduledDate:
+          type: string
+        scheduledTime:
+          type: string
+        scheduledTimezone:
+          type: string
+        concurrentCalls:
+          type: integer
+          format: int64
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+    PaginatedResponseCampaignResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+
+    # Webhooks APIs Schemas
     CreateWebhookRequest:
       required:
       - agentId
@@ -3268,122 +3517,31 @@ components:
           - "conversation_started, conversation_ended, conversation_analysed"
         url:
           type: string
-    CreatePhoneNumberRequest_Telephony:
+    PaginatedResponseWebhookResponse:
       type: object
       properties:
-        friendlyName:
-          type: string
-          description: A user-friendly label for the phone number.
-          example: My Phone Number
-        countryCode:
-          type: string
-          description: "The ISO country code (e.g., 'US', 'IN') indicating the country\
-            \ from which the number should be purchased. Required if phoneNumber is\
-            \ not provided."
-          example: US
-        areaCode:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        page:
           type: integer
-          description: The area/region code within the specified country from which
-            the number should be purchased.
           format: int32
-          example: 415
-        phoneNumber:
-          type: string
-          description: "The phone number to purchase, in E.164 format (e.g., `+14155552671`).\
-            \ If provided, this exact number will be purchased if available with the\
-            \ provider. If omitted, a number is automatically selected based on `countryCode`\
-            \ (and `areaCode`, if specified)."
-          example: +14155552671
-        inboundAgentId:
-          type: string
-          description: The inbound AI agent ID to be associated with this phone number.
-          example: awTw7UKhOsLGiDbt
-        outboundAgentId:
-          type: string
-          description: The outbound AI agent ID to be associated with this phone number.
-          example: awTw7UKhOsLGiDbt
-        outboundPhoneNumber:
-          type: string
-          description: "The outbound phone number, in E.164 format, used for test\
-            \ calls."
-          example: +14155552671
-    ImportPhoneNumberRequest_Byo:
-      required:
-      - phoneNumber
-      - terminationSipURI
-      - trunkPassword
-      - trunkUsername
-      type: object
-      properties:
-        friendlyName:
-          type: string
-          description: A user-friendly label for the phone number.
-          example: My Phone Number
-        phoneNumber:
-          type: string
-          description: The phone number in +E.164 format. Required when bringing your
-            own number.
-          example: +14155552671
-        inboundAgentId:
-          type: string
-          description: The inbound AI agent ID to be associated with this phone number.
-          example: awTw7UKhOsLGiDbt
-        outboundAgentId:
-          type: string
-          description: The outbound AI agent ID to be associated with this phone number.
-          example: awTw7UKhOsLGiDbt
-        trunkUsername:
-          type: string
-          description: The trunk username used for outbound calls. Must be set up
-            in your provider account.
-          example: username
-        trunkPassword:
-          type: string
-          description: The trunk password is used for outbound calls. Must be set
-            up in your provider account.
-          example: password
-        terminationSipURI:
-          type: string
-          description: "The SIP URI for terminating calls, provided by the telecom\
-            \ provider."
-          example: sip.telnyx.com
-        outboundPhoneNumber:
-          type: string
-          description: "The outbound phone number, in E.164 format, used for test\
-            \ calls."
-          example: +14155552671
-    UpdatePhoneNumberRequest:
-      type: object
-      properties:
-        friendlyName:
-          type: string
-          description: A user-friendly label for the phone number.
-          example: Support Line
-        inboundAgentId:
-          type: string
-          description: The inbound AI agent ID associated with this phone number.
-          example: awTw7UKhOsLGiDbt
-        outboundAgentId:
-          type: string
-          description: The outbound AI agent ID associated with this phone number.
-          example: awTw7UKhOsLGiDbt
-        terminationSipUri:
-          type: string
-          description: "The SIP URI for terminating calls, provided by the telecom\
-            \ provider."
-          example: sip.telnyx.com
-        sipTrunkName:
-          type: string
-          description: The name of the SIP trunk associated with this phone number.
-          example: Primary Trunk
-        trunkUsername:
-          type: string
-          description: The username used for authenticating with the SIP trunk.
-          example: sip_user_01
-        trunkPassword:
-          type: string
-          description: The password used for authenticating with the SIP trunk.
-          example: P@ssw0rd123
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+
+    # API Keys APIs Schemas
     CreateApiKeyRequest:
       required:
       - name
@@ -3445,126 +3603,6 @@ components:
           type: string
           description: The secret key value used to authenticate API requests.
           example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
-    CreateCampaignRequest:
-      required:
-      - agentId
-      - file
-      - sipPhoneNumber
-      type: object
-      properties:
-        campaignName:
-          type: string
-        sipPhoneNumber:
-          type: string
-          description: Phone number of the caller in E.164 format. Must be purchased
-            from SigmaMind or SIP trunking with SigmaMind
-          example: +14155552671
-        agentId:
-          type: string
-          description: Unique id of Agent that will respond to all outbound calls
-            in this campaign
-          example: D5D0p7TUs66TTAEAx
-        file:
-          type: string
-          format: binary
-        isScheduled:
-          type: boolean
-          description: If campaign is scheduled for launch at given time
-          example: true
-        scheduledDate:
-          type: string
-          description: scheduled date is required if scheduled
-          format: date-time
-        scheduledTime:
-          type: string
-          description: Scheduled time is required if scheduled
-          format: time
-          example: 12:00:00
-        scheduledTimezone:
-          type: string
-          description: Scheduled timezone is required if scheduled
-          format: timezone
-          example: America/Los_Angeles
-        concurrentCalls:
-          type: integer
-          description: Number of outbound calls in progress at a time in a campaign
-          format: int32
-          example: 5
-        variables:
-          type: object
-          description: Dynamic variables required in Selected Agent
-          example:
-            customer_name: Michael
-    UpdateCampaignRequest:
-      type: object
-      properties:
-        campaignName:
-          type: string
-        sipPhoneNumber:
-          type: string
-        agentId:
-          type: string
-        isScheduled:
-          type: boolean
-        scheduledDate:
-          type: string
-        scheduledTime:
-          type: string
-        scheduledTimezone:
-          type: string
-        concurrentCalls:
-          type: integer
-          format: int64
-        variables:
-          type: object
-          additionalProperties:
-            type: object
-    PaginatedResponseWebhookResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookResponse'
-        page:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        totalCounts:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int32
-        hasNext:
-          type: boolean
-        hasPrevious:
-          type: boolean
-    PaginatedResponsePhoneNumberResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumberResponse'
-        page:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        totalCounts:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int32
-        hasNext:
-          type: boolean
-        hasPrevious:
-          type: boolean
     PaginatedResponseApiKeyResponse:
       type: object
       properties:
@@ -3588,52 +3626,73 @@ components:
           type: boolean
         hasPrevious:
           type: boolean
-    PaginatedResponseCampaignResponse:
+
+    # Other Schemas
+    AgentResponse:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CampaignResponse'
-        page:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        totalCounts:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int32
-        hasNext:
-          type: boolean
-        hasPrevious:
-          type: boolean
-    PaginatedResponseChatResponse:
+        name:
+          type: string
+          description: The display name of the assigned agent.
+          example: New AI Agent
+        agentId:
+          type: string
+          description: The unique identifier of the agent within the system.
+          example: D5D0p7TUs66TTAEAx
+        status:
+          type: string
+          description: The current operational status of the agent.
+          example: live
+          enum:
+          - "live, testing, disabled"
+      description: Assigned agent for current campaign
+      example:
+        name: Demo Agent
+        agentId: mJzLaPEo425lieb9
+        status: Testing
+    JsonNode:
+      type: object
+      description: "A set of dynamic key-value pairs required by the selected Agent.\
+        \ These variables allow personalization of the call, such as passing the customer’\
+        s name or other contextual details."
+      example:
+        customer_name: Michael
+
+    # Error Schema
+    Error:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatResponse'
-        page:
+        timestamp:
+          type: string
+          description: Error timestamp in ISO format
+          format: date-time
+        status:
           type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        totalCounts:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int32
-        hasNext:
-          type: boolean
-        hasPrevious:
-          type: boolean
+          description: HTTP status code
+          example: 400
+        error:
+          type: string
+          description: Error type or HTTP status message
+          example: Bad Request
+        message:
+          type: string
+          description: Detailed error message
+          example: Email is required
+        path:
+          type: string
+          description: Request path where error occurred
+          example: /v1/users
+        validationErrors:
+          type: object
+          additionalProperties:
+            type: string
+          description: Field validation errors (if any)
+          example: |-
+            {
+              "email": "Email is required",
+              "name": "Name is too short"
+            }
+      description: Standard error response
   securitySchemes:
     apiKeyAuth:
       type: apiKey

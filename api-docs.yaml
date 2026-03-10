@@ -50,7 +50,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedResponseCallResponse'
         "400":
@@ -153,7 +153,7 @@ paths:
         "200":
           description: OK
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/CallResponse'
         "400":
@@ -260,7 +260,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/CallResponse'
         "400":
@@ -482,7 +482,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedResponseChatResponse'
         "400":
@@ -585,7 +585,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ChatCompletionResponse'
         "400":
@@ -690,7 +690,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ChatCompletionResponse'
         "400":
@@ -796,7 +796,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ChatResponse'
         "400":
@@ -1014,7 +1014,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ChatResponse'
         "400":
@@ -1129,7 +1129,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedResponsePhoneNumberResponse'
         "400":
@@ -1232,7 +1232,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PhoneNumberResponse_Telephony'
         "400":
@@ -1336,7 +1336,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PhoneNumberResponse_Byo'
         "400":
@@ -1437,12 +1437,12 @@ paths:
         required: true
         schema:
           type: string
-        example: +14155552671
+        example: "+14155552671"
       responses:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PhoneNumberResponse'
         "400":
@@ -1542,7 +1542,7 @@ paths:
         required: true
         schema:
           type: string
-        example: +14155552671
+        example: "+14155552671"
       responses:
         "200":
           description: OK
@@ -1644,7 +1644,7 @@ paths:
         required: true
         schema:
           type: string
-        example: +14155552671
+        example: "+14155552671"
       requestBody:
         content:
           application/json:
@@ -1655,7 +1655,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PhoneNumberResponse'
         "400":
@@ -1775,7 +1775,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedResponseCampaignResponse'
         "400":
@@ -1878,7 +1878,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/CampaignResponse'
         "400":
@@ -1984,7 +1984,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/CampaignResponse'
         "400":
@@ -2196,7 +2196,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/CampaignResponse'
         "400":
@@ -2322,7 +2322,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedResponseWebhookResponse'
         "400":
@@ -2426,7 +2426,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/WebhookResponse'
         "400":
@@ -2532,7 +2532,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/WebhookResponse'
         "400":
@@ -2734,13 +2734,13 @@ components:
           type: string
           description: The caller’s phone number in E.164 format. This number must
             be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
-          example: +14155552671
+          example: "+14155552671"
         toPhoneNumber:
           pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
           description: The callee’s phone number in E.164 format. This defines the
             recipient of the outbound call.
-          example: +14155552671
+          example: "+14155552671"
         agentId:
           type: string
           description: The unique identifier of the Agent assigned to handle the outbound
@@ -2748,13 +2748,6 @@ components:
           example: D5D0p7TUs66TTAEAx
         variables:
           type: object
-          additionalProperties:
-            type: object
-            description: "A set of dynamic key-value pairs required by the selected\
-              \ Agent. These variables allow personalization of the call, such as\
-              \ passing the customer’s name or other contextual details."
-            example:
-              customer_name: Michael
           description: "A set of dynamic key-value pairs required by the selected\
             \ Agent. These variables allow personalization of the call, such as passing\
             \ the customer’s name or other contextual details."
@@ -2776,8 +2769,8 @@ components:
           - "inbound, outbound, web"
         phoneNumber:
           $ref: '#/components/schemas/PhoneNumberResponse'
-        campaign:
-          $ref: '#/components/schemas/CampaignResponse'
+        # campaign:
+        #   $ref: '#/components/schemas/CampaignResponse'
         status:
           type: string
           description: Status of the call
@@ -2866,13 +2859,6 @@ components:
           example: Where is my order?
         dynamicVariables:
           type: object
-          additionalProperties:
-            type: object
-            description: "A set of dynamic key-value pairs required by the selected\
-              \ Agent. These variables allow personalization of the call, such as\
-              \ passing the customer’s name or other contextual details."
-            example:
-              customer_name: Michael
           description: "A set of dynamic key-value pairs required by the selected\
             \ Agent. These variables allow personalization of the call, such as passing\
             \ the customer’s name or other contextual details."
@@ -2897,6 +2883,21 @@ components:
           type: string
           description: Input message of the customer
           example: Where is my order?
+    UpdateChatRequest:
+      type: object
+      properties:
+        agentId:
+          type: string
+          description: The unique identifier of the Agent assigned to handle the chat
+            completion.
+          example: D5D0p7TUs66TTAEAx
+        dynamicVariables:
+          type: object
+          description: "A set of dynamic key-value pairs required by the selected\
+            \ Agent. These variables allow personalization of the call, such as passing\
+            \ the customer’s name or other contextual details."
+          example:
+            customer_name: Michael
     ChatCompletionResponse:
       type: object
       properties:
@@ -3063,7 +3064,7 @@ components:
             \ If provided, this exact number will be purchased if available with the\
             \ provider. If omitted, a number is automatically selected based on `countryCode`\
             \ (and `areaCode`, if specified)."
-          example: +14155552671
+          example: "+14155552671"
         inboundAgentId:
           type: string
           description: The inbound AI agent ID to be associated with this phone number.
@@ -3076,7 +3077,7 @@ components:
           type: string
           description: "The outbound phone number, in E.164 format, used for test\
             \ calls."
-          example: +14155552671
+          example: "+14155552671"
     ImportPhoneNumberRequest_Byo:
       required:
       - phoneNumber
@@ -3093,7 +3094,7 @@ components:
           type: string
           description: The phone number in +E.164 format. Required when bringing your
             own number.
-          example: +14155552671
+          example: "+14155552671"
         inboundAgentId:
           type: string
           description: The inbound AI agent ID to be associated with this phone number.
@@ -3121,7 +3122,7 @@ components:
           type: string
           description: "The outbound phone number, in E.164 format, used for test\
             \ calls."
-          example: +14155552671
+          example: "+14155552671"
     PhoneNumberResponse:
       type: object
       properties:
@@ -3129,7 +3130,7 @@ components:
           type: string
           description: The caller’s phone number in E.164 format. This number must
             be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
-          example: +14155552671
+          example: "+14155552671"
         provider:
           type: string
           description: The service provider associated with the phone number.
@@ -3150,7 +3151,7 @@ components:
           type: string
           description: "The default outbound phone number of the callee, represented\
             \ in E.164 format"
-          example: +14155552671
+          example: "+14155552671"
         active:
           type: boolean
           description: Indicates whether the phone number is currently active and
@@ -3172,7 +3173,7 @@ components:
           type: string
           description: The caller’s phone number in E.164 format. This number must
             be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
-          example: +14155552671
+          example: "+14155552671"
         provider:
           type: string
           description: The service provider associated with the phone number.
@@ -3193,7 +3194,7 @@ components:
           type: string
           description: "The default outbound phone number of the callee, represented\
             \ in E.164 format"
-          example: +14155552671
+          example: "+14155552671"
         active:
           type: boolean
           description: Indicates whether the phone number is currently active and
@@ -3210,7 +3211,7 @@ components:
           type: string
           description: The caller’s phone number in E.164 format. This number must
             be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
-          example: +14155552671
+          example: "+14155552671"
         inboundAgentId:
           type: string
           description: Default agent ID assigned to handle inbound calls for this
@@ -3225,7 +3226,7 @@ components:
           type: string
           description: "The default outbound phone number of the callee, represented\
             \ in E.164 format"
-          example: +14155552671
+          example: "+14155552671"
         active:
           type: boolean
           description: Indicates whether the phone number is currently active and
@@ -3272,7 +3273,7 @@ components:
           type: string
           description: "The outbound phone number, in E.164 format, used for test\
             \ calls."
-          example: +14155552671
+          example: "+14155552671"
     PaginatedResponsePhoneNumberResponse:
       type: object
       properties:
@@ -3311,7 +3312,7 @@ components:
           type: string
           description: Phone number of the caller in E.164 format. Must be purchased
             from SigmaMind or SIP trunking with SigmaMind
-          example: +14155552671
+          example: "+14155552671"
         agentId:
           type: string
           description: Unique id of Agent that will respond to all outbound calls
@@ -3345,11 +3346,6 @@ components:
           example: 5
         variables:
           type: object
-          additionalProperties:
-            type: object
-            description: Dynamic variables required in Selected Agent
-            example:
-              customer_name: Michael
           description: Dynamic variables required in Selected Agent
           example:
             customer_name: Michael
@@ -3412,8 +3408,6 @@ components:
           format: int64
         variables:
           type: object
-          additionalProperties:
-            type: object
     PaginatedResponseCampaignResponse:
       type: object
       properties:
@@ -3684,8 +3678,6 @@ components:
           example: /v1/users
         validationErrors:
           type: object
-          additionalProperties:
-            type: string
           description: Field validation errors (if any)
           example: |-
             {

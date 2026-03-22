@@ -1742,6 +1742,223 @@ paths:
                     path: /v1/phone-numbers
                     status: 500
                     timestamp: 2026-03-10T04:31:17.181865
+  
+  # Agent APIs
+  /v1/agents:
+    post:
+      tags:
+      - Single Prompt Agents
+      summary: Create Agent
+      description: "Create a single prompt agent, along with agent settings"
+      operationId: createSinglePromptAgent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreateAgentResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/agents
+                    status: 400
+                    timestamp: 2026-03-20T23:32:10.682636
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/agents
+                    status: 401
+                    timestamp: 2026-03-20T23:32:10.682657
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/agents
+                    status: 403
+                    timestamp: 2026-03-20T23:32:10.682663
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/agents
+                    status: 404
+                    timestamp: 2026-03-20T23:32:10.682668
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/agents
+                    status: 422
+                    timestamp: 2026-03-20T23:32:10.682672
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/agents
+                    status: 500
+                    timestamp: 2026-03-20T23:32:10.682676
+  /v1/agents/{agentId}:
+      patch:
+        tags:
+        - Single Prompt Agents
+        summary: Update Agent
+        description: "Update a single prompt agent, along with agent settings"
+        operationId: updateSinglePromptAgent
+        parameters:
+        - name: agentId
+          in: path
+          required: true
+          schema:
+            type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAgentRequest'
+          required: true
+        responses:
+          "200":
+            description: OK
+            content:
+              '*/*':
+                schema:
+                  $ref: '#/components/schemas/CreateAgentResponse'
+          "400":
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+                examples:
+                  default:
+                    value:
+                      error: Bad Request
+                      message: Invalid request parameters
+                      path: /v1/agents
+                      status: 400
+                      timestamp: 2026-03-20T23:32:10.718369
+          "401":
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+                examples:
+                  default:
+                    value:
+                      error: Unauthorized
+                      message: X-API-Key is missing or invalid
+                      path: /v1/agents
+                      status: 401
+                      timestamp: 2026-03-20T23:32:10.718390
+          "403":
+            description: Forbidden
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+                examples:
+                  default:
+                    value:
+                      error: Forbidden
+                      message: Access denied for this resource
+                      path: /v1/agents
+                      status: 403
+                      timestamp: 2026-03-20T23:32:10.718396
+          "404":
+            description: Not Found
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+                examples:
+                  default:
+                    value:
+                      error: Not Found
+                      message: The requested resource was not found
+                      path: /v1/agents
+                      status: 404
+                      timestamp: 2026-03-20T23:32:10.718401
+          "422":
+            description: Validation Failed
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+                examples:
+                  default:
+                    value:
+                      error: Validation Failed
+                      message: Request validation failed
+                      path: /v1/agents
+                      status: 422
+                      timestamp: 2026-03-20T23:32:10.718406
+          "500":
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+                examples:
+                  default:
+                    value:
+                      error: Internal Server Error
+                      message: Unexpected server error
+                      path: /v1/agents
+                      status: 500
+                      timestamp: 2026-03-20T23:32:10.718410
+
 
   # Campaign APIs
   /v1/campaigns:
@@ -3297,6 +3514,618 @@ components:
           type: boolean
         hasPrevious:
           type: boolean
+
+    # Agent APIs Schemas
+    CreateAgentRequest:
+      required:
+      - instructions
+      type: object
+      properties:
+        agentName:
+          type: string
+          description: The name of the agent.
+          example: Auralis
+        instructions:
+          type: string
+          description: "Instructional prompt provided to the agent to guide its behavior,\
+            \ tone, and task execution."
+          example: You are a helpful customer support assistant. Answer concisely
+            and professionally.
+        welcomeMessageType:
+          type: string
+          description: Specifies whether the welcome message is a predefined static
+            message or dynamically generated from a prompt.
+          example: static
+          default: static
+          enum:
+          - static
+          - prompt
+        welcomeMessage:
+          type: string
+          description: "The content of the welcome message. If 'welcomeMessageType'\
+            \ is 'static', this contains the exact message shown to the user. If it\
+            \ is 'prompt', this contains the prompt used to generate the welcome message\
+            \ dynamically."
+          example: Welcome to our service! How can I assist you today?
+        agentSettings:
+          $ref: '#/components/schemas/CreateAgentSettingsRequest'
+    CreateAgentSettingsRequest:
+      type: object
+      properties:
+        language:
+          type: string
+          description: The language your customers will primarily speak during calls.
+          example: en_US
+          default: en_US
+          enum:
+          - multi_nova3
+          - multi_nova2 
+          - en
+          - en_US
+          - en_AU
+          - en_GB
+          - en_NZ
+          - en_IN
+          - hi
+          - de
+          - de_CH
+          - nl
+          - sv
+          - sv_SE
+          - da
+          - da_DK
+          - es
+          - es_419
+          - fr
+          - fr_CA
+          - pt
+          - pt_BR
+          - pt_PT
+          - it
+          - tr
+          - no
+          - id
+          - bg
+          - ca
+          - zh
+          - zh_CN
+          - zh_Hans
+          - zh_TW
+          - zh_Hant
+          - zh_HK
+          - cs
+          - et
+          - fi
+          - nl_BE
+          - el
+          - hu
+          - ja
+          - ko
+          - ko_KR
+          - lv
+          - lt
+          - ms
+          - pl
+          - ro
+          - ru
+          - sk
+          - th
+          - th_TH
+          - uk
+          - vi
+        aiStartsConversation:
+          type: boolean
+          description: "If true the AI agent will initiate the conversation immediately\
+            \ when the call connects. If false the call will connect silently, waiting\
+            \ for the customer to speak first before the AI responds"
+          example: true
+          default: true
+        backgroundSound:
+          type: string
+          description: Add ambient background audio during the call.
+          example: keyboard_typing
+          default: none
+          enum:
+          - keyboard_typing
+          - office_ambience
+          - none
+        interruptionSensitivity:
+          maximum: 1.0
+          exclusiveMaximum: false
+          minimum: 0.01
+          exclusiveMinimum: false
+          type: number
+          description: "Controls how sensitive the speech output is to user interruptions.\
+            \ Lower values make the agent less likely to stop speaking when interrupted,\
+            \ while higher values make it more responsive to interruptions."
+          format: double
+          example: 0.05
+          default: 0.05
+        globalPrompt:
+          type: string
+          description: "A global system prompt that is applied to every conversation\
+            \ to define the agent’s overall behavior, tone, and constraints."
+          example: You are a professional virtual assistant. Always respond politely
+            and keep answers concise.
+        endCallOnSilenceDuration:
+          maximum: 30
+          minimum: 1
+          type: number
+          description: Specifies the duration of continuous silence (in minutes) after
+            which the call will be automatically ended.
+          format: float
+          example: 30
+          default: 5
+        maxCallDuration:
+          maximum: 120
+          minimum: 1
+          type: integer
+          description: Maximum call duration in minutes before the call is automatically
+            terminated.
+          format: int32
+          example: 40
+          default: 60
+        llmModel:
+          type: string
+          description: The language model that powers the AI's responses.
+          example: gpt-4o-mini
+          default: gpt-4o-mini
+        voiceId:
+          type: string
+          description: This is the AI's speaking voice id.
+          example: elevenlabs_SGbOfpm28edC83pZ9iGb
+          default: elevenlabs_EXAVITQu4vr4xnSDxMaL
+        voiceModelId:
+          type: string
+          description: This is the AI's text to speech engine version.
+          example: eleven_turbo_v2_5
+          default: eleven_turbo_v2_5
+        enablePostConversationInsights:
+          type: boolean
+          description: Indicates whether post-conversation analysis should be performed
+            to extract insights after the conversation ends.
+          example: true
+          default: false
+        postConversationInsightsLlmModel:
+          type: string
+          description: The language model that powers the AI's post-conversation analysis.
+          example: gpt-4o-mini
+          default: gpt-4o-mini
+        webhooks:
+          type: array
+          description: List of webhook configurations that define external endpoints
+            to be notified on specific events.
+          items:
+            $ref: '#/components/schemas/WebhookConfig'
+        postConversationInsights:
+          type: array
+          description: List of configurations defining what insights should be extracted
+            after the conversation ends.
+          items:
+            $ref: '#/components/schemas/PostConversationInsightsRequest'
+      description: Configuration settings that control the agent’s runtime behavior.
+    PostConversationInsightsRequest:
+      required:
+      - analysisInstructions
+      - dataType
+      - insightName
+      type: object
+      properties:
+        insightName:
+          type: string
+          description: A Unique name of the insight that will be generated from the
+            conversation.
+          example: conversation summary
+        analysisInstructions:
+          type: string
+          description: Instructions or prompt that define how the insight should be
+            generated from the conversation.
+        dataType:
+          pattern: string|boolean|number|selector
+          type: string
+          description: Defines the expected data type of the generated insight result.
+          example: string
+          enum:
+          - string
+          - boolean
+          - number
+          - selector
+        options:
+          type: array
+          description: List of allowed selectable values. Required only when dataType
+            is selector.
+          example:
+          - Interested
+          - Not Interested
+          - Follow Up Later
+          items:
+            type: string
+            example: "[\"Interested\",\"Not Interested\",\"Follow Up Later\"]"
+      description: List of configurations defining what insights should be extracted
+        after the conversation ends.
+    WebhookConfig:
+      required:
+      - name
+      - secret
+      - url
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name of the webhook for easy identification.
+          example: My Webhook
+        url:
+          pattern: https?://.+
+          type: string
+          description: The HTTPS endpoint to which the webhook payload will be sent.
+            Must be a valid HTTPS URL.
+          example: https://example.com/webhook
+        secret:
+          type: string
+          description: Secret key used to authenticate webhook payloads. This key
+            should be securely stored and verified on the receiving server.
+          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
+        events:
+          uniqueItems: true
+          type: array
+          description: List of events that will trigger the webhook. Each event name
+            corresponds to a specific type of activity in the system.
+          items:
+            type: string
+            enum:
+            - conversation_started
+            - conversation_ended
+            - conversation_analysed
+      description: List of webhook configurations that define external endpoints to
+        be notified on specific events.
+    CreateAgentResponse:
+      type: object
+      properties:
+        agentId:
+          type: string
+          description: Id of the agent.
+          example: SPIlVscbB0kkXBvZ
+        agentName:
+          type: string
+          description: The name of the agent.
+          example: Auralis
+        instructions:
+          type: string
+          description: "Instructional prompt provided to the agent to guide its behavior,\
+            \ tone, and task execution."
+          example: You are a helpful customer support assistant. Answer concisely
+            and professionally.
+        welcomeMessageType:
+          type: string
+          description: Specifies whether the welcome message is a predefined static
+            message or dynamically generated from a prompt.
+          example: static
+          default: static
+          enum:
+          - "static, prompt"
+        welcomeMessage:
+          type: string
+          description: "The content of the welcome message. If 'welcomeMessageType'\
+            \ is 'static', this contains the exact message shown to the user. If it\
+            \ is 'prompt', this contains the prompt used to generate the welcome message\
+            \ dynamically."
+          example: Welcome to our service! How can I assist you today?
+        agentSettings:
+          $ref: '#/components/schemas/CreateAgentSettingsResponse'
+    CreateAgentSettingsResponse:
+      type: object
+      properties:
+        language:
+          type: string
+          description: The language your customers will primarily speak during calls.
+          example: en_US
+          default: en_US
+        aiStartsConversation:
+          type: boolean
+          description: "If true the AI agent will initiate the conversation immediately\
+            \ when the call connects. If false the call will connect silently, waiting\
+            \ for the customer to speak first before the AI responds"
+          example: true
+          default: true
+        backgroundSound:
+          type: string
+          description: Add ambient background audio during the call.
+          example: keyboard_typing
+          default: none
+          enum:
+          - keyboard_typing
+          - office_ambience
+          - none
+        interruptionSensitivity:
+          maximum: 1
+          minimum: 0.01
+          type: number
+          description: "Controls how sensitive the speech output is to user interruptions.\
+            \ Lower values make the agent less likely to stop speaking when interrupted,\
+            \ while higher values make it more responsive to interruptions."
+          format: double
+          example: 0.05
+          default: 0.05
+        globalPrompt:
+          type: string
+          description: "A global system prompt that is applied to every conversation\
+            \ to define the agent’s overall behavior, tone, and constraints."
+          example: You are a professional virtual assistant. Always respond politely
+            and keep answers concise.
+        endCallOnSilenceDuration:
+          minimum: 1
+          type: number
+          description: Specifies the duration of continuous silence (in minutes) after
+            which the call will be automatically ended.
+          format: float
+          example: 30
+          default: 5
+        maxCallDuration:
+          maximum: 120
+          minimum: 1
+          type: integer
+          description: Maximum call duration in minutes before the call is automatically
+            terminated.
+          format: int32
+          example: 40
+          default: 60
+        llmModel:
+          type: string
+          description: The language model that powers the AI's responses.
+          example: gpt-4o-mini
+          default: gpt-4o-mini
+        voiceId:
+          type: string
+          description: This is the AI's speaking voice id.
+          example: elevenlabs_SGbOfpm28edC83pZ9iGb
+          default: elevenlabs_EXAVITQu4vr4xnSDxMaL
+        voiceModelId:
+          type: string
+          description: This is the AI's text to speech engine version.
+          example: eleven_turbo_v2_5
+          default: eleven_turbo_v2_5
+        enablePostConversationInsights:
+          type: boolean
+          description: Indicates whether post-conversation analysis should be performed
+            to extract insights after the conversation ends.
+          example: true
+          default: false
+        postConversationInsightsLlmModel:
+          type: string
+          description: The language model that powers the AI's post-conversation analysis.
+          example: gpt-4o-mini
+          default: gpt-4o-mini
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        postConversationInsights:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostConversationInsightsRequest'
+    UpdateAgentRequest:
+      type: object
+      properties:
+        agentName:
+          type: string
+          description: The name of the agent.
+          example: Auralis
+        instructions:
+          type: string
+          description: "Instructional prompt provided to the agent to guide its behavior,\
+            \ tone, and task execution."
+          example: You are a helpful customer support assistant. Answer concisely
+            and professionally.
+        welcomeMessageType:
+          type: string
+          description: Specifies whether the welcome message is a predefined static
+            message or dynamically generated from a prompt.
+          example: static
+          default: static
+          enum:
+          - static
+          - prompt
+        welcomeMessage:
+          type: string
+          description: "The content of the welcome message. If 'welcomeMessageType'\
+            \ is 'static', this contains the exact message shown to the user. If it\
+            \ is 'prompt', this contains the prompt used to generate the welcome message\
+            \ dynamically."
+          example: Welcome to our service! How can I assist you today?
+        agentSettings:
+          $ref: '#/components/schemas/UpdateAgentSettingsRequest'
+    UpdateAgentSettingsRequest:
+      type: object
+      properties:
+        language:
+          type: string
+          description: The language your customers will primarily speak during calls.
+          example: en_US
+          default: en_US
+          enum:
+          - multi_nova3
+          - multi_nova2
+          - en
+          - en_US
+          - en_AU
+          - en_GB
+          - en_NZ
+          - en_IN
+          - hi
+          - de
+          - de_CH
+          - nl
+          - sv
+          - sv_SE
+          - da
+          - da_DK
+          - es
+          - es_419
+          - fr
+          - fr_CA
+          - pt
+          - pt_BR
+          - pt_PT
+          - it
+          - tr
+          - no
+          - id
+          - bg
+          - ca
+          - zh
+          - zh_CN
+          - zh_Hans
+          - zh_TW
+          - zh_Hant
+          - zh_HK
+          - cs
+          - et
+          - fi
+          - nl_BE
+          - el
+          - hu
+          - ja
+          - ko
+          - ko_KR
+          - lv
+          - lt
+          - ms
+          - pl
+          - ro
+          - ru
+          - sk
+          - th
+          - th_TH
+          - uk
+          - vi
+        aiStartsConversation:
+          type: boolean
+          description: "If true the AI agent will initiate the conversation immediately\
+            \ when the call connects. If false the call will connect silently, waiting\
+            \ for the customer to speak first before the AI responds"
+          example: true
+          default: true
+        backgroundSound:
+          type: string
+          description: Add ambient background audio during the call.
+          example: keyboard_typing
+          default: none
+          enum:
+          - keyboard_typing
+          - office_ambience
+          - none
+        interruptionSensitivity:
+          maximum: 1.0
+          exclusiveMaximum: false
+          minimum: 0.01
+          exclusiveMinimum: false
+          type: number
+          description: "Controls how sensitive the speech output is to user interruptions.\
+            \ Lower values make the agent less likely to stop speaking when interrupted,\
+            \ while higher values make it more responsive to interruptions."
+          format: double
+          example: 0.05
+          default: 0.05
+        globalPrompt:
+          type: string
+          description: "A global system prompt that is applied to every conversation\
+            \ to define the agent’s overall behavior, tone, and constraints."
+          example: You are a professional virtual assistant. Always respond politely
+            and keep answers concise.
+        endCallOnSilenceDuration:
+          maximum: 30
+          minimum: 1
+          type: number
+          description: Specifies the duration of continuous silence (in minutes) after
+            which the call will be automatically ended.
+          format: float
+          example: 30
+          default: 5
+        maxCallDuration:
+          maximum: 120
+          minimum: 1
+          type: integer
+          description: Maximum call duration in minutes before the call is automatically
+            terminated.
+          format: int32
+          example: 40
+          default: 60
+        llmModel:
+          type: string
+          description: The language model that powers the AI's responses.
+          example: gpt-4o-mini
+          default: gpt-4o-mini
+        voiceId:
+          type: string
+          description: This is the AI's speaking voice id.
+          example: elevenlabs_SGbOfpm28edC83pZ9iGb
+          default: elevenlabs_EXAVITQu4vr4xnSDxMaL
+        voiceModelId:
+          type: string
+          description: This is the AI's text to speech engine version.
+          example: eleven_turbo_v2_5
+          default: eleven_turbo_v2_5
+        enablePostConversationInsights:
+          type: boolean
+          description: Indicates whether post-conversation analysis should be performed
+            to extract insights after the conversation ends.
+          example: true
+          default: false
+        postConversationInsightsLlmModel:
+          type: string
+          description: The language model that powers the AI's post-conversation analysis.
+          example: gpt-4o-mini
+          default: gpt-4o-mini
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookConfigUpdateRequest'
+        postConversationInsights:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostConversationInsightsRequest'
+    WebhookConfigUpdateRequest:
+      required:
+      - name
+      - secret
+      - url
+      type: object
+      properties:
+        webhookId:
+          type: string
+          description: A unique identifier for the webhook.
+          example: wh_BUbkx3PsbzQm5V10
+        name:
+          type: string
+          description: The display name of the webhook for easy identification.
+          example: My Webhook
+        url:
+          pattern: https?://.+
+          type: string
+          description: The HTTPS endpoint to which the webhook payload will be sent.
+            Must be a valid HTTPS URL.
+          example: https://example.com/webhook
+        secret:
+          type: string
+          description: Secret key used to authenticate webhook payloads. This key
+            should be securely stored and verified on the receiving server.
+          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
+        events:
+          uniqueItems: true
+          type: array
+          description: List of events that will trigger the webhook. Each event name
+            corresponds to a specific type of activity in the system.
+          items:
+            type: string
+            enum:
+            - conversation_started
+            - conversation_ended
+            - conversation_analysed
+        active:
+          type: boolean
+          description: Flag to enable or disable the webhook.
+          example: false
+          default: true
 
     # Campaign APIs Schemas
     CreateCampaignRequest:

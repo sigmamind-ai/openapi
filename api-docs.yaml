@@ -1761,7 +1761,7 @@ paths:
         "200":
           description: OK
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/CreateAgentResponse'
         "400":
@@ -1871,7 +1871,7 @@ paths:
           "200":
             description: OK
             content:
-              '*/*':
+              'application/json':
                 schema:
                   $ref: '#/components/schemas/CreateAgentResponse'
           "400":
@@ -2539,7 +2539,7 @@ paths:
         "200":
           description: OK
           content:
-            application/json:
+            'application/json':
               schema:
                 $ref: '#/components/schemas/PaginatedResponseWebhookResponse'
         "400":
@@ -2555,7 +2555,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2025-11-13T13:00:07.054716
+                    timestamp: 2026-03-25T13:06:59.677935
         "401":
           description: Unauthorized
           content:
@@ -2569,7 +2569,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2025-11-13T13:00:07.054737
+                    timestamp: 2026-03-25T13:06:59.677963
         "403":
           description: Forbidden
           content:
@@ -2583,7 +2583,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2025-11-13T13:00:07.054743
+                    timestamp: 2026-03-25T13:06:59.677971
         "404":
           description: Not Found
           content:
@@ -2597,7 +2597,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2025-11-13T13:00:07.054748
+                    timestamp: 2026-03-25T13:06:59.677979
         "422":
           description: Validation Failed
           content:
@@ -2611,7 +2611,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2025-11-13T13:00:07.054755
+                    timestamp: 2026-03-25T13:06:59.677986
         "500":
           description: Internal Server Error
           content:
@@ -2625,7 +2625,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2025-11-13T13:00:07.054759
+                    timestamp: 2026-03-25T13:06:59.677991
     post:
       tags:
       - Webhooks
@@ -2643,7 +2643,7 @@ paths:
         "200":
           description: OK
           content:
-            application/json:
+            'application/json':
               schema:
                 $ref: '#/components/schemas/WebhookResponse'
         "400":
@@ -2659,7 +2659,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2025-11-13T13:00:06.970119
+                    timestamp: 2026-03-25T13:06:59.579799
         "401":
           description: Unauthorized
           content:
@@ -2673,7 +2673,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2025-11-13T13:00:06.970141
+                    timestamp: 2026-03-25T13:06:59.579820
         "403":
           description: Forbidden
           content:
@@ -2687,7 +2687,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2025-11-13T13:00:06.970147
+                    timestamp: 2026-03-25T13:06:59.579825
         "404":
           description: Not Found
           content:
@@ -2701,7 +2701,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2025-11-13T13:00:06.970152
+                    timestamp: 2026-03-25T13:06:59.579829
         "422":
           description: Validation Failed
           content:
@@ -2715,7 +2715,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2025-11-13T13:00:06.970156
+                    timestamp: 2026-03-25T13:06:59.579833
         "500":
           description: Internal Server Error
           content:
@@ -2729,7 +2729,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2025-11-13T13:00:06.970161
+                    timestamp: 2026-03-25T13:06:59.579837
   /v1/webhooks/{webhookId}:
     get:
       tags:
@@ -2749,7 +2749,7 @@ paths:
         "200":
           description: OK
           content:
-            application/json:
+            'application/json':
               schema:
                 $ref: '#/components/schemas/WebhookResponse'
         "400":
@@ -2765,7 +2765,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2025-11-13T13:00:07.058952
+                    timestamp: 2026-03-25T13:06:59.682243
         "401":
           description: Unauthorized
           content:
@@ -2779,7 +2779,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2025-11-13T13:00:07.058972
+                    timestamp: 2026-03-25T13:06:59.682271
         "403":
           description: Forbidden
           content:
@@ -2793,7 +2793,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2025-11-13T13:00:07.058978
+                    timestamp: 2026-03-25T13:06:59.682279
         "404":
           description: Not Found
           content:
@@ -2807,7 +2807,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2025-11-13T13:00:07.058983
+                    timestamp: 2026-03-25T13:06:59.682286
         "422":
           description: Validation Failed
           content:
@@ -2821,7 +2821,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2025-11-13T13:00:07.058988
+                    timestamp: 2026-03-25T13:06:59.682293
         "500":
           description: Internal Server Error
           content:
@@ -2835,7 +2835,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2025-11-13T13:00:07.058993
+                    timestamp: 2026-03-25T13:06:59.682299
     delete:
       tags:
       - Webhooks
@@ -2866,7 +2866,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2025-11-13T13:00:07.099760
+                    timestamp: 2026-03-25T13:06:59.728638
         "401":
           description: Unauthorized
           content:
@@ -2880,7 +2880,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2025-11-13T13:00:07.099777
+                    timestamp: 2026-03-25T13:06:59.728661
         "403":
           description: Forbidden
           content:
@@ -2894,7 +2894,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2025-11-13T13:00:07.099783
+                    timestamp: 2026-03-25T13:06:59.728673
         "404":
           description: Not Found
           content:
@@ -2908,7 +2908,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2025-11-13T13:00:07.099788
+                    timestamp: 2026-03-25T13:06:59.728680
         "422":
           description: Validation Failed
           content:
@@ -2922,7 +2922,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2025-11-13T13:00:07.099793
+                    timestamp: 2026-03-25T13:06:59.728732
         "500":
           description: Internal Server Error
           content:
@@ -2936,7 +2936,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2025-11-13T13:00:07.099798
+                    timestamp: 2026-03-25T13:06:59.728738
 
 components:
   schemas:
@@ -3746,7 +3746,6 @@ components:
     WebhookConfig:
       required:
       - name
-      - secret
       - url
       type: object
       properties:
@@ -3760,11 +3759,6 @@ components:
           description: The HTTPS endpoint to which the webhook payload will be sent.
             Must be a valid HTTPS URL.
           example: https://example.com/webhook
-        secret:
-          type: string
-          description: Secret key used to authenticate webhook payloads. This key
-            should be securely stored and verified on the receiving server.
-          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
         events:
           uniqueItems: true
           type: array
@@ -4087,7 +4081,6 @@ components:
     WebhookConfigUpdateRequest:
       required:
       - name
-      - secret
       - url
       type: object
       properties:
@@ -4105,11 +4098,6 @@ components:
           description: The HTTPS endpoint to which the webhook payload will be sent.
             Must be a valid HTTPS URL.
           example: https://example.com/webhook
-        secret:
-          type: string
-          description: Secret key used to authenticate webhook payloads. This key
-            should be securely stored and verified on the receiving server.
-          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
         events:
           uniqueItems: true
           type: array
@@ -4267,14 +4255,13 @@ components:
       - agentId
       - events
       - name
-      - secret
       - url
       type: object
       properties:
         name:
           type: string
           description: A unique identifier for the webhook.
-          example: wh_BUbkx3PsbzQm5V10
+          example: My Webhook
         agentId:
           type: string
           description: Unique identifier of the agent to which the webhook is associated.
@@ -4285,16 +4272,9 @@ components:
           description: The HTTPS endpoint to which the webhook payload will be sent.
             Must be a valid HTTPS URL.
           example: https://example.com/webhook
-        secret:
-          type: string
-          description: Secret key used to authenticate webhook payloads. This key
-            should be securely stored and verified on the receiving server.
-          example: key_S7ULC2lBwbg.85ez_yKnXTG6I5OgDHwTBNMSOD2ZyyUFUuDgweVXcXE
         events:
           uniqueItems: true
           type: array
-          description: List of events that will trigger the webhook. Each event name
-            corresponds to a specific type of activity in the system.
           items:
             type: string
             description: List of events that will trigger the webhook. Each event
@@ -4328,18 +4308,24 @@ components:
           description: Indicates whether the webhook is currently active and able
             to receive events.
           example: true
+        secret:
+          type: string
+          description: Secret key used to authenticate webhook payloads. This key
+            should be securely stored and verified on the receiving server.
+          example: mK9vXq2pL8nR5tY1wA3sD6fH0jC4bE7u
         events:
           type: array
           description: Specifies the list of events that trigger the webhook.
           items:
             type: string
-            description: Specifies the list of events that trigger the webhook.
             enum:
             - "conversation_started, conversation_ended, conversation_analysed"
           enum:
           - "conversation_started, conversation_ended, conversation_analysed"
         url:
           type: string
+          description: The HTTPS endpoint to which the webhook payload will be sent.
+          example: https://example.com/webhook
     PaginatedResponseWebhookResponse:
       type: object
       properties:

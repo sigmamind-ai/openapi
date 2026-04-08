@@ -66,7 +66,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/calls
                     status: 400
-                    timestamp: 2026-03-10T04:31:06.076733
+                    timestamp: 2026-04-05T11:38:30.688713
         "401":
           description: Unauthorized
           content:
@@ -80,7 +80,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/calls
                     status: 401
-                    timestamp: 2026-03-10T04:31:06.076756
+                    timestamp: 2026-04-05T11:38:30.688737
         "403":
           description: Forbidden
           content:
@@ -94,7 +94,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/calls
                     status: 403
-                    timestamp: 2026-03-10T04:31:06.076763
+                    timestamp: 2026-04-05T11:38:30.688744
         "404":
           description: Not Found
           content:
@@ -108,7 +108,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/calls
                     status: 404
-                    timestamp: 2026-03-10T04:31:06.076769
+                    timestamp: 2026-04-05T11:38:30.688749
         "422":
           description: Validation Failed
           content:
@@ -122,7 +122,7 @@ paths:
                     message: Request validation failed
                     path: /v1/calls
                     status: 422
-                    timestamp: 2026-03-10T04:31:06.076775
+                    timestamp: 2026-04-05T11:38:30.688754
         "500":
           description: Internal Server Error
           content:
@@ -136,7 +136,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/calls
                     status: 500
-                    timestamp: 2026-03-10T04:31:06.076780
+                    timestamp: 2026-04-05T11:38:30.688760
     post:
       tags:
       - Calls
@@ -169,7 +169,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/calls
                     status: 400
-                    timestamp: 2026-03-10T04:31:06.013667
+                    timestamp: 2026-04-05T11:38:30.615174
         "401":
           description: Unauthorized
           content:
@@ -183,7 +183,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/calls
                     status: 401
-                    timestamp: 2026-03-10T04:31:06.013697
+                    timestamp: 2026-04-05T11:38:30.615202
         "403":
           description: Forbidden
           content:
@@ -197,7 +197,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/calls
                     status: 403
-                    timestamp: 2026-03-10T04:31:06.013708
+                    timestamp: 2026-04-05T11:38:30.615212
         "404":
           description: Not Found
           content:
@@ -211,7 +211,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/calls
                     status: 404
-                    timestamp: 2026-03-10T04:31:06.013716
+                    timestamp: 2026-04-05T11:38:30.615220
         "422":
           description: Validation Failed
           content:
@@ -225,7 +225,7 @@ paths:
                     message: Request validation failed
                     path: /v1/calls
                     status: 422
-                    timestamp: 2026-03-10T04:31:06.013724
+                    timestamp: 2026-04-05T11:38:30.615228
         "500":
           description: Internal Server Error
           content:
@@ -239,7 +239,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/calls
                     status: 500
-                    timestamp: 2026-03-10T04:31:06.013731
+                    timestamp: 2026-04-05T11:38:30.615235
   /v1/calls/{callId}:
     get:
       tags:
@@ -498,7 +498,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-10T04:31:06.050977
+                    timestamp: 2026-04-05T11:38:30.658622
         "401":
           description: Unauthorized
           content:
@@ -512,7 +512,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-10T04:31:06.051010
+                    timestamp: 2026-04-05T11:38:30.658649
         "403":
           description: Forbidden
           content:
@@ -526,7 +526,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-10T04:31:06.051021
+                    timestamp: 2026-04-05T11:38:30.658659
         "404":
           description: Not Found
           content:
@@ -540,7 +540,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-10T04:31:06.051030
+                    timestamp: 2026-04-05T11:38:30.658669
         "422":
           description: Validation Failed
           content:
@@ -554,7 +554,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-10T04:31:06.051038
+                    timestamp: 2026-04-05T11:38:30.658677
         "500":
           description: Internal Server Error
           content:
@@ -568,7 +568,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-10T04:31:06.051046
+                    timestamp: 2026-04-05T11:38:30.658686
     post:
       tags:
       - Chats
@@ -601,7 +601,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-10T04:31:05.980158
+                    timestamp: 2026-04-05T11:38:30.575159
         "401":
           description: Unauthorized
           content:
@@ -615,7 +615,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-10T04:31:05.980264
+                    timestamp: 2026-04-05T11:38:30.575251
         "403":
           description: Forbidden
           content:
@@ -629,7 +629,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-10T04:31:05.980291
+                    timestamp: 2026-04-05T11:38:30.575261
         "404":
           description: Not Found
           content:
@@ -643,7 +643,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-10T04:31:05.980301
+                    timestamp: 2026-04-05T11:38:30.575268
         "422":
           description: Validation Failed
           content:
@@ -657,7 +657,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-10T04:31:05.980308
+                    timestamp: 2026-04-05T11:38:30.575274
         "500":
           description: Internal Server Error
           content:
@@ -671,7 +671,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-10T04:31:05.980316
+                    timestamp: 2026-04-05T11:38:30.575280
   /v1/chats/response:
     post:
       tags:
@@ -706,7 +706,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-10T04:31:05.988007
+                    timestamp: 2026-04-05T11:38:30.586353
         "401":
           description: Unauthorized
           content:
@@ -720,7 +720,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-10T04:31:05.988029
+                    timestamp: 2026-04-05T11:38:30.586393
         "403":
           description: Forbidden
           content:
@@ -734,7 +734,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-10T04:31:05.988037
+                    timestamp: 2026-04-05T11:38:30.586403
         "404":
           description: Not Found
           content:
@@ -748,7 +748,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-10T04:31:05.988043
+                    timestamp: 2026-04-05T11:38:30.586410
         "422":
           description: Validation Failed
           content:
@@ -762,7 +762,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-10T04:31:05.988049
+                    timestamp: 2026-04-05T11:38:30.586418
         "500":
           description: Internal Server Error
           content:
@@ -776,7 +776,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-10T04:31:05.988054
+                    timestamp: 2026-04-05T11:38:30.586425
   /v1/chats/{chatId}:
     get:
       tags:
@@ -812,7 +812,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-06T11:20:45.932188
+                    timestamp: 2026-04-05T11:38:30.669034
         "401":
           description: Unauthorized
           content:
@@ -826,7 +826,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-06T11:20:45.932210
+                    timestamp: 2026-04-05T11:38:30.669059
         "403":
           description: Forbidden
           content:
@@ -840,7 +840,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-06T11:20:45.932216
+                    timestamp: 2026-04-05T11:38:30.669068
         "404":
           description: Not Found
           content:
@@ -854,7 +854,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-06T11:20:45.932221
+                    timestamp: 2026-04-05T11:38:30.669076
         "422":
           description: Validation Failed
           content:
@@ -868,7 +868,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-06T11:20:45.932226
+                    timestamp: 2026-04-05T11:38:30.669084
         "500":
           description: Internal Server Error
           content:
@@ -882,7 +882,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-06T11:20:45.932232
+                    timestamp: 2026-04-05T11:38:30.669106
     patch:
       tags:
       - Chats
@@ -908,7 +908,7 @@ paths:
         "200":
           description: OK
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ChatResponse'
         "400":
@@ -924,7 +924,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-06T11:20:45.894377
+                    timestamp: 2026-04-05T11:38:30.633301
         "401":
           description: Unauthorized
           content:
@@ -938,7 +938,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-06T11:20:45.894400
+                    timestamp: 2026-04-05T11:38:30.633345
         "403":
           description: Forbidden
           content:
@@ -952,7 +952,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-06T11:20:45.894406
+                    timestamp: 2026-04-05T11:38:30.633353
         "404":
           description: Not Found
           content:
@@ -966,7 +966,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-06T11:20:45.894412
+                    timestamp: 2026-04-05T11:38:30.633358
         "422":
           description: Validation Failed
           content:
@@ -980,7 +980,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-06T11:20:45.894417
+                    timestamp: 2026-04-05T11:38:30.633363
         "500":
           description: Internal Server Error
           content:
@@ -994,7 +994,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-06T11:20:45.894422
+                    timestamp: 2026-04-05T11:38:30.633367
   /v1/chats/{chatId}/end-session:
     patch:
       tags:
@@ -1030,7 +1030,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/chats
                     status: 400
-                    timestamp: 2026-03-06T11:20:45.904873
+                    timestamp: 2026-04-05T11:38:30.642961
         "401":
           description: Unauthorized
           content:
@@ -1044,7 +1044,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/chats
                     status: 401
-                    timestamp: 2026-03-06T11:20:45.904894
+                    timestamp: 2026-04-05T11:38:30.642981
         "403":
           description: Forbidden
           content:
@@ -1058,7 +1058,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/chats
                     status: 403
-                    timestamp: 2026-03-06T11:20:45.904901
+                    timestamp: 2026-04-05T11:38:30.642987
         "404":
           description: Not Found
           content:
@@ -1072,7 +1072,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/chats
                     status: 404
-                    timestamp: 2026-03-06T11:20:45.904906
+                    timestamp: 2026-04-05T11:38:30.642992
         "422":
           description: Validation Failed
           content:
@@ -1086,7 +1086,7 @@ paths:
                     message: Request validation failed
                     path: /v1/chats
                     status: 422
-                    timestamp: 2026-03-06T11:20:45.904911
+                    timestamp: 2026-04-05T11:38:30.642997
         "500":
           description: Internal Server Error
           content:
@@ -1100,7 +1100,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/chats
                     status: 500
-                    timestamp: 2026-03-06T11:20:45.904916
+                    timestamp: 2026-04-05T11:38:30.643001
 
   # Phone Number APIs
   /v1/phone-numbers:
@@ -1145,7 +1145,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-10T04:31:17.220468
+                    timestamp: 2026-04-05T11:38:39.601902
         "401":
           description: Unauthorized
           content:
@@ -1159,7 +1159,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-10T04:31:17.220489
+                    timestamp: 2026-04-05T11:38:39.601917
         "403":
           description: Forbidden
           content:
@@ -1173,7 +1173,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-10T04:31:17.220495
+                    timestamp: 2026-04-05T11:38:39.601923
         "404":
           description: Not Found
           content:
@@ -1187,7 +1187,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-10T04:31:17.220499
+                    timestamp: 2026-04-05T11:38:39.601928
         "422":
           description: Validation Failed
           content:
@@ -1201,7 +1201,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-10T04:31:17.220504
+                    timestamp: 2026-04-05T11:38:39.601933
         "500":
           description: Internal Server Error
           content:
@@ -1215,7 +1215,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-10T04:31:17.220508
+                    timestamp: 2026-04-05T11:38:39.601938
     post:
       tags:
       - Phone Numbers
@@ -1248,7 +1248,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-10T04:31:17.119523
+                    timestamp: 2026-04-05T11:38:39.367623
         "401":
           description: Unauthorized
           content:
@@ -1262,7 +1262,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-10T04:31:17.119545
+                    timestamp: 2026-04-05T11:38:39.367651
         "403":
           description: Forbidden
           content:
@@ -1276,7 +1276,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-10T04:31:17.119551
+                    timestamp: 2026-04-05T11:38:39.367662
         "404":
           description: Not Found
           content:
@@ -1290,7 +1290,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-10T04:31:17.119555
+                    timestamp: 2026-04-05T11:38:39.367671
         "422":
           description: Validation Failed
           content:
@@ -1304,7 +1304,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-10T04:31:17.119560
+                    timestamp: 2026-04-05T11:38:39.367681
         "500":
           description: Internal Server Error
           content:
@@ -1318,7 +1318,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-10T04:31:17.119565
+                    timestamp: 2026-04-05T11:38:39.367688
   /v1/phone-numbers/import:
     post:
       tags:
@@ -1352,7 +1352,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-10T04:31:17.128792
+                    timestamp: 2026-04-05T11:38:39.378136
         "401":
           description: Unauthorized
           content:
@@ -1366,7 +1366,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-10T04:31:17.128813
+                    timestamp: 2026-04-05T11:38:39.378163
         "403":
           description: Forbidden
           content:
@@ -1380,7 +1380,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-10T04:31:17.128819
+                    timestamp: 2026-04-05T11:38:39.378173
         "404":
           description: Not Found
           content:
@@ -1394,7 +1394,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-10T04:31:17.128824
+                    timestamp: 2026-04-05T11:38:39.378181
         "422":
           description: Validation Failed
           content:
@@ -1408,7 +1408,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-10T04:31:17.128828
+                    timestamp: 2026-04-05T11:38:39.378188
         "500":
           description: Internal Server Error
           content:
@@ -1422,7 +1422,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-10T04:31:17.128833
+                    timestamp: 2026-04-05T11:38:39.378196
   /v1/phone-numbers/{phoneNumber}:
     get:
       tags:
@@ -1458,7 +1458,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-10T04:31:17.225038
+                    timestamp: 2026-04-05T11:38:39.606118
         "401":
           description: Unauthorized
           content:
@@ -1472,7 +1472,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-10T04:31:17.225056
+                    timestamp: 2026-04-05T11:38:39.606133
         "403":
           description: Forbidden
           content:
@@ -1486,7 +1486,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-10T04:31:17.225062
+                    timestamp: 2026-04-05T11:38:39.606139
         "404":
           description: Not Found
           content:
@@ -1500,7 +1500,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-10T04:31:17.225067
+                    timestamp: 2026-04-05T11:38:39.606144
         "422":
           description: Validation Failed
           content:
@@ -1514,7 +1514,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-10T04:31:17.225072
+                    timestamp: 2026-04-05T11:38:39.606150
         "500":
           description: Internal Server Error
           content:
@@ -1528,7 +1528,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-10T04:31:17.225077
+                    timestamp: 2026-04-05T11:38:39.606155
     delete:
       tags:
       - Phone Numbers
@@ -1559,7 +1559,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-10T04:31:17.260619
+                    timestamp: 2026-04-05T11:38:39.636430
         "401":
           description: Unauthorized
           content:
@@ -1573,7 +1573,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-10T04:31:17.260635
+                    timestamp: 2026-04-05T11:38:39.636444
         "403":
           description: Forbidden
           content:
@@ -1587,7 +1587,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-10T04:31:17.260641
+                    timestamp: 2026-04-05T11:38:39.636451
         "404":
           description: Not Found
           content:
@@ -1601,7 +1601,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-10T04:31:17.260647
+                    timestamp: 2026-04-05T11:38:39.636466
         "422":
           description: Validation Failed
           content:
@@ -1615,7 +1615,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-10T04:31:17.260652
+                    timestamp: 2026-04-05T11:38:39.636471
         "500":
           description: Internal Server Error
           content:
@@ -1629,7 +1629,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-10T04:31:17.260657
+                    timestamp: 2026-04-05T11:38:39.636476
     patch:
       tags:
       - Phone Numbers
@@ -1671,7 +1671,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/phone-numbers
                     status: 400
-                    timestamp: 2026-03-10T04:31:17.181823
+                    timestamp: 2026-04-05T11:38:39.537014
         "401":
           description: Unauthorized
           content:
@@ -1685,7 +1685,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/phone-numbers
                     status: 401
-                    timestamp: 2026-03-10T04:31:17.181844
+                    timestamp: 2026-04-05T11:38:39.537033
         "403":
           description: Forbidden
           content:
@@ -1699,7 +1699,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/phone-numbers
                     status: 403
-                    timestamp: 2026-03-10T04:31:17.181850
+                    timestamp: 2026-04-05T11:38:39.537040
         "404":
           description: Not Found
           content:
@@ -1713,7 +1713,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/phone-numbers
                     status: 404
-                    timestamp: 2026-03-10T04:31:17.181855
+                    timestamp: 2026-04-05T11:38:39.537045
         "422":
           description: Validation Failed
           content:
@@ -1727,7 +1727,7 @@ paths:
                     message: Request validation failed
                     path: /v1/phone-numbers
                     status: 422
-                    timestamp: 2026-03-10T04:31:17.181860
+                    timestamp: 2026-04-05T11:38:39.537050
         "500":
           description: Internal Server Error
           content:
@@ -1741,7 +1741,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/phone-numbers
                     status: 500
-                    timestamp: 2026-03-10T04:31:17.181865
+                    timestamp: 2026-04-05T11:38:39.537055
   
   # Agent APIs
   /v1/agents:
@@ -1761,7 +1761,7 @@ paths:
         "200":
           description: OK
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/CreateAgentResponse'
         "400":
@@ -1777,7 +1777,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/agents
                     status: 400
-                    timestamp: 2026-03-20T23:32:10.682636
+                    timestamp: 2026-04-05T11:38:39.524351
         "401":
           description: Unauthorized
           content:
@@ -1791,7 +1791,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/agents
                     status: 401
-                    timestamp: 2026-03-20T23:32:10.682657
+                    timestamp: 2026-04-05T11:38:39.524372
         "403":
           description: Forbidden
           content:
@@ -1805,7 +1805,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/agents
                     status: 403
-                    timestamp: 2026-03-20T23:32:10.682663
+                    timestamp: 2026-04-05T11:38:39.524379
         "404":
           description: Not Found
           content:
@@ -1819,7 +1819,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/agents
                     status: 404
-                    timestamp: 2026-03-20T23:32:10.682668
+                    timestamp: 2026-04-05T11:38:39.524385
         "422":
           description: Validation Failed
           content:
@@ -1833,7 +1833,7 @@ paths:
                     message: Request validation failed
                     path: /v1/agents
                     status: 422
-                    timestamp: 2026-03-20T23:32:10.682672
+                    timestamp: 2026-04-05T11:38:39.524390
         "500":
           description: Internal Server Error
           content:
@@ -1847,117 +1847,117 @@ paths:
                     message: Unexpected server error
                     path: /v1/agents
                     status: 500
-                    timestamp: 2026-03-20T23:32:10.682676
+                    timestamp: 2026-04-05T11:38:39.524395
   /v1/agents/{agentId}:
-      patch:
-        tags:
-        - Single Prompt Agents
-        summary: Update Agent
-        description: "Update a single prompt agent, along with agent settings"
-        operationId: updateSinglePromptAgent
-        parameters:
-        - name: agentId
-          in: path
-          required: true
-          schema:
-            type: string
-        requestBody:
+    patch:
+      tags:
+      - Single Prompt Agents
+      summary: Update Agent
+      description: "Update a single prompt agent, along with agent settings"
+      operationId: updateSinglePromptAgent
+      parameters:
+      - name: agentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAgentRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateAgentRequest'
-          required: true
-        responses:
-          "200":
-            description: OK
-            content:
-              'application/json':
-                schema:
-                  $ref: '#/components/schemas/CreateAgentResponse'
-          "400":
-            description: Bad Request
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                examples:
-                  default:
-                    value:
-                      error: Bad Request
-                      message: Invalid request parameters
-                      path: /v1/agents
-                      status: 400
-                      timestamp: 2026-03-20T23:32:10.718369
-          "401":
-            description: Unauthorized
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                examples:
-                  default:
-                    value:
-                      error: Unauthorized
-                      message: X-API-Key is missing or invalid
-                      path: /v1/agents
-                      status: 401
-                      timestamp: 2026-03-20T23:32:10.718390
-          "403":
-            description: Forbidden
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                examples:
-                  default:
-                    value:
-                      error: Forbidden
-                      message: Access denied for this resource
-                      path: /v1/agents
-                      status: 403
-                      timestamp: 2026-03-20T23:32:10.718396
-          "404":
-            description: Not Found
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                examples:
-                  default:
-                    value:
-                      error: Not Found
-                      message: The requested resource was not found
-                      path: /v1/agents
-                      status: 404
-                      timestamp: 2026-03-20T23:32:10.718401
-          "422":
-            description: Validation Failed
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                examples:
-                  default:
-                    value:
-                      error: Validation Failed
-                      message: Request validation failed
-                      path: /v1/agents
-                      status: 422
-                      timestamp: 2026-03-20T23:32:10.718406
-          "500":
-            description: Internal Server Error
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                examples:
-                  default:
-                    value:
-                      error: Internal Server Error
-                      message: Unexpected server error
-                      path: /v1/agents
-                      status: 500
-                      timestamp: 2026-03-20T23:32:10.718410
+                $ref: '#/components/schemas/CreateAgentResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/agents
+                    status: 400
+                    timestamp: 2026-04-05T11:38:39.582206
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/agents
+                    status: 401
+                    timestamp: 2026-04-05T11:38:39.582227
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/agents
+                    status: 403
+                    timestamp: 2026-04-05T11:38:39.582234
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/agents
+                    status: 404
+                    timestamp: 2026-04-05T11:38:39.582240
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/agents
+                    status: 422
+                    timestamp: 2026-04-05T11:38:39.582247
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/agents
+                    status: 500
+                    timestamp: 2026-04-05T11:38:39.582252
 
 
   # Campaign APIs
@@ -2008,7 +2008,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/campaigns
                     status: 400
-                    timestamp: 2025-09-25T16:21:51.917143
+                    timestamp: 2026-04-05T11:38:39.625691
         "401":
           description: Unauthorized
           content:
@@ -2022,7 +2022,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/campaigns
                     status: 401
-                    timestamp: 2025-09-25T16:21:51.917167
+                    timestamp: 2026-04-05T11:38:39.625706
         "403":
           description: Forbidden
           content:
@@ -2036,7 +2036,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/campaigns
                     status: 403
-                    timestamp: 2025-09-25T16:21:51.917173
+                    timestamp: 2026-04-05T11:38:39.625713
         "404":
           description: Not Found
           content:
@@ -2050,7 +2050,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/campaigns
                     status: 404
-                    timestamp: 2025-09-25T16:21:51.917178
+                    timestamp: 2026-04-05T11:38:39.625719
         "422":
           description: Validation Failed
           content:
@@ -2064,7 +2064,7 @@ paths:
                     message: Request validation failed
                     path: /v1/campaigns
                     status: 422
-                    timestamp: 2025-09-25T16:21:51.917182
+                    timestamp: 2026-04-05T11:38:39.625724
         "500":
           description: Internal Server Error
           content:
@@ -2078,7 +2078,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/campaigns
                     status: 500
-                    timestamp: 2025-09-25T16:21:51.917188
+                    timestamp: 2026-04-05T11:38:39.625729
     post:
       tags:
       - Campaigns
@@ -2111,7 +2111,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/campaigns
                     status: 400
-                    timestamp: 2025-09-25T16:21:51.852585
+                    timestamp: 2026-04-05T11:38:39.483216
         "401":
           description: Unauthorized
           content:
@@ -2125,7 +2125,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/campaigns
                     status: 401
-                    timestamp: 2025-09-25T16:21:51.852613
+                    timestamp: 2026-04-05T11:38:39.483243
         "403":
           description: Forbidden
           content:
@@ -2139,7 +2139,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/campaigns
                     status: 403
-                    timestamp: 2025-09-25T16:21:51.852619
+                    timestamp: 2026-04-05T11:38:39.483251
         "404":
           description: Not Found
           content:
@@ -2153,7 +2153,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/campaigns
                     status: 404
-                    timestamp: 2025-09-25T16:21:51.852624
+                    timestamp: 2026-04-05T11:38:39.483257
         "422":
           description: Validation Failed
           content:
@@ -2167,7 +2167,7 @@ paths:
                     message: Request validation failed
                     path: /v1/campaigns
                     status: 422
-                    timestamp: 2025-09-25T16:21:51.852628
+                    timestamp: 2026-04-05T11:38:39.483262
         "500":
           description: Internal Server Error
           content:
@@ -2181,7 +2181,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/campaigns
                     status: 500
-                    timestamp: 2025-09-25T16:21:51.852632
+                    timestamp: 2026-04-05T11:38:39.483276
   /v1/campaigns/{campaignId}:
     get:
       tags:
@@ -2217,7 +2217,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/campaigns
                     status: 400
-                    timestamp: 2025-09-25T16:21:51.924543
+                    timestamp: 2026-04-05T11:38:39.632678
         "401":
           description: Unauthorized
           content:
@@ -2231,7 +2231,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/campaigns
                     status: 401
-                    timestamp: 2025-09-25T16:21:51.924563
+                    timestamp: 2026-04-05T11:38:39.632694
         "403":
           description: Forbidden
           content:
@@ -2245,7 +2245,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/campaigns
                     status: 403
-                    timestamp: 2025-09-25T16:21:51.924569
+                    timestamp: 2026-04-05T11:38:39.632701
         "404":
           description: Not Found
           content:
@@ -2259,7 +2259,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/campaigns
                     status: 404
-                    timestamp: 2025-09-25T16:21:51.924574
+                    timestamp: 2026-04-05T11:38:39.632706
         "422":
           description: Validation Failed
           content:
@@ -2273,7 +2273,7 @@ paths:
                     message: Request validation failed
                     path: /v1/campaigns
                     status: 422
-                    timestamp: 2025-09-25T16:21:51.924579
+                    timestamp: 2026-04-05T11:38:39.632711
         "500":
           description: Internal Server Error
           content:
@@ -2287,7 +2287,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/campaigns
                     status: 500
-                    timestamp: 2025-09-25T16:21:51.924583
+                    timestamp: 2026-04-05T11:38:39.632715
     delete:
       tags:
       - Campaigns
@@ -2318,7 +2318,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/campaigns
                     status: 400
-                    timestamp: 2025-09-25T16:21:51.929656
+                    timestamp: 2026-04-05T11:38:39.638708
         "401":
           description: Unauthorized
           content:
@@ -2332,7 +2332,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/campaigns
                     status: 401
-                    timestamp: 2025-09-25T16:21:51.929669
+                    timestamp: 2026-04-05T11:38:39.638730
         "403":
           description: Forbidden
           content:
@@ -2346,7 +2346,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/campaigns
                     status: 403
-                    timestamp: 2025-09-25T16:21:51.929675
+                    timestamp: 2026-04-05T11:38:39.638746
         "404":
           description: Not Found
           content:
@@ -2360,7 +2360,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/campaigns
                     status: 404
-                    timestamp: 2025-09-25T16:21:51.929681
+                    timestamp: 2026-04-05T11:38:39.638752
         "422":
           description: Validation Failed
           content:
@@ -2374,7 +2374,7 @@ paths:
                     message: Request validation failed
                     path: /v1/campaigns
                     status: 422
-                    timestamp: 2025-09-25T16:21:51.929685
+                    timestamp: 2026-04-05T11:38:39.638757
         "500":
           description: Internal Server Error
           content:
@@ -2388,7 +2388,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/campaigns
                     status: 500
-                    timestamp: 2025-09-25T16:21:51.929690
+                    timestamp: 2026-04-05T11:38:39.638762
     patch:
       tags:
       - Campaigns
@@ -2429,7 +2429,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/campaigns
                     status: 400
-                    timestamp: 2025-09-25T16:21:51.874240
+                    timestamp: 2026-04-05T11:38:39.554543
         "401":
           description: Unauthorized
           content:
@@ -2443,7 +2443,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/campaigns
                     status: 401
-                    timestamp: 2025-09-25T16:21:51.874263
+                    timestamp: 2026-04-05T11:38:39.554564
         "403":
           description: Forbidden
           content:
@@ -2457,7 +2457,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/campaigns
                     status: 403
-                    timestamp: 2025-09-25T16:21:51.874269
+                    timestamp: 2026-04-05T11:38:39.554570
         "404":
           description: Not Found
           content:
@@ -2471,7 +2471,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/campaigns
                     status: 404
-                    timestamp: 2025-09-25T16:21:51.874275
+                    timestamp: 2026-04-05T11:38:39.554576
         "422":
           description: Validation Failed
           content:
@@ -2485,7 +2485,7 @@ paths:
                     message: Request validation failed
                     path: /v1/campaigns
                     status: 422
-                    timestamp: 2025-09-25T16:21:51.874280
+                    timestamp: 2026-04-05T11:38:39.554582
         "500":
           description: Internal Server Error
           content:
@@ -2499,7 +2499,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/campaigns
                     status: 500
-                    timestamp: 2025-09-25T16:21:51.874285
+                    timestamp: 2026-04-05T11:38:39.554587
 
   # Webhooks APIs
   /v1/webhooks:
@@ -2539,7 +2539,7 @@ paths:
         "200":
           description: OK
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedResponseWebhookResponse'
         "400":
@@ -2555,7 +2555,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2026-03-25T13:06:59.677935
+                    timestamp: 2026-04-05T11:38:39.592144
         "401":
           description: Unauthorized
           content:
@@ -2569,7 +2569,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2026-03-25T13:06:59.677963
+                    timestamp: 2026-04-05T11:38:39.592163
         "403":
           description: Forbidden
           content:
@@ -2583,7 +2583,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2026-03-25T13:06:59.677971
+                    timestamp: 2026-04-05T11:38:39.592170
         "404":
           description: Not Found
           content:
@@ -2597,7 +2597,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2026-03-25T13:06:59.677979
+                    timestamp: 2026-04-05T11:38:39.592175
         "422":
           description: Validation Failed
           content:
@@ -2611,7 +2611,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2026-03-25T13:06:59.677986
+                    timestamp: 2026-04-05T11:38:39.592180
         "500":
           description: Internal Server Error
           content:
@@ -2625,7 +2625,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2026-03-25T13:06:59.677991
+                    timestamp: 2026-04-05T11:38:39.592185
     post:
       tags:
       - Webhooks
@@ -2643,7 +2643,7 @@ paths:
         "200":
           description: OK
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/WebhookResponse'
         "400":
@@ -2659,7 +2659,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2026-03-25T13:06:59.579799
+                    timestamp: 2026-04-05T11:38:39.348300
         "401":
           description: Unauthorized
           content:
@@ -2673,7 +2673,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2026-03-25T13:06:59.579820
+                    timestamp: 2026-04-05T11:38:39.348407
         "403":
           description: Forbidden
           content:
@@ -2687,7 +2687,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2026-03-25T13:06:59.579825
+                    timestamp: 2026-04-05T11:38:39.348421
         "404":
           description: Not Found
           content:
@@ -2701,7 +2701,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2026-03-25T13:06:59.579829
+                    timestamp: 2026-04-05T11:38:39.348430
         "422":
           description: Validation Failed
           content:
@@ -2715,7 +2715,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2026-03-25T13:06:59.579833
+                    timestamp: 2026-04-05T11:38:39.348438
         "500":
           description: Internal Server Error
           content:
@@ -2729,7 +2729,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2026-03-25T13:06:59.579837
+                    timestamp: 2026-04-05T11:38:39.348445
   /v1/webhooks/{webhookId}:
     get:
       tags:
@@ -2749,7 +2749,7 @@ paths:
         "200":
           description: OK
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/WebhookResponse'
         "400":
@@ -2765,7 +2765,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2026-03-25T13:06:59.682243
+                    timestamp: 2026-04-05T11:38:39.596014
         "401":
           description: Unauthorized
           content:
@@ -2779,7 +2779,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2026-03-25T13:06:59.682271
+                    timestamp: 2026-04-05T11:38:39.596030
         "403":
           description: Forbidden
           content:
@@ -2793,7 +2793,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2026-03-25T13:06:59.682279
+                    timestamp: 2026-04-05T11:38:39.596036
         "404":
           description: Not Found
           content:
@@ -2807,7 +2807,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2026-03-25T13:06:59.682286
+                    timestamp: 2026-04-05T11:38:39.596042
         "422":
           description: Validation Failed
           content:
@@ -2821,7 +2821,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2026-03-25T13:06:59.682293
+                    timestamp: 2026-04-05T11:38:39.596047
         "500":
           description: Internal Server Error
           content:
@@ -2835,7 +2835,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2026-03-25T13:06:59.682299
+                    timestamp: 2026-04-05T11:38:39.596052
     delete:
       tags:
       - Webhooks
@@ -2866,7 +2866,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/webhooks
                     status: 400
-                    timestamp: 2026-03-25T13:06:59.728638
+                    timestamp: 2026-04-05T11:38:39.635281
         "401":
           description: Unauthorized
           content:
@@ -2880,7 +2880,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/webhooks
                     status: 401
-                    timestamp: 2026-03-25T13:06:59.728661
+                    timestamp: 2026-04-05T11:38:39.635297
         "403":
           description: Forbidden
           content:
@@ -2894,7 +2894,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/webhooks
                     status: 403
-                    timestamp: 2026-03-25T13:06:59.728673
+                    timestamp: 2026-04-05T11:38:39.635303
         "404":
           description: Not Found
           content:
@@ -2908,7 +2908,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/webhooks
                     status: 404
-                    timestamp: 2026-03-25T13:06:59.728680
+                    timestamp: 2026-04-05T11:38:39.635309
         "422":
           description: Validation Failed
           content:
@@ -2922,7 +2922,7 @@ paths:
                     message: Request validation failed
                     path: /v1/webhooks
                     status: 422
-                    timestamp: 2026-03-25T13:06:59.728732
+                    timestamp: 2026-04-05T11:38:39.635313
         "500":
           description: Internal Server Error
           content:
@@ -2936,7 +2936,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/webhooks
                     status: 500
-                    timestamp: 2026-03-25T13:06:59.728738
+                    timestamp: 2026-04-05T11:38:39.635319
 
 components:
   schemas:
@@ -2948,26 +2948,27 @@ components:
       type: object
       properties:
         fromPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: The caller’s phone number in E.164 format. This number must
-            be obtained from SigmaMind or configured using SIP trunking with SigmaMind.
+          description: The caller's phone number in E.164 format. Must be a number
+            provisioned in or configured with SigmaMind.
           example: "+14155552671"
         toPhoneNumber:
           pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: The callee’s phone number in E.164 format. This defines the
-            recipient of the outbound call.
+          description: The callee's phone number in E.164 format.
           example: "+14155552671"
         agentId:
+          maxLength: 64
+          minLength: 0
           type: string
           description: The unique identifier of the Agent assigned to handle the outbound
             call.
           example: D5D0p7TUs66TTAEAx
         variables:
           type: object
-          description: "A set of dynamic key-value pairs required by the selected\
-            \ Agent. These variables allow personalization of the call, such as passing\
-            \ the customer’s name or other contextual details."
+          description: "Dynamic key-value pairs for Agent personalisation (e.g. customer\
+            \ name, account details)."
           example:
             customer_name: Michael
     CallResponse:
@@ -3066,25 +3067,30 @@ components:
       type: object
       properties:
         agentId:
+          maxLength: 64
+          minLength: 1
           type: string
           description: The unique identifier of the Agent assigned to handle the chat
             completion.
           example: D5D0p7TUs66TTAEAx
         input:
+          maxLength: 20480
+          minLength: 1
           type: string
-          description: Input message of the customer or history of the conversation
+          description: Input message from the customer or conversation history.
           example: Where is my order?
         dynamicVariables:
           type: object
-          description: "A set of dynamic key-value pairs required by the selected\
-            \ Agent. These variables allow personalization of the call, such as passing\
-            \ the customer’s name or other contextual details."
+          description: "Dynamic key-value pairs required by the selected Agent for\
+            \ personalisation (e.g. customer name, account details)."
           example:
             customer_name: Michael
         previousChatId:
+          maxLength: 128
+          minLength: 0
           type: string
-          description: Unique ID of the chat that will be used as context for the
-            new chat.
+          description: Unique ID of a previous chat session to use as context for
+            this chat.
           example: chat-D5D0p7TUs66TTAEAx
     CreateChatCompletionRequest:
       required:
@@ -3093,26 +3099,31 @@ components:
       type: object
       properties:
         chatId:
+          maxLength: 128
+          minLength: 1
           type: string
-          description: The unique identifier of chat completion in specific agent.
+          description: The unique identifier of the chat session in a specific agent.
           example: chat-nZ9hHYAANJbhLwZv
         input:
+          maxLength: 20480
+          minLength: 1
           type: string
-          description: Input message of the customer
+          description: Input message from the customer.
           example: Where is my order?
     UpdateChatRequest:
       type: object
       properties:
         agentId:
+          maxLength: 64
+          minLength: 0
           type: string
           description: The unique identifier of the Agent assigned to handle the chat
             completion.
           example: D5D0p7TUs66TTAEAx
         dynamicVariables:
           type: object
-          description: "A set of dynamic key-value pairs required by the selected\
-            \ Agent. These variables allow personalization of the call, such as passing\
-            \ the customer’s name or other contextual details."
+          description: "Dynamic key-value pairs required by the selected Agent for\
+            \ personalisation (e.g. customer name, account details)."
           example:
             customer_name: Michael
     ChatCompletionResponse:
@@ -3260,40 +3271,46 @@ components:
       type: object
       properties:
         friendlyName:
+          maxLength: 128
+          minLength: 0
           type: string
           description: A user-friendly label for the phone number.
           example: My Phone Number
         countryCode:
+          pattern: "^[A-Z]{2}$"
           type: string
-          description: "The ISO country code (e.g., 'US', 'IN') indicating the country\
-            \ from which the number should be purchased. Required if phoneNumber is\
-            \ not provided."
+          description: "ISO 3166-1 alpha-2 country code (e.g. 'US', 'IN'). Required\
+            \ if phoneNumber is not provided."
           example: US
         areaCode:
+          maximum: 99999
+          minimum: 100
           type: integer
-          description: The area/region code within the specified country from which
-            the number should be purchased.
+          description: Area/region code within the specified country for number selection.
           format: int32
           example: 415
         phoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: "The phone number to purchase, in E.164 format (e.g., `+14155552671`).\
-            \ If provided, this exact number will be purchased if available with the\
-            \ provider. If omitted, a number is automatically selected based on `countryCode`\
-            \ (and `areaCode`, if specified)."
+          description: "The exact phone number to purchase in E.164 format. If omitted,\
+            \ a number is auto-selected based on countryCode and areaCode."
           example: "+14155552671"
         inboundAgentId:
+          maxLength: 64
+          minLength: 0
           type: string
-          description: The inbound AI agent ID to be associated with this phone number.
+          description: The inbound AI agent ID to associate with this phone number.
           example: awTw7UKhOsLGiDbt
         outboundAgentId:
+          maxLength: 64
+          minLength: 0
           type: string
-          description: The outbound AI agent ID to be associated with this phone number.
+          description: The outbound AI agent ID to associate with this phone number.
           example: awTw7UKhOsLGiDbt
         outboundPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: "The outbound phone number, in E.164 format, used for test\
-            \ calls."
+          description: "The outbound phone number in E.164 format, used for test calls."
           example: "+14155552671"
     ImportPhoneNumberRequest_Byo:
       required:
@@ -3304,41 +3321,54 @@ components:
       type: object
       properties:
         friendlyName:
+          maxLength: 128
+          minLength: 0
           type: string
           description: A user-friendly label for the phone number.
           example: My Phone Number
         phoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: The phone number in +E.164 format. Required when bringing your
+          description: The phone number in E.164 format. Required when importing your
             own number.
           example: "+14155552671"
         inboundAgentId:
+          maxLength: 64
+          minLength: 0
           type: string
-          description: The inbound AI agent ID to be associated with this phone number.
+          description: The inbound AI agent ID to associate with this phone number.
           example: awTw7UKhOsLGiDbt
         outboundAgentId:
+          maxLength: 64
+          minLength: 0
           type: string
-          description: The outbound AI agent ID to be associated with this phone number.
+          description: The outbound AI agent ID to associate with this phone number.
           example: awTw7UKhOsLGiDbt
         trunkUsername:
+          maxLength: 128
+          minLength: 0
           type: string
-          description: The trunk username used for outbound calls. Must be set up
-            in your provider account.
+          description: The trunk username for outbound calls. Must be set up in your
+            provider account.
           example: username
         trunkPassword:
+          maxLength: 128
+          minLength: 0
           type: string
-          description: The trunk password is used for outbound calls. Must be set
-            up in your provider account.
+          description: The trunk password for outbound calls. Must be set up in your
+            provider account.
           example: password
         terminationSipURI:
+          maxLength: 253
+          minLength: 0
           type: string
           description: "The SIP URI for terminating calls, provided by the telecom\
             \ provider."
           example: sip.telnyx.com
         outboundPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: "The outbound phone number, in E.164 format, used for test\
-            \ calls."
+          description: "The outbound phone number in E.164 format, used for test calls."
           example: "+14155552671"
     PhoneNumberResponse:
       type: object
@@ -3462,34 +3492,46 @@ components:
       type: object
       properties:
         friendlyName:
+          maxLength: 128
+          minLength: 0
           type: string
           description: A user-friendly label for the phone number.
           example: Support Line
         inboundAgentId:
+          maxLength: 64
+          minLength: 0
           type: string
           description: The inbound AI agent ID associated with this phone number.
           example: awTw7UKhOsLGiDbt
         outboundAgentId:
+          maxLength: 64
+          minLength: 0
           type: string
           description: The outbound AI agent ID associated with this phone number.
           example: awTw7UKhOsLGiDbt
         terminationSipUri:
+          maxLength: 253
+          minLength: 0
           type: string
           description: "The SIP URI for terminating calls, provided by the telecom\
             \ provider."
           example: sip.telnyx.com
         trunkUsername:
+          maxLength: 128
+          minLength: 0
           type: string
           description: The username used for authenticating with the SIP trunk.
           example: sip_user_01
         trunkPassword:
+          maxLength: 128
+          minLength: 0
           type: string
           description: The password used for authenticating with the SIP trunk.
           example: P@ssw0rd123
         outboundPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
-          description: "The outbound phone number, in E.164 format, used for test\
-            \ calls."
+          description: "The outbound phone number in E.164 format, used for test calls."
           example: "+14155552671"
     PaginatedResponsePhoneNumberResponse:
       type: object
@@ -3522,6 +3564,8 @@ components:
       type: object
       properties:
         agentName:
+          maxLength: 128
+          minLength: 0
           type: string
           description: The name of the agent.
           example: Auralis
@@ -3533,8 +3577,8 @@ components:
             and professionally.
         welcomeMessageType:
           type: string
-          description: Specifies whether the welcome message is a predefined static
-            message or dynamically generated from a prompt.
+          description: Specifies whether the welcome message is static or dynamically
+            generated from a prompt.
           example: static
           default: static
           enum:
@@ -3703,7 +3747,7 @@ components:
             after the conversation ends.
           items:
             $ref: '#/components/schemas/PostConversationInsightsRequest'
-      description: Configuration settings that control the agent’s runtime behavior.
+      description: Configuration settings that control the agent's runtime behavior.
     PostConversationInsightsRequest:
       required:
       - analysisInstructions
@@ -3740,6 +3784,8 @@ components:
           - Follow Up Later
           items:
             type: string
+            description: List of allowed selectable values. Required only when dataType
+              is selector.
             example: "[\"Interested\",\"Not Interested\",\"Follow Up Later\"]"
       description: List of configurations defining what insights should be extracted
         after the conversation ends.
@@ -3766,6 +3812,8 @@ components:
             corresponds to a specific type of activity in the system.
           items:
             type: string
+            description: List of events that will trigger the webhook. Each event
+              name corresponds to a specific type of activity in the system.
             enum:
             - conversation_started
             - conversation_ended
@@ -3870,12 +3918,12 @@ components:
           default: gpt-4o-mini
         voiceId:
           type: string
-          description: This is the AI's speaking voice id.
+          description: This is the AIs speaking voice id.
           example: elevenlabs_SGbOfpm28edC83pZ9iGb
           default: elevenlabs_EXAVITQu4vr4xnSDxMaL
         voiceModelId:
           type: string
-          description: This is the AI's text to speech engine version.
+          description: This is the AIs text to speech engine version.
           example: eleven_turbo_v2_5
           default: eleven_turbo_v2_5
         enablePostConversationInsights:
@@ -4105,6 +4153,8 @@ components:
             corresponds to a specific type of activity in the system.
           items:
             type: string
+            description: List of events that will trigger the webhook. Each event
+              name corresponds to a specific type of activity in the system.
             enum:
             - conversation_started
             - conversation_ended
@@ -4119,51 +4169,61 @@ components:
     CreateCampaignRequest:
       required:
       - agentId
+      - campaignName
       - file
       - sipPhoneNumber
       type: object
       properties:
         campaignName:
+          maxLength: 128
+          minLength: 1
           type: string
+          description: Name of the campaign.
+          example: Q4 Outreach Campaign
         sipPhoneNumber:
+          pattern: "^\\+[1-9][0-9]{6,14}$"
           type: string
           description: Phone number of the caller in E.164 format. Must be purchased
-            from SigmaMind or SIP trunking with SigmaMind
-          example: "+14155552671"
+            from SigmaMind or configured via SIP trunking.
+          example: +14155552671
         agentId:
+          maxLength: 64
+          minLength: 1
           type: string
-          description: Unique id of Agent that will respond to all outbound calls
-            in this campaign
+          description: Unique identifier of the Agent that will handle all outbound
+            calls in this campaign.
           example: D5D0p7TUs66TTAEAx
         file:
           type: string
           format: binary
         isScheduled:
           type: boolean
-          description: If campaign is scheduled for launch at given time
+          description: Whether the campaign is scheduled for a future launch time.
           example: true
         scheduledDate:
           type: string
-          description: scheduled date is required if scheduled
-          format: date-time
+          description: Scheduled launch date. Required when isScheduled is true.
+          format: date
+          example: 2025-09-25
         scheduledTime:
           type: string
-          description: Scheduled time is required if scheduled
+          description: Scheduled launch time. Required when isScheduled is true.
           format: time
           example: 12:00:00
         scheduledTimezone:
           type: string
-          description: Scheduled timezone is required if scheduled
-          format: timezone
+          description: Timezone for the scheduled launch. Required when isScheduled
+            is true.
           example: America/Los_Angeles
         concurrentCalls:
           type: integer
-          description: Number of outbound calls in progress at a time in a campaign
+          description: Maximum number of concurrent outbound calls allowed at any
+            time during the campaign.
           format: int32
           example: 5
         variables:
           type: object
-          description: Dynamic variables required in Selected Agent
+          description: Dynamic variables required by the selected Agent.
           example:
             customer_name: Michael
     CampaignResponse:
@@ -4259,10 +4319,14 @@ components:
       type: object
       properties:
         name:
+          maxLength: 128
+          minLength: 1
           type: string
           description: A unique identifier for the webhook.
-          example: My Webhook
+          example: wh_BUbkx3PsbzQm5V10
         agentId:
+          maxLength: 64
+          minLength: 1
           type: string
           description: Unique identifier of the agent to which the webhook is associated.
           example: D5D0p7TUs66TTAEAx
@@ -4275,10 +4339,16 @@ components:
         events:
           uniqueItems: true
           type: array
+          description: List of events that will trigger the webhook. Each event name
+            corresponds to a specific type of activity in the system.
+          example:
+          - conversation_started
+          - conversation_ended
           items:
             type: string
             description: List of events that will trigger the webhook. Each event
               name corresponds to a specific type of activity in the system.
+            example: "[\"conversation_started\",\"conversation_ended\"]"
             enum:
             - conversation_started
             - conversation_ended
@@ -4318,6 +4388,7 @@ components:
           description: Specifies the list of events that trigger the webhook.
           items:
             type: string
+            description: Specifies the list of events that trigger the webhook.
             enum:
             - "conversation_started, conversation_ended, conversation_analysed"
           enum:

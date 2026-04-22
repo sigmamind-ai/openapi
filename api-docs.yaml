@@ -2954,25 +2954,30 @@ paths:
       parameters:
       - name: agentId
         in: query
-        description: A unique identifier for the agent to which the test case belongs.
+        description: The unique identifier of the Agent whose test cases are to be
+          listed.
         required: true
         schema:
           type: string
         example: IqmljBh8eSEGAqKd
       - name: page
         in: query
+        description: "The page number to retrieve, starting from 0."
         required: false
         schema:
           type: integer
           format: int32
           default: 0
+        example: 0
       - name: size
         in: query
+        description: The number of results to return per page.
         required: false
         schema:
           type: integer
           format: int32
           default: 10
+        example: 10
       responses:
         "200":
           description: OK
@@ -2993,7 +2998,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-cases
                     status: 400
-                    timestamp: 2026-04-18T07:50:09.959048
+                    timestamp: 2026-04-22T07:53:36.957314
         "401":
           description: Unauthorized
           content:
@@ -3007,7 +3012,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-cases
                     status: 401
-                    timestamp: 2026-04-18T07:50:09.959070
+                    timestamp: 2026-04-22T07:53:36.957340
         "403":
           description: Forbidden
           content:
@@ -3021,7 +3026,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-cases
                     status: 403
-                    timestamp: 2026-04-18T07:50:09.959077
+                    timestamp: 2026-04-22T07:53:36.957347
         "404":
           description: Not Found
           content:
@@ -3035,7 +3040,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-cases
                     status: 404
-                    timestamp: 2026-04-18T07:50:09.959082
+                    timestamp: 2026-04-22T07:53:36.957358
         "422":
           description: Validation Failed
           content:
@@ -3049,7 +3054,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-cases
                     status: 422
-                    timestamp: 2026-04-18T07:50:09.959087
+                    timestamp: 2026-04-22T07:53:36.957363
         "500":
           description: Internal Server Error
           content:
@@ -3063,7 +3068,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-cases
                     status: 500
-                    timestamp: 2026-04-18T07:50:09.959093
+                    timestamp: 2026-04-22T07:53:36.957368
     post:
       tags:
       - Test Cases
@@ -3096,7 +3101,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-cases
                     status: 400
-                    timestamp: 2026-04-18T07:50:09.695700
+                    timestamp: 2026-04-22T07:53:36.641244
         "401":
           description: Unauthorized
           content:
@@ -3110,7 +3115,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-cases
                     status: 401
-                    timestamp: 2026-04-18T07:50:09.695734
+                    timestamp: 2026-04-22T07:53:36.641289
         "403":
           description: Forbidden
           content:
@@ -3124,7 +3129,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-cases
                     status: 403
-                    timestamp: 2026-04-18T07:50:09.695745
+                    timestamp: 2026-04-22T07:53:36.641304
         "404":
           description: Not Found
           content:
@@ -3138,7 +3143,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-cases
                     status: 404
-                    timestamp: 2026-04-18T07:50:09.695757
+                    timestamp: 2026-04-22T07:53:36.641320
         "422":
           description: Validation Failed
           content:
@@ -3152,7 +3157,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-cases
                     status: 422
-                    timestamp: 2026-04-18T07:50:09.695765
+                    timestamp: 2026-04-22T07:53:36.641333
         "500":
           description: Internal Server Error
           content:
@@ -3166,7 +3171,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-cases
                     status: 500
-                    timestamp: 2026-04-18T07:50:09.695774
+                    timestamp: 2026-04-22T07:53:36.641345
   /v1/test-cases/{testCaseId}:
     get:
       tags:
@@ -3177,14 +3182,14 @@ paths:
       parameters:
       - name: testCaseId
         in: path
-        description: A unique identifier for the test case.
+        description: The unique identifier of the test case to retrieve.
         required: true
         schema:
           type: string
         example: tc_HaDxmGfwb8MZLlKM
       - name: agentId
         in: query
-        description: A unique identifier for the agent to which the test case belongs.
+        description: The unique identifier of the Agent to which the test case belongs.
         required: true
         schema:
           type: string
@@ -3209,7 +3214,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-cases
                     status: 400
-                    timestamp: 2026-04-18T07:50:09.965749
+                    timestamp: 2026-04-22T07:53:36.964199
         "401":
           description: Unauthorized
           content:
@@ -3223,7 +3228,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-cases
                     status: 401
-                    timestamp: 2026-04-18T07:50:09.965771
+                    timestamp: 2026-04-22T07:53:36.964220
         "403":
           description: Forbidden
           content:
@@ -3237,7 +3242,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-cases
                     status: 403
-                    timestamp: 2026-04-18T07:50:09.965778
+                    timestamp: 2026-04-22T07:53:36.964227
         "404":
           description: Not Found
           content:
@@ -3251,7 +3256,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-cases
                     status: 404
-                    timestamp: 2026-04-18T07:50:09.965784
+                    timestamp: 2026-04-22T07:53:36.964236
         "422":
           description: Validation Failed
           content:
@@ -3265,7 +3270,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-cases
                     status: 422
-                    timestamp: 2026-04-18T07:50:09.965791
+                    timestamp: 2026-04-22T07:53:36.964243
         "500":
           description: Internal Server Error
           content:
@@ -3279,7 +3284,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-cases
                     status: 500
-                    timestamp: 2026-04-18T07:50:09.965797
+                    timestamp: 2026-04-22T07:53:36.964249
     delete:
       tags:
       - Test Cases
@@ -3289,9 +3294,11 @@ paths:
       parameters:
       - name: testCaseId
         in: path
+        description: The unique identifier of the test case to delete.
         required: true
         schema:
           type: string
+        example: tc_HaDxmGfwb8MZLlKM
       responses:
         "200":
           description: OK
@@ -3308,7 +3315,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-cases
                     status: 400
-                    timestamp: 2026-04-18T07:50:10.008403
+                    timestamp: 2026-04-22T07:53:37.010847
         "401":
           description: Unauthorized
           content:
@@ -3322,7 +3329,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-cases
                     status: 401
-                    timestamp: 2026-04-18T07:50:10.008419
+                    timestamp: 2026-04-22T07:53:37.010864
         "403":
           description: Forbidden
           content:
@@ -3336,7 +3343,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-cases
                     status: 403
-                    timestamp: 2026-04-18T07:50:10.008426
+                    timestamp: 2026-04-22T07:53:37.010871
         "404":
           description: Not Found
           content:
@@ -3350,7 +3357,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-cases
                     status: 404
-                    timestamp: 2026-04-18T07:50:10.008431
+                    timestamp: 2026-04-22T07:53:37.010877
         "422":
           description: Validation Failed
           content:
@@ -3364,7 +3371,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-cases
                     status: 422
-                    timestamp: 2026-04-18T07:50:10.008437
+                    timestamp: 2026-04-22T07:53:37.010882
         "500":
           description: Internal Server Error
           content:
@@ -3378,7 +3385,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-cases
                     status: 500
-                    timestamp: 2026-04-18T07:50:10.008442
+                    timestamp: 2026-04-22T07:53:37.010887
     patch:
       tags:
       - Test Cases
@@ -3417,7 +3424,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-cases
                     status: 400
-                    timestamp: 2026-04-18T07:50:09.881135
+                    timestamp: 2026-04-22T07:53:36.876595
         "401":
           description: Unauthorized
           content:
@@ -3431,7 +3438,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-cases
                     status: 401
-                    timestamp: 2026-04-18T07:50:09.881160
+                    timestamp: 2026-04-22T07:53:36.876618
         "403":
           description: Forbidden
           content:
@@ -3445,7 +3452,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-cases
                     status: 403
-                    timestamp: 2026-04-18T07:50:09.881167
+                    timestamp: 2026-04-22T07:53:36.876626
         "404":
           description: Not Found
           content:
@@ -3459,7 +3466,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-cases
                     status: 404
-                    timestamp: 2026-04-18T07:50:09.881173
+                    timestamp: 2026-04-22T07:53:36.876632
         "422":
           description: Validation Failed
           content:
@@ -3473,7 +3480,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-cases
                     status: 422
-                    timestamp: 2026-04-18T07:50:09.881179
+                    timestamp: 2026-04-22T07:53:36.876637
         "500":
           description: Internal Server Error
           content:
@@ -3487,7 +3494,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-cases
                     status: 500
-                    timestamp: 2026-04-18T07:50:09.881185
+                    timestamp: 2026-04-22T07:53:36.876642
 
   # Batch Run APIs
   /v1/batch-runs:
@@ -3500,25 +3507,30 @@ paths:
       parameters:
       - name: agentId
         in: query
-        description: A unique identifier for the agent to which the batch belongs.
+        description: The unique identifier of the Agent whose batch runs are to be
+          listed.
         required: true
         schema:
           type: string
         example: IqmljBh8eSEGAqKd
       - name: page
         in: query
+        description: "The page number to retrieve, starting from 0."
         required: false
         schema:
           type: integer
           format: int32
           default: 0
+        example: 0
       - name: size
         in: query
+        description: The number of results to return per page.
         required: false
         schema:
           type: integer
           format: int32
           default: 10
+        example: 10
       responses:
         "200":
           description: OK
@@ -3539,7 +3551,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/batch-runs
                     status: 400
-                    timestamp: 2026-04-18T07:49:59.882662
+                    timestamp: 2026-04-22T07:53:45.044738
         "401":
           description: Unauthorized
           content:
@@ -3553,7 +3565,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/batch-runs
                     status: 401
-                    timestamp: 2026-04-18T07:49:59.882682
+                    timestamp: 2026-04-22T07:53:45.044757
         "403":
           description: Forbidden
           content:
@@ -3567,7 +3579,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/batch-runs
                     status: 403
-                    timestamp: 2026-04-18T07:49:59.882688
+                    timestamp: 2026-04-22T07:53:45.044763
         "404":
           description: Not Found
           content:
@@ -3581,7 +3593,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/batch-runs
                     status: 404
-                    timestamp: 2026-04-18T07:49:59.882693
+                    timestamp: 2026-04-22T07:53:45.044768
         "422":
           description: Validation Failed
           content:
@@ -3595,7 +3607,7 @@ paths:
                     message: Request validation failed
                     path: /v1/batch-runs
                     status: 422
-                    timestamp: 2026-04-18T07:49:59.882698
+                    timestamp: 2026-04-22T07:53:45.044772
         "500":
           description: Internal Server Error
           content:
@@ -3609,7 +3621,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/batch-runs
                     status: 500
-                    timestamp: 2026-04-18T07:49:59.882702
+                    timestamp: 2026-04-22T07:53:45.044776
     post:
       tags:
       - Batch
@@ -3642,7 +3654,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/batch-runs
                     status: 400
-                    timestamp: 2026-04-18T07:49:59.751109
+                    timestamp: 2026-04-22T07:53:44.896906
         "401":
           description: Unauthorized
           content:
@@ -3656,7 +3668,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/batch-runs
                     status: 401
-                    timestamp: 2026-04-18T07:49:59.751141
+                    timestamp: 2026-04-22T07:53:44.896932
         "403":
           description: Forbidden
           content:
@@ -3670,7 +3682,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/batch-runs
                     status: 403
-                    timestamp: 2026-04-18T07:49:59.751150
+                    timestamp: 2026-04-22T07:53:44.896940
         "404":
           description: Not Found
           content:
@@ -3684,7 +3696,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/batch-runs
                     status: 404
-                    timestamp: 2026-04-18T07:49:59.751157
+                    timestamp: 2026-04-22T07:53:44.896950
         "422":
           description: Validation Failed
           content:
@@ -3698,7 +3710,7 @@ paths:
                     message: Request validation failed
                     path: /v1/batch-runs
                     status: 422
-                    timestamp: 2026-04-18T07:49:59.751164
+                    timestamp: 2026-04-22T07:53:44.896958
         "500":
           description: Internal Server Error
           content:
@@ -3712,7 +3724,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/batch-runs
                     status: 500
-                    timestamp: 2026-04-18T07:49:59.751186
+                    timestamp: 2026-04-22T07:53:44.896966
   /v1/batch-runs/{batchId}:
     get:
       tags:
@@ -3723,14 +3735,14 @@ paths:
       parameters:
       - name: batchId
         in: path
-        description: A unique identifier for the batch.
+        description: The unique identifier of the batch run to retrieve.
         required: true
         schema:
           type: string
         example: batch_KidCyVw5gJN87n5S
       - name: agentId
         in: query
-        description: A unique identifier for the agent to which the batch belongs.
+        description: The unique identifier of the Agent to which the batch run belongs.
         required: true
         schema:
           type: string
@@ -3755,7 +3767,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/batch-runs
                     status: 400
-                    timestamp: 2026-04-18T07:49:59.892751
+                    timestamp: 2026-04-22T07:53:45.054954
         "401":
           description: Unauthorized
           content:
@@ -3769,7 +3781,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/batch-runs
                     status: 401
-                    timestamp: 2026-04-18T07:49:59.892771
+                    timestamp: 2026-04-22T07:53:45.054971
         "403":
           description: Forbidden
           content:
@@ -3783,7 +3795,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/batch-runs
                     status: 403
-                    timestamp: 2026-04-18T07:49:59.892777
+                    timestamp: 2026-04-22T07:53:45.054976
         "404":
           description: Not Found
           content:
@@ -3797,7 +3809,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/batch-runs
                     status: 404
-                    timestamp: 2026-04-18T07:49:59.892782
+                    timestamp: 2026-04-22T07:53:45.054981
         "422":
           description: Validation Failed
           content:
@@ -3811,7 +3823,7 @@ paths:
                     message: Request validation failed
                     path: /v1/batch-runs
                     status: 422
-                    timestamp: 2026-04-18T07:49:59.892787
+                    timestamp: 2026-04-22T07:53:45.054985
         "500":
           description: Internal Server Error
           content:
@@ -3825,7 +3837,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/batch-runs
                     status: 500
-                    timestamp: 2026-04-18T07:49:59.892791
+                    timestamp: 2026-04-22T07:53:45.054989
 
   # Test Run APIs
   /v1/test-runs:
@@ -3838,32 +3850,37 @@ paths:
       parameters:
       - name: batchId
         in: query
-        description: A unique identifier for the batch.
+        description: The unique identifier of the batch run whose simulation runs
+          are to be listed.
         required: true
         schema:
           type: string
         example: batch_KidCyVw5gJN87n5S
       - name: agentId
         in: query
-        description: A unique identifier for the agent to which the batch belongs.
+        description: The unique identifier of the Agent to which the batch run belongs.
         required: true
         schema:
           type: string
         example: IqmljBh8eSEGAqKd
       - name: page
         in: query
+        description: "The page number to retrieve, starting from 0."
         required: false
         schema:
           type: integer
           format: int32
           default: 0
+        example: 0
       - name: size
         in: query
+        description: The number of results to return per page.
         required: false
         schema:
           type: integer
           format: int32
           default: 10
+        example: 10
       responses:
         "200":
           description: OK
@@ -3884,7 +3901,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-runs
                     status: 400
-                    timestamp: 2026-04-18T07:49:59.806903
+                    timestamp: 2026-04-22T07:53:44.963205
         "401":
           description: Unauthorized
           content:
@@ -3898,7 +3915,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-runs
                     status: 401
-                    timestamp: 2026-04-18T07:49:59.806938
+                    timestamp: 2026-04-22T07:53:44.963521
         "403":
           description: Forbidden
           content:
@@ -3912,7 +3929,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-runs
                     status: 403
-                    timestamp: 2026-04-18T07:49:59.806948
+                    timestamp: 2026-04-22T07:53:44.963533
         "404":
           description: Not Found
           content:
@@ -3926,7 +3943,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-runs
                     status: 404
-                    timestamp: 2026-04-18T07:49:59.806953
+                    timestamp: 2026-04-22T07:53:44.963539
         "422":
           description: Validation Failed
           content:
@@ -3940,7 +3957,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-runs
                     status: 422
-                    timestamp: 2026-04-18T07:49:59.806958
+                    timestamp: 2026-04-22T07:53:44.963544
         "500":
           description: Internal Server Error
           content:
@@ -3954,7 +3971,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-runs
                     status: 500
-                    timestamp: 2026-04-18T07:49:59.806963
+                    timestamp: 2026-04-22T07:53:44.963549
   /v1/test-runs/{jobId}:
     get:
       tags:
@@ -3965,21 +3982,22 @@ paths:
       parameters:
       - name: jobId
         in: path
-        description: A unique identifier for the run.
+        description: The unique identifier of the simulation run to retrieve.
         required: true
         schema:
           type: string
-        example: batch_KidCyVw5gJN87n5S
+        example: job_ksUu5yRHGTLLrLeM
       - name: batchId
         in: query
-        description: A unique identifier for the batch.
+        description: The unique identifier of the batch run to which this simulation
+          run belongs.
         required: true
         schema:
           type: string
         example: batch_KidCyVw5gJN87n5S
       - name: agentId
         in: query
-        description: A unique identifier for the agent to which the batch belongs.
+        description: The unique identifier of the Agent to which the batch run belongs.
         required: true
         schema:
           type: string
@@ -4004,7 +4022,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/test-runs
                     status: 400
-                    timestamp: 2026-04-18T07:49:59.818921
+                    timestamp: 2026-04-22T07:53:44.978483
         "401":
           description: Unauthorized
           content:
@@ -4018,7 +4036,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/test-runs
                     status: 401
-                    timestamp: 2026-04-18T07:49:59.818946
+                    timestamp: 2026-04-22T07:53:44.978502
         "403":
           description: Forbidden
           content:
@@ -4032,7 +4050,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/test-runs
                     status: 403
-                    timestamp: 2026-04-18T07:49:59.818953
+                    timestamp: 2026-04-22T07:53:44.978508
         "404":
           description: Not Found
           content:
@@ -4046,7 +4064,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/test-runs
                     status: 404
-                    timestamp: 2026-04-18T07:49:59.818959
+                    timestamp: 2026-04-22T07:53:44.978527
         "422":
           description: Validation Failed
           content:
@@ -4060,7 +4078,7 @@ paths:
                     message: Request validation failed
                     path: /v1/test-runs
                     status: 422
-                    timestamp: 2026-04-18T07:49:59.818964
+                    timestamp: 2026-04-22T07:53:44.978532
         "500":
           description: Internal Server Error
           content:
@@ -4074,7 +4092,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/test-runs
                     status: 500
-                    timestamp: 2026-04-18T07:49:59.818969
+                    timestamp: 2026-04-22T07:53:44.978538
 
 components:
   schemas:
@@ -5653,21 +5671,27 @@ components:
       - userPrompt
       type: object
       properties:
+        label:
+          type: string
+          description: "A human-readable name or label for the test case, used to\
+            \ identify it in reports and dashboards."
+          example: Angry Customer - Cancellation Flow
         agentId:
           type: string
-          description: The unique identifier of the Agent assigned to handle the chat
-            simulation.
+          description: The unique identifier of the Agent that will respond during
+            the chat simulation.
           example: D5D0p7TUs66TTAEAx
         llmModel:
           type: string
           description: "The LLM model used to generate Agent responses during the\
-            \ chat simulation. For priority models of OpenAI, please use the suffix\
-            \ '-fast-tier' after the model name, eg: gpt-4o-mini-fast-tier"
+            \ simulation. To use OpenAI priority tier models, append '-fast-tier'\
+            \ to the model name (e.g., 'gpt-4o-mini-fast-tier')."
           example: gpt-4o-mini
         mockData:
           type: array
-          description: List of mock data variables used to simulate external inputs
-            during the chat.
+          description: A list of mock variables that substitute for real external
+            data sources during the simulation. Each entry defines a variable name
+            and its simulated value.
           example:
           - variableName: customer_name
             value: John Doe
@@ -5677,41 +5701,49 @@ components:
             $ref: '#/components/schemas/MockDataRequest'
         userPrompt:
           type: string
-          description: The user prompt that generates the user or customer messages
-            in the chat simulation.
-          example: 'You are an angry customer who wants to cancel his subscription. '
+          description: A prompt that defines the persona and intent of the simulated
+            user. This drives the user-side messages throughout the conversation.
+          example: You are an angry customer who wants to cancel their subscription.
         attempt:
           type: integer
-          description: The number of times the simulation should run with this test
-            case. Default is 1.
+          description: The number of times this test case should be executed. Each
+            run is an independent simulation. Defaults to 1.
           format: int64
           example: 5
         successCriteria:
           type: string
-          description: Criteria used to evaluate whether the agent successfully handled
-            the conversation.
-          example: "Agent should acknowledge the request, offer alternatives, and\
-            \ confirm cancellation if the user insists."
+          description: A plain-language description of what a successful agent response
+            looks like. Used to evaluate the agent's performance after each simulation
+            run.
+          example: "The agent should acknowledge the cancellation request, present\
+            \ retention alternatives, and confirm the cancellation if the customer\
+            \ insists."
     UpdateTestCaseRequest:
       required:
       - agentId
       type: object
       properties:
+        label:
+          type: string
+          description: "A human-readable name or label for the test case, used to\
+            \ identify it in reports and dashboards."
+          example: Angry Customer - Cancellation Flow
         agentId:
           type: string
-          description: The unique identifier of the Agent assigned to handle the chat
-            simulation.
+          description: The unique identifier of the Agent that will respond during
+            the chat simulation.
           example: D5D0p7TUs66TTAEAx
         llmModel:
           type: string
           description: "The LLM model used to generate Agent responses during the\
-            \ chat simulation. For priority models of OpenAI, please use the suffix\
-            \ '-fast-tier' after the model name, eg: gpt-4o-mini-fast-tier"
+            \ simulation. To use OpenAI priority tier models, append '-fast-tier'\
+            \ to the model name (e.g., 'gpt-4o-mini-fast-tier')."
           example: gpt-4o-mini
         mockData:
           type: array
-          description: List of mock data variables used to simulate external inputs
-            during the chat.
+          description: A list of mock variables that substitute for real external
+            data sources during the simulation. Each entry defines a variable name
+            and its simulated value.
           example:
           - variableName: customer_name
             value: John Doe
@@ -5721,34 +5753,39 @@ components:
             $ref: '#/components/schemas/MockDataRequest'
         userPrompt:
           type: string
-          description: The user prompt that generates the user or customer messages
-            in the chat simulation.
-          example: 'You are an angry customer who wants to cancel his subscription. '
+          description: A prompt that defines the persona and intent of the simulated
+            user. This drives the user-side messages throughout the conversation.
+          example: You are an angry customer who wants to cancel their subscription.
         attempt:
           type: integer
-          description: The number of times the simulation should run with this test
-            case. Default is 1.
+          description: The number of times this test case should be executed. Each
+            run is an independent simulation. Defaults to 1.
           format: int64
           example: 5
         successCriteria:
           type: string
-          description: Criteria used to evaluate whether the agent successfully handled
-            the conversation.
-          example: "Agent should acknowledge the request, offer alternatives, and\
-            \ confirm cancellation if the user insists."
+          description: A plain-language description of what a successful agent response
+            looks like. Used to evaluate the agent's performance after each simulation
+            run.
+          example: "The agent should acknowledge the cancellation request, present\
+            \ retention alternatives, and confirm the cancellation if the customer\
+            \ insists."
     MockDataRequest:
       type: object
       properties:
         variableName:
           type: string
-          description: Variable Name of the mock data
+          description: The name of the variable to be substituted with mock data during
+            the simulation. Must match the variable name defined in the Agent's configuration.
           example: user_name
         value:
           type: string
-          description: Value of the mock data
-          example: John Mischer
-      description: List of mock data variables used to simulate external inputs during
-        the chat.
+          description: The simulated value assigned to the variable for the duration
+            of the test run.
+          example: John Doe
+      description: A list of mock variables that substitute for real external data
+        sources during the simulation. Each entry defines a variable name and its
+        simulated value.
       example:
       - variableName: customer_name
         value: John Doe
@@ -5759,23 +5796,28 @@ components:
       properties:
         testCaseId:
           type: string
-          description: Unique identity for a test case
+          description: The unique identifier of the test case.
           example: tc_d17T6uReChpyfFeP
+        label:
+          type: string
+          description: "A human-readable name or label for the test case, used to\
+            \ identify it in reports and dashboards."
+          example: Angry Customer - Cancellation Flow
         agent:
           $ref: '#/components/schemas/AgentResponse'
         workspaceId:
           type: string
-          description: Workspace to which the user belongs
+          description: The unique identifier of the workspace under which this test
+            case was created.
           example: org_V6eZ2zg8ziDx5pft
         llmModel:
           type: string
-          description: LLM Model used to generate the Agent response during the chat
-            simulation
+          description: The LLM model used to generate Agent responses during the simulation.
           example: gpt-4o-mini
         mockData:
           type: array
-          description: List of mock data variables used to simulate external inputs
-            during the chat.
+          description: The list of mock variables and their simulated values that
+            were used to substitute for real external data sources during the simulation.
           example:
           - variableName: customer_name
             value: John Doe
@@ -5785,34 +5827,38 @@ components:
             $ref: '#/components/schemas/MockDataResponse'
         userPrompt:
           type: string
-          description: User prompt used to generate the Customer queries during the
-            chat simulation
-          example: 'You are an angry customer who wants to cancel his subscription. '
+          description: "The prompt that defined the persona and intent of the simulated\
+            \ user, driving the user-side messages throughout the conversation."
+          example: You are an angry customer who wants to cancel your subscription.
         attempt:
           type: integer
-          description: The number of times the chat simulation should run with this
-            test case.
+          description: The number of times this test case was configured to run as
+            independent simulation attempts.
           format: int64
           example: 5
         successCriteria:
           type: string
-          description: Criteria used to evaluate whether the agent successfully handled
-            the conversation.
-          example: "Agent should acknowledge the request, offer alternatives, and\
-            \ confirm cancellation if the user insists."
+          description: "The plain-language description of what a successful agent\
+            \ response looks like, used to evaluate the agent's performance after\
+            \ each simulation run."
+          example: "The agent should acknowledge the cancellation request, present\
+            \ retention alternatives, and confirm the cancellation if the customer\
+            \ insists."
     MockDataResponse:
       type: object
       properties:
         variableName:
           type: string
-          description: Variable Name of the mock data
+          description: The name of the variable that was substituted with mock data
+            during the simulation.
           example: user_name
         value:
           type: string
-          description: Value of the mock data
-          example: John Mischer
-      description: List of mock data variables used to simulate external inputs during
-        the chat.
+          description: The simulated value that was assigned to the variable for the
+            duration of the test run.
+          example: John Doe
+      description: The list of mock variables and their simulated values that were
+        used to substitute for real external data sources during the simulation.
       example:
       - variableName: customer_name
         value: John Doe
@@ -5851,71 +5897,83 @@ components:
       properties:
         agentId:
           type: string
-          description: The unique identifier of the Agent assigned to handle the chat
-            simulation.
+          description: The unique identifier of the Agent that will respond across
+            all test cases in the batch simulation.
           example: D5D0p7TUs66TTAEAx
         testCases:
           type: array
-          description: The list of the Test Cases to be run in a batch simulation.
+          description: A list of test case IDs to be executed together in a single
+            batch run. Each test case will be simulated independently against the
+            specified Agent.
           example:
           - tc_xeeXG5hX9dl0VFNt
           - tc_aQqGZoMIPbU5MXHV
           items:
             type: string
-            # description: The list of the Test Cases to be run in a batch simulation.
+            description: A list of test case IDs to be executed together in a single
+              batch run. Each test case will be simulated independently against the
+              specified Agent.
             example: "[\"tc_xeeXG5hX9dl0VFNt\",\"tc_aQqGZoMIPbU5MXHV\"]"
     CreateBatchRunResponse:
       type: object
       properties:
         batchId:
           type: string
-          description: Unique identity for a batch
+          description: The unique identifier of the newly created batch run.
           example: batch_s0OJu2JWR8R45Fai
         workspaceId:
           type: string
-          description: Workspace to which the user belongs
+          description: The unique identifier of the workspace under which the batch
+            run was created.
           example: org_V6eZ2zg8ziDx5pft
         agent:
           $ref: '#/components/schemas/AgentResponse'
         createdDate:
           type: string
-          description: Timestamp when the batch was created
+          description: The UTC timestamp indicating when the batch run was created.
           format: date-time
+          example: 2026-03-26T10:52:45.565905Z
     BatchResponse:
       type: object
       properties:
         batchId:
           type: string
-          description: Unique identity for a batch
+          description: The unique identifier of the batch run.
           example: batch_s0OJu2JWR8R45Fai
         workspaceId:
           type: string
-          description: Workspace to which the user belongs
+          description: The unique identifier of the workspace under which the batch
+            run was created.
           example: org_V6eZ2zg8ziDx5pft
         agent:
           $ref: '#/components/schemas/AgentResponse'
         createdDate:
           type: string
-          description: Timestamp when the batch was created
+          description: The UTC timestamp indicating when the batch run was created.
           format: date-time
+          example: 2026-03-26T10:52:45.565905Z
         testCases:
           type: array
-          description: List of test cases being run by the batch
+          description: "The list of test cases included in this batch run, along with\
+            \ their individual simulation results."
           items:
             $ref: '#/components/schemas/TestCaseResponse'
         successfulAttempts:
           type: integer
-          description: Total attempts which were successful in the batch run
+          description: The total number of simulation attempts across all test cases
+            in this batch run that were evaluated as successful.
           format: int64
           example: 4
         failedAttempts:
           type: integer
-          description: Total attempts which failed in the batch run
+          description: The total number of simulation attempts across all test cases
+            in this batch run that were evaluated as failed.
           format: int64
           example: 1
         totalAttempts:
           type: integer
-          description: Total attempts in the batch
+          description: The total number of simulation attempts executed across all
+            test cases in this batch run.
           format: int64
           example: 5
     PaginatedResponseBatchResponse:
@@ -5948,11 +6006,13 @@ components:
       properties:
         batchId:
           type: string
-          description: Unique identity for a batch
+          description: The unique identifier of the batch run this simulation attempt
+            belongs to.
           example: batch_s0OJu2JWR8R45Fai
         workspaceId:
           type: string
-          description: Workspace to which the user belongs
+          description: The unique identifier of the workspace under which this simulation
+            attempt was created.
           example: org_V6eZ2zg8ziDx5pft
         agent:
           $ref: '#/components/schemas/AgentResponse'
@@ -5960,30 +6020,57 @@ components:
           $ref: '#/components/schemas/TestCaseResponse'
         jobId:
           type: string
-          description: Unique identity of a test case run
+          description: The unique identifier of this individual simulation attempt
+            within the batch run.
           example: job_ksUu5yRHGTLLrLeM
         chatId:
           type: string
-          description: Unique identity of chat id
+          description: The unique identifier of the chat session generated during
+            this simulation run.
           example: chat-IpELinkFvINQ1212
         createdDate:
           type: string
-          description: Timestamp when the batch was created
+          description: The UTC timestamp indicating when this simulation run was initiated.
           format: date-time
+          example: 2026-03-26T10:52:45.565905Z
         completedDate:
           type: string
-          description: Timestamp when the batch was completed
+          description: The UTC timestamp indicating when this simulation run was completed.
           format: date-time
+          example: 2026-03-26T10:54:45.565905Z
         isSuccesful:
           type: boolean
-          description: Whether the success criteria was met by the agent during the
-            run
+          description: Indicates whether the Agent met the success criteria during
+            this simulation run.
           example: true
         remarks:
           type: string
-          description: Reason for the success criteria evaluation
+          description: "A plain-language explanation of why the simulation run was\
+            \ evaluated as successful or failed, based on the success criteria."
           example: The Agent successfully maintained focus on the primary task of
             addressing the customer's order enquiry.
+        conversation:
+          type: array
+          description: The full transcript of the conversation between the simulated
+            user and the Agent during this simulation run.
+          items:
+            $ref: '#/components/schemas/ConversationResponse'
+    ConversationResponse:
+      type: object
+      properties:
+        role:
+          type: string
+          description: The role of the participant who sent this message in the simulation.
+            Indicates whether the message was generated by the simulated user or the
+            Agent.
+          example: user
+        content:
+          type: string
+          description: The message content produced by the participant for this turn
+            in the conversation.
+          example: I want to cancel my subscription immediately.
+      description: The full transcript of the conversation between the simulated user
+        and the Agent during this simulation run.
     PaginatedResponseTestCaseRunResponse:
       type: object
       properties:
@@ -6023,13 +6110,13 @@ components:
         status:
           type: string
           description: The current operational status of the agent.
-          example: live
+          example: Live
           enum:
-          - "live, testing, disabled"
+          - "Live, Testing, Disabled"
       description: Assigned agent for handling conversations
       example:
         name: Demo Agent
-        agentId: mJzLaPEo425lieb9
+        agentId: D5D0p7TUs66TTAEAx
         status: Testing
     JsonNode:
       type: object

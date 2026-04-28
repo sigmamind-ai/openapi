@@ -5687,6 +5687,33 @@ components:
             \ simulation. To use OpenAI priority tier models, append '-fast-tier'\
             \ to the model name (e.g., 'gpt-4o-mini-fast-tier')."
           example: gpt-4o-mini
+          enum:
+          - gpt-5.2
+          - gpt-5.2-fast-tier
+          - gpt-5.1
+          - gpt-5.1-fast-tier
+          - gpt-5
+          - gpt-5-fast-tier
+          - gpt-5-mini
+          - gpt-5-mini-fast-tier
+          - gpt-5-nano
+          - gpt-4.1
+          - gpt-4.1-fast-tier
+          - gpt-4.1-mini
+          - gpt-4.1-mini-fast-tier
+          - gpt-4.1-nano
+          - gpt-4.1-nano-fast-tier
+          - gpt-4o
+          - gpt-4o-fast-tier
+          - gpt-4o-mini
+          - gpt-4o-mini-fast-tier
+          - claude-haiku-4-5-20251001
+          - claude-sonnet-4-5-20250929
+          - claude-sonnet-4-20250514
+          - gemini-3.1-flash-lite-preview
+          - gemini-3-flash-preview
+          - gemini-2.5-flash-lite
+          - gemini-2.5-flash
         mockData:
           type: array
           description: A list of mock variables that substitute for real external
@@ -5739,6 +5766,33 @@ components:
             \ simulation. To use OpenAI priority tier models, append '-fast-tier'\
             \ to the model name (e.g., 'gpt-4o-mini-fast-tier')."
           example: gpt-4o-mini
+          enum:
+          - gpt-5.2
+          - gpt-5.2-fast-tier
+          - gpt-5.1
+          - gpt-5.1-fast-tier
+          - gpt-5
+          - gpt-5-fast-tier
+          - gpt-5-mini
+          - gpt-5-mini-fast-tier
+          - gpt-5-nano
+          - gpt-4.1
+          - gpt-4.1-fast-tier
+          - gpt-4.1-mini
+          - gpt-4.1-mini-fast-tier
+          - gpt-4.1-nano
+          - gpt-4.1-nano-fast-tier
+          - gpt-4o
+          - gpt-4o-fast-tier
+          - gpt-4o-mini
+          - gpt-4o-mini-fast-tier
+          - claude-haiku-4-5-20251001
+          - claude-sonnet-4-5-20250929
+          - claude-sonnet-4-20250514
+          - gemini-3.1-flash-lite-preview
+          - gemini-3-flash-preview
+          - gemini-2.5-flash-lite
+          - gemini-2.5-flash
         mockData:
           type: array
           description: A list of mock variables that substitute for real external

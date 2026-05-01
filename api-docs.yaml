@@ -15,6 +15,15 @@ tags:
   description: endpoints for managing phone numbers
 - name: Campaigns
   description: endpoints for managing campaigns
+- name: Integrations
+  description: "Endpoints for managing third-party integrations such as Shopify, Cal.com,\
+    \ etc."
+- name: Integration Auth
+  description: "Endpoints for managing authentication credentials (API keys, OAuth\
+    \ tokens, Basic auth) for a third-party integration"
+- name: Integration Tools
+  description: Endpoints for managing public API tools exposed by a third-party integration.
+    Users can create and manage their own tools.
 - name: Webhooks
   description: Endpoints for managing webhooks
 - name: Test Cases
@@ -2506,6 +2515,1829 @@ paths:
                     status: 500
                     timestamp: 2026-04-05T11:38:39.554587
 
+  # Integrations APIs
+  /v1/integrations:
+    get:
+      tags:
+      - Integrations
+      summary: List Integrations
+      description: List all integrations for the tenant in a paginated list
+      operationId: listIntegrations
+      parameters:
+      - name: provider
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseIntegrationResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/integrations
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.573411
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/integrations
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.573432
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/integrations
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.573443
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/integrations
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.573449
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/integrations
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.573453
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/integrations
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.573457
+    post:
+      tags:
+      - Integrations
+      summary: Create Integration
+      description: "Register a new third-party integration (e.g. Shopify, Cal.com)\
+        \ for the tenant"
+      operationId: createIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/integrations
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.470098
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/integrations
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.470234
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/integrations
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.470243
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/integrations
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.470248
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/integrations
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.470253
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/integrations
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.470258
+  /v1/integrations/{integrationId}:
+    get:
+      tags:
+      - Integrations
+      summary: Get Integration
+      description: Get Integration record using integrationId
+      operationId: getIntegration
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/integrations
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.581855
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/integrations
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.581872
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/integrations
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.581878
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/integrations
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.581882
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/integrations
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.581887
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/integrations
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.581891
+    delete:
+      tags:
+      - Integrations
+      summary: Delete Integration
+      description: Delete Integration record using integrationId
+      operationId: deleteIntegration
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/integrations
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.615592
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/integrations
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.615613
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/integrations
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.615621
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/integrations
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.615626
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/integrations
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.615634
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/integrations
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.615638
+    patch:
+      tags:
+      - Integrations
+      summary: Update Integration
+      description: Update one or more configurations of an existing integration such
+        as friendly name or status
+      operationId: updateIntegration
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIntegrationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: /v1/integrations
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.535528
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: /v1/integrations
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.535549
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: /v1/integrations
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.535557
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: /v1/integrations
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.535562
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: /v1/integrations
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.535567
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: /v1/integrations
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.535572
+
+  # Integration Auth APIs
+  /v1/integrations/{integrationId}/auth:
+    get:
+      tags:
+      - Integration Auth
+      summary: List Integration Auth Records
+      description: List all auth records for an integration in a paginated list
+      operationId: listAuth
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: authType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseIntegrationAuthResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.597117
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.597132
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.597138
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.597143
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.597147
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.597151
+    post:
+      tags:
+      - Integration Auth
+      summary: Create Integration Auth
+      description: "Store authentication credentials (API key, OAuth tokens, Basic\
+        \ auth) for an integration"
+      operationId: createAuth
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationAuthRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationAuthResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.522539
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.522560
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.522566
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.522572
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.522577
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.522581
+  /v1/integrations/{integrationId}/auth/{authId}:
+    get:
+      tags:
+      - Integration Auth
+      summary: Get Integration Auth
+      description: Get Auth record using authId
+      operationId: getAuth
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: authId
+        in: path
+        description: Unique identifier for the auth record
+        required: true
+        schema:
+          type: string
+        example: auth-P3kNz7Yv1Qm9
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationAuthResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.600473
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.600488
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.600494
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.600499
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.600503
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.600508
+    delete:
+      tags:
+      - Integration Auth
+      summary: Delete Integration Auth
+      description: Delete Auth record using authId
+      operationId: deleteAuth
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: authId
+        in: path
+        description: Unique identifier for the auth record
+        required: true
+        schema:
+          type: string
+        example: auth-P3kNz7Yv1Qm9
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.618325
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.618337
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.618344
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.618349
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.618356
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.618361
+    patch:
+      tags:
+      - Integration Auth
+      summary: Update Integration Auth
+      description: "Update one or more fields of an auth record such as credentials,\
+        \ expiry, or label"
+      operationId: updateAuth
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: authId
+        in: path
+        description: Unique identifier for the auth record
+        required: true
+        schema:
+          type: string
+        example: auth-P3kNz7Yv1Qm9
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIntegrationAuthRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationAuthResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.557793
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.557822
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.557829
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.557836
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.557841
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/auth"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.557845
+
+  # Integration Tools APIs
+  /v1/integrations/{integrationId}/tools:
+    get:
+      tags:
+      - Integration Tools
+      summary: List Tools
+      description: List all tools registered under an integration in a paginated list
+      operationId: listTools
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseIntegrationToolResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.588010
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.588030
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.588035
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.588040
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.588044
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.588048
+    post:
+      tags:
+      - Integration Tools
+      summary: Create Tool
+      description: Create a new API tool under an integration. Users can define their
+        own tools backed by the integration's public APIs.
+      operationId: createTool
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationToolRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationToolResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.494159
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.494181
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.494188
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.494197
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.494202
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.494207
+  /v1/integrations/{integrationId}/tools/{toolId}:
+    get:
+      tags:
+      - Integration Tools
+      summary: Get Tool
+      description: Get Tool record using toolId
+      operationId: getTool
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: toolId
+        in: path
+        description: Unique identifier for the tool
+        required: true
+        schema:
+          type: string
+        example: tool-X9pLm2Wq8Rt3
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationToolResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.592781
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.592800
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.592807
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.592812
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.592817
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.592821
+    delete:
+      tags:
+      - Integration Tools
+      summary: Delete Tool
+      description: Delete Tool record using toolId
+      operationId: deleteTool
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: toolId
+        in: path
+        description: Unique identifier for the tool
+        required: true
+        schema:
+          type: string
+        example: tool-X9pLm2Wq8Rt3
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.616991
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.617004
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.617009
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.617015
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.617020
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.617025
+    patch:
+      tags:
+      - Integration Tools
+      summary: Update Tool
+      description: "Update one or more configurations of a tool such as its name,\
+        \ description, endpoint, or parameters"
+      operationId: updateTool
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: toolId
+        in: path
+        description: Unique identifier for the tool
+        required: true
+        schema:
+          type: string
+        example: tool-X9pLm2Wq8Rt3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIntegrationToolRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationToolResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.547531
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.547552
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.547559
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.547565
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.547572
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.547577
+  /v1/integrations/{integrationId}/tools/{toolId}/execute:
+    post:
+      tags:
+      - Integration Tools
+      summary: Execute Tool
+      description: Execute a tool against its configured third-party API using the
+        supplied variable values. The tool's stored auth credentials are resolved
+        and injected automatically. Use this endpoint to test a tool after creation
+        or to invoke it directly.
+      operationId: executeTool
+      parameters:
+      - name: integrationId
+        in: path
+        description: Unique identifier for the integration
+        required: true
+        schema:
+          type: string
+        example: intg-AuUKK371Spr5
+      - name: toolId
+        in: path
+        description: Unique identifier for the tool to execute
+        required: true
+        schema:
+          type: string
+        example: tool-X9pLm2Wq8Rt3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteToolRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecuteToolResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Bad Request
+                    message: Invalid request parameters
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 400
+                    timestamp: 2026-05-01T14:06:46.511751
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Unauthorized
+                    message: X-API-Key is missing or invalid
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 401
+                    timestamp: 2026-05-01T14:06:46.511769
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Forbidden
+                    message: Access denied for this resource
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 403
+                    timestamp: 2026-05-01T14:06:46.511776
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Not Found
+                    message: The requested resource was not found
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 404
+                    timestamp: 2026-05-01T14:06:46.511787
+        "422":
+          description: Validation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Validation Failed
+                    message: Request validation failed
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 422
+                    timestamp: 2026-05-01T14:06:46.511792
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                default:
+                  value:
+                    error: Internal Server Error
+                    message: Unexpected server error
+                    path: "/v1/integrations/{integrationId}/tools"
+                    status: 500
+                    timestamp: 2026-05-01T14:06:46.511797
+
   # Webhooks APIs
   /v1/webhooks:
     get:
@@ -4140,7 +5972,9 @@ components:
           description: Specifies the direction or type of the call.
           example: inbound
           enum:
-          - "inbound, outbound, web"
+          - inbound
+          - outbound
+          - web
         phoneNumber:
           $ref: '#/components/schemas/PhoneNumberResponse'
         # campaign:
@@ -4150,7 +5984,11 @@ components:
           description: Status of the call
           example: ended
           enum:
-          - "scheduled, in-progress, ended, not-connected, error"
+          - scheduled
+          - in-progress
+          - ended
+          - not-connected
+          - error
         startTime:
           type: string
           description: Timestamp indicating when the call began.
@@ -4171,8 +6009,13 @@ components:
           description: Reason for call termination
           example: inactivity
           enum:
-          - "customer_ended_call, agent_ended_call, inactivity, voicemail, busy, no-answer,\
-            \ failed"
+          - customer_ended_call
+          - agent_ended_call
+          - inactivity
+          - voicemail
+          - busy
+          - no-answer
+          - failed
         createdAt:
           type: string
           description: The timestamp when the call record was created.
@@ -4299,7 +6142,9 @@ components:
           description: Status of the chat
           example: ended
           enum:
-          - "in-progress, ended, error"
+          - in-progress
+          - ended
+          - error
         response:
           type: array
           description: Agent response of the last user message
@@ -4326,7 +6171,8 @@ components:
           description: Role of the chat message
           example: user
           enum:
-          - "user, assistant"
+          - user
+          - assistant
         type:
           type: string
           description: Type of the chat message
@@ -4539,7 +6385,9 @@ components:
           description: The service provider associated with the phone number.
           example: twilio
           enum:
-          - "twilio, telnyx, byo"
+          - twilio
+          - telnyx
+          - byo
         inboundAgentId:
           type: string
           description: Default agent ID assigned to handle inbound calls for this
@@ -4582,7 +6430,9 @@ components:
           description: The service provider associated with the phone number.
           example: twilio
           enum:
-          - "twilio, telnyx, byo"
+          - twilio
+          - telnyx
+          - byo
         inboundAgentId:
           type: string
           description: Default agent ID assigned to handle inbound calls for this
@@ -5000,7 +6850,8 @@ components:
           example: static
           default: static
           enum:
-          - "static, prompt"
+          - static
+          - prompt
         welcomeMessage:
           type: string
           description: "The content of the welcome message. If 'welcomeMessageType'\
@@ -5398,7 +7249,10 @@ components:
           description: Indicates the current status of the campaign.
           example: live
           enum:
-          - "live, scheduled, paused, completed"
+          - live
+          - scheduled
+          - paused
+          - completed
         scheduledDate:
           type: string
           description: The scheduled date and time when the campaign is set to launch
@@ -5448,6 +7302,630 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CampaignResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+
+    # Integrations APIs Schemas
+    CreateIntegrationRequest:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          maxLength: 128
+          minLength: 0
+          pattern: "^[a-z]+(_[a-z]+)*$"
+          type: string
+          description: Human-readable label for this integration
+          example: my_shopify_store
+        description:
+          maxLength: 512
+          minLength: 0
+          type: string
+          description: Optional description of what this integration is used for
+          example: Handles order lookups for the support agent
+    UpdateIntegrationRequest:
+      type: object
+      properties:
+        name:
+          maxLength: 128
+          minLength: 0
+          pattern: "^[a-z]+(_[a-z]+)*$"
+          type: string
+          description: Human-readable label for this integration
+          example: my_shopify_store
+        description:
+          maxLength: 512
+          minLength: 0
+          type: string
+          description: Optional description of what this integration is used for
+          example: Handles order lookups and refunds for the support agent
+    IntegrationResponse:
+      type: object
+      properties:
+        integrationId:
+          type: string
+          description: Unique identifier for the integration
+          example: intg-AuUKK371Spr5
+        name:
+          type: string
+          description: Human-readable label for this integration
+          example: My Shopify Store
+        description:
+          type: string
+          description: Optional description of what this integration is used for
+          example: Handles order lookups for the support agent
+        authentication:
+          $ref: '#/components/schemas/IntegrationAuthResponse'
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationToolResponse'
+        createdAt:
+          type: string
+          description: Timestamp when the record was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: Timestamp when the record was last updated
+          format: date-time
+    PaginatedResponseIntegrationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+
+    # Integration Auth APIs Schemas
+    CreateIntegrationAuthRequest:
+      required:
+      - authType
+      type: object
+      properties:
+        authType:
+          type: string
+          description: "The authentication strategy this credential set uses. Determines\
+            \ which credential fields are required: API_KEY — provide the apiKey object\
+            \ (key name, secret value, and position). BEARER_TOKEN — provide the token\
+            \ field. BASIC_AUTH — provide username and password fields. NO_AUTH —\
+            \ no credential fields required."
+          example: API_KEY
+          enum:
+          - NO_AUTH
+          - BASIC_AUTH
+          - BEARER_TOKEN
+          - API_KEY
+        token:
+          type: string
+          description: "The bearer token or JWT access token value. Required when\
+            \ authType is BEARER_TOKEN. Sent as 'Authorization: Bearer <token>' on\
+            \ every outbound request."
+          example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+        username:
+          maxLength: 256
+          minLength: 0
+          type: string
+          description: The username for Basic authentication. Required when authType
+            is BASIC_AUTH. Combined with password and Base64-encoded into the Authorization
+            header.
+          example: api_user@example.com
+        password:
+          maxLength: 512
+          minLength: 0
+          type: string
+          description: The password for Basic authentication. Required when authType
+            is BASIC_AUTH. Combined with username and Base64-encoded into the Authorization
+            header.
+          example: s3cretP@ssword
+        apiKey:
+          $ref: '#/components/schemas/ApiKeyRequest'
+        headers:
+          type: array
+          description: Optional list of static HTTP headers attached to every outbound
+            request under this auth. Applied on top of any headers defined at the
+            integration or tool level. Useful for fixed metadata headers required
+            by the third-party API.
+          example:
+          - key: X-Request-Source
+            value: sigmamind
+          items:
+            $ref: '#/components/schemas/HeaderEntry'
+      description: Request body to register authentication credentials for a third-party
+        integration. Only populate the fields relevant to the chosen authType — all
+        other credential fields will be ignored.
+    UpdateIntegrationAuthRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Updated bearer token value. Only applicable when the auth record
+            was created with authType BEARER_TOKEN. Replaces the previously stored
+            token.
+          example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...updated
+        username:
+          maxLength: 256
+          minLength: 0
+          type: string
+          description: Updated username for Basic authentication. Only applicable
+            when the auth record was created with authType BASIC_AUTH.
+          example: new_api_user@example.com
+        password:
+          maxLength: 512
+          minLength: 0
+          type: string
+          description: Updated password for Basic authentication. Only applicable
+            when the auth record was created with authType BASIC_AUTH.
+          example: newS3cretP@ssword
+        apiKey:
+          $ref: '#/components/schemas/ApiKeyRequest'
+        headers:
+          type: array
+          description: "Replaces the complete list of static headers for this auth\
+            \ record. Pass a non-empty list to overwrite existing headers. Pass an\
+            \ empty list [] to remove all headers. Omit this field entirely to leave\
+            \ existing headers unchanged."
+          items:
+            $ref: '#/components/schemas/HeaderEntry'
+      description: "Request body to partially update an existing auth credential record.\
+        \ Only the fields provided will be updated — omitted fields remain unchanged.\
+        \ Credential fields (token, username, password, apiKey) are patched within\
+        \ the existing authType; the authType itself cannot be changed after creation."
+    IntegrationAuthResponse:
+      type: object
+      properties:
+        authId:
+          type: string
+          description: Unique identifier for the auth record
+          example: auth-P3kNz7Yv1Qm9
+        integrationId:
+          type: string
+          description: Unique identifier of the parent integration
+          example: intg-AuUKK371Spr5
+        authType:
+          type: string
+          description: Authentication strategy
+          example: api_key
+          enum:
+          - NO_AUTH
+          - BASIC_AUTH
+          - BEARER_TOKEN
+          - API_KEY
+        headers:
+          type: object
+          description: Headers to be sent with the request
+        createdAt:
+          type: string
+          description: Timestamp when the record was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: Timestamp when the record was last updated
+          format: date-time
+    ApiKeyRequest:
+      required:
+      - key
+      - position
+      - value
+      type: object
+      properties:
+        key:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: "The name of the header or query parameter that carries the\
+            \ API key. Common values: 'X-Shopify-Access-Token' for Shopify, 'x-api-key'\
+            \ for AWS Gateway, 'Authorization' when the key is sent as a bearer-style\
+            \ header."
+          example: X-Shopify-Access-Token
+        value:
+          type: string
+          description: The secret API key value sent with every outbound request.
+          example: shpat_abc123xyz456
+        position:
+          type: string
+          description: "Where the API key is injected in the outbound request. 'header'\
+            \ sends it as an HTTP header — the most common approach. 'query' appends\
+            \ it as a URL query parameter, e.g. ?api_key=<value>. Default: header."
+          example: header
+          default: header
+          enum:
+          - header
+          - query
+      description: "Describes how an API key is attached to outbound requests. Provide\
+        \ the header or query-param name, the secret value, and the injection position."
+      example:
+        key: X-API-KEY
+        value: <secret>
+        position: header
+    HeaderEntry:
+      required:
+      - key
+      - value
+      type: object
+      properties:
+        key:
+          maxLength: 256
+          minLength: 0
+          type: string
+          description: The HTTP header name.
+          example: Content-Type
+        value:
+          maxLength: 1024
+          minLength: 0
+          type: string
+          description: The static value for this header.
+          example: application/json
+      description: A static HTTP header attached to every request made by this tool.
+      example:
+      - key: Content-Type
+        value: application/json
+    QueryParam:
+      required:
+      - key
+      type: object
+      properties:
+        key:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: The query parameter name.
+          example: status
+        value:
+          maxLength: 1024
+          minLength: 0
+          type: string
+          description: "The query parameter value. Use a {{variable}} placeholder\
+            \ so the AI agent can supply the value at runtime. Static values are also\
+            \ accepted."
+          example: "{{status}}"
+      description: "A single query string parameter appended to the request URL. Path\
+        \ variables are embedded directly in the endpoint URL using {{variable}} syntax\
+        \ and do not need to be declared here."
+      example:
+      - key: status
+        value: "{{status}}"
+    PaginatedResponseIntegrationAuthResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationAuthResponse'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalCounts:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        hasNext:
+          type: boolean
+        hasPrevious:
+          type: boolean
+
+    # Integration Tools APIs Schemas
+    CreateIntegrationToolRequest:
+      required:
+      - description
+      - method
+      - name
+      - url
+      type: object
+      properties:
+        name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: "A unique, descriptive name for this tool within the integration.\
+            \ The AI agent uses this name to identify and select the correct tool\
+            \ when deciding which API to call. Use snake_case and make it action-oriented,\
+            \ e.g. 'get_customer', 'create_order', 'cancel_subscription'."
+          example: get_customer
+        description:
+          maxLength: 1024
+          minLength: 0
+          type: string
+          description: A clear explanation of what this tool does and when the AI
+            agent should call it. This description is used by the agent to decide
+            whether to invoke this tool. Be specific about the action performed and
+            any required inputs.
+          example: "Fetches a Shopify customer record by customer ID. Call this tool\
+            \ when you need to look up customer details such as name, email, or order\
+            \ history."
+        method:
+          type: string
+          description: The HTTP method for the underlying API call. GET — retrieve
+            a resource without side effects. POST — create a new resource. PUT — fully
+            replace an existing resource. PATCH — partially update an existing resource.
+            DELETE — remove a resource.
+          example: GET
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+        url:
+          maxLength: 1024
+          minLength: 0
+          type: string
+          description: "The full URL of the API endpoint this tool calls. Supports\
+            \ {{variable}} placeholders for dynamic segments. Path variables must\
+            \ also be declared in the params list with source PATH."
+          example: "https://my-store.myshopify.com/admin/api/2024-01/customers/{{customerId}}.json"
+        headers:
+          type: array
+          description: Static HTTP headers to include on every request made by this
+            tool. These are merged with headers defined at the auth and integration
+            level. Tool-level headers take precedence in case of conflicts.
+          example:
+          - key: Content-Type
+            value: application/json
+          items:
+            $ref: '#/components/schemas/HeaderEntry'
+        queryParams:
+          type: array
+          description: "Query string parameters appended to the URL on every request,\
+            \ e.g. ?status=active&limit=10. Supports {{variable}} placeholders in\
+            \ values so the AI agent can supply them at runtime. Path variables are\
+            \ defined directly in the endpoint URL using {{variable}} syntax — they\
+            \ do not need to be listed here."
+          example:
+          - key: status
+            value: "{{status}}"
+          items:
+            $ref: '#/components/schemas/QueryParam'
+        bodyParams:
+          type: object
+          description: "The request body payload as a JSON object. Supports {{variable}}\
+            \ placeholders in values — the agent fills these at runtime. Only populated\
+            \ for POST, PUT, and PATCH requests. Leave empty for GET and DELETE."
+          example:
+            first_name: "{{firstName}}"
+            email: "{{email}}"
+      description: "Request body to create a new API tool under an integration. A\
+        \ tool represents a single callable API operation — for example 'Get Customer'\
+        \ or 'Create Order' — that the AI agent can invoke at runtime using dynamic\
+        \ {{variable}} placeholders."
+    UpdateIntegrationToolRequest:
+      type: object
+      properties:
+        name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Updated tool name. Should be snake_case and action-oriented.
+            The AI agent uses this name to identify and select the correct tool.
+          example: get_customer_with_orders
+        description:
+          maxLength: 1024
+          minLength: 0
+          type: string
+          description: Updated description of what this tool does and when the agent
+            should call it. Be specific — the agent relies on this to decide whether
+            to invoke the tool.
+          example: Fetches a Shopify customer including their recent orders. Use when
+            full customer context including purchase history is needed.
+        method:
+          type: string
+          description: Updated HTTP method for the underlying API call. GET — retrieve.
+            POST — create. PUT — replace. PATCH — partial update. DELETE — remove.
+          example: GET
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+        endpoint:
+          maxLength: 1024
+          minLength: 0
+          type: string
+          description: "Updated full URL of the API endpoint this tool calls. Supports\
+            \ {{variable}} placeholders for dynamic segments. Updating this field\
+            \ triggers automatic re-extraction of {{variable}} placeholders."
+          example: "https://my-store.myshopify.com/admin/api/2024-01/customers/{{customerId}}/orders.json"
+        headers:
+          type: array
+          description: "Replaces the complete list of static headers for this tool.\
+            \ Pass a non-empty list to overwrite existing headers. Pass an empty list\
+            \ [] to remove all headers. Omit this field entirely to leave existing\
+            \ headers unchanged."
+          example:
+          - key: Content-Type
+            value: application/json
+          items:
+            $ref: '#/components/schemas/HeaderEntry'
+        queryParams:
+          type: array
+          description: "Replaces the complete list of query string parameters. Pass\
+            \ a non-empty list to overwrite existing query params. Pass an empty list\
+            \ [] to remove all query params. Omit this field entirely to leave existing\
+            \ query params unchanged. Path variables are defined directly in the endpoint\
+            \ URL using {{variable}} syntax — they do not need to be listed here."
+          example:
+          - key: status
+            value: "{{status}}"
+          items:
+            $ref: '#/components/schemas/QueryParam'
+        bodyParams:
+          type: object
+          description: "Replaces the request body payload. Pass a non-empty map to\
+            \ overwrite the existing body. Supports {{variable}} placeholders in values.\
+            \ Updating bodyParams triggers automatic re-extraction of {{variable}}\
+            \ placeholders. Only applicable for POST, PUT, and PATCH requests."
+          example:
+            first_name: "{{firstName}}"
+            email: "{{email}}"
+      description: "Request body to partially update an existing tool. Only the fields\
+        \ provided will be updated — omitted fields remain unchanged. When endpoint,\
+        \ params, or bodyParams are updated, the tool's {{variable}} list is automatically\
+        \ re-extracted and refreshed."
+    IntegrationToolResponse:
+      type: object
+      properties:
+        toolId:
+          type: string
+          description: Unique identifier for the tool
+          example: tool-X9pLm2Wq8Rt3
+        integrationId:
+          type: string
+          description: Unique identifier of the parent integration
+          example: intg-AuUKK371Spr5
+        name:
+          type: string
+          description: Human-readable name for this tool
+          example: Get Order Details
+        description:
+          type: string
+          description: Description of what this tool does
+          example: Fetches order details from Shopify by order ID
+        method:
+          type: string
+          description: HTTP method
+          example: GET
+        url:
+          type: string
+          description: Relative path of the API endpoint
+          example: "/orders/{orderId}.json"
+        scope:
+          type: string
+          description: Scope of the tool
+          example: local
+          enum:
+          - local
+          - community
+        headers:
+          $ref: '#/components/schemas/JsonNode'
+        queryParams:
+          $ref: '#/components/schemas/JsonNode'
+        bodyParams:
+          $ref: '#/components/schemas/JsonNode'
+        createdAt:
+          type: string
+          description: Timestamp when the record was created
+          format: date-time
+        updatedAt:
+          type: string
+          description: Timestamp when the record was last updated
+          format: date-time
+    ExecuteToolRequest:
+      type: object
+      properties:
+        placeholders:
+          type: object
+          description: "A map of placeholder names to values used to resolve {{placeholder}}\
+            \ tokens in the tool's endpoint URL, query parameters, and request body\
+            \ at runtime. Each placeholder used in the request must have a corresponding\
+            \ entry in this map. Example: for endpoint '/customers/{{customerId}}.json',\
+            \ provide {\"customerId\": \"7654321\"}."
+          example:
+            customerId: "7654321"
+        authId:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: 'The authId of the credential set to use for this execution. '
+          example: auth-P3kNz7Yv1Qm9
+      description: "Request body to execute a tool against its configured third-party\
+        \ API. Supply values for every {{variable}} placeholder declared in the tool's\
+        \ endpoint, queryParams, and bodyParams. The tool's stored auth credentials\
+        \ are resolved automatically — you do not need to pass credentials here."
+    ExecuteToolResponse:
+      type: object
+      properties:
+        toolId:
+          type: string
+          description: Unique identifier of the tool that was executed.
+          example: tool-X9pLm2Wq8Rt3
+        integrationId:
+          type: string
+          description: Unique identifier of the integration this tool belongs to.
+          example: intg-AuUKK371Spr5
+        url:
+          type: string
+          description: "The fully resolved URL that was called, with all {{variable}}\
+            \ placeholders substituted."
+          example: https://my-store.myshopify.com/admin/api/2024-01/customers/7654321.json
+        method:
+          type: string
+          description: The HTTP method used for the request.
+          example: GET
+        statusCode:
+          type: integer
+          description: HTTP status code returned by the third-party API.
+          format: int32
+          example: 200
+        success:
+          type: boolean
+          description: Whether the third-party API returned a 2xx success response.
+          example: true
+        responseBody:
+          $ref: '#/components/schemas/JsonNode'
+        responseHeaders:
+          type: object
+          description: Response headers returned by the third-party API.
+          example:
+            Content-Type: application/json; charset=utf-8
+        errorMessage:
+          type: string
+          description: Error message when success is false — contains the raw error
+            body or exception message.
+          example: "404 Not Found: {\"errors\": \"Customer not found\"}"
+        durationMs:
+          type: integer
+          description: "How long the third-party API took to respond, in milliseconds."
+          format: int64
+          example: 342
+        executedAt:
+          type: string
+          description: Timestamp when the execution was triggered.
+          format: date-time
+          example: 2024-04-20T10:00:00Z
+      description: Result of executing a tool against its configured third-party API.
+    PaginatedResponseIntegrationToolResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationToolResponse'
         page:
           type: integer
           format: int32
@@ -5546,9 +8024,13 @@ components:
             type: string
             description: Specifies the list of events that trigger the webhook.
             enum:
-            - "conversation_started, conversation_ended, conversation_analysed"
+            - conversation_started
+            - conversation_ended
+            - conversation_analysed
           enum:
-          - "conversation_started, conversation_ended, conversation_analysed"
+            - conversation_started
+            - conversation_ended
+            - conversation_analysed
         url:
           type: string
           description: The HTTPS endpoint to which the webhook payload will be sent.
@@ -6166,7 +8648,9 @@ components:
           description: The current operational status of the agent.
           example: Live
           enum:
-          - "Live, Testing, Disabled"
+          - Live
+          - Testing
+          - Disabled
       description: Assigned agent for handling conversations
       example:
         name: Demo Agent

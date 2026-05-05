@@ -1776,7 +1776,7 @@ paths:
         "200":
           description: OK
           content:
-            application/json:
+            '*/*':
               schema:
                 $ref: '#/components/schemas/CreateAgentResponse'
         "400":
@@ -1792,7 +1792,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/agents
                     status: 400
-                    timestamp: 2026-04-05T11:38:39.524351
+                    timestamp: 2026-05-01T14:06:05.001900
         "401":
           description: Unauthorized
           content:
@@ -1806,7 +1806,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/agents
                     status: 401
-                    timestamp: 2026-04-05T11:38:39.524372
+                    timestamp: 2026-05-01T14:06:05.001915
         "403":
           description: Forbidden
           content:
@@ -1820,7 +1820,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/agents
                     status: 403
-                    timestamp: 2026-04-05T11:38:39.524379
+                    timestamp: 2026-05-01T14:06:05.001918
         "404":
           description: Not Found
           content:
@@ -1834,7 +1834,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/agents
                     status: 404
-                    timestamp: 2026-04-05T11:38:39.524385
+                    timestamp: 2026-05-01T14:06:05.001921
         "422":
           description: Validation Failed
           content:
@@ -1848,7 +1848,7 @@ paths:
                     message: Request validation failed
                     path: /v1/agents
                     status: 422
-                    timestamp: 2026-04-05T11:38:39.524390
+                    timestamp: 2026-05-01T14:06:05.001924
         "500":
           description: Internal Server Error
           content:
@@ -1862,7 +1862,7 @@ paths:
                     message: Unexpected server error
                     path: /v1/agents
                     status: 500
-                    timestamp: 2026-04-05T11:38:39.524395
+                    timestamp: 2026-05-01T14:06:05.001927
   /v1/agents/{agentId}:
     patch:
       tags:
@@ -1886,7 +1886,7 @@ paths:
         "200":
           description: OK
           content:
-            application/json:
+            '*/*':
               schema:
                 $ref: '#/components/schemas/CreateAgentResponse'
         "400":
@@ -1902,7 +1902,7 @@ paths:
                     message: Invalid request parameters
                     path: /v1/agents
                     status: 400
-                    timestamp: 2026-04-05T11:38:39.582206
+                    timestamp: 2026-05-01T14:06:05.089727
         "401":
           description: Unauthorized
           content:
@@ -1916,7 +1916,7 @@ paths:
                     message: X-API-Key is missing or invalid
                     path: /v1/agents
                     status: 401
-                    timestamp: 2026-04-05T11:38:39.582227
+                    timestamp: 2026-05-01T14:06:05.089744
         "403":
           description: Forbidden
           content:
@@ -1930,7 +1930,7 @@ paths:
                     message: Access denied for this resource
                     path: /v1/agents
                     status: 403
-                    timestamp: 2026-04-05T11:38:39.582234
+                    timestamp: 2026-05-01T14:06:05.089747
         "404":
           description: Not Found
           content:
@@ -1944,7 +1944,7 @@ paths:
                     message: The requested resource was not found
                     path: /v1/agents
                     status: 404
-                    timestamp: 2026-04-05T11:38:39.582240
+                    timestamp: 2026-05-01T14:06:05.089750
         "422":
           description: Validation Failed
           content:
@@ -1958,7 +1958,7 @@ paths:
                     message: Request validation failed
                     path: /v1/agents
                     status: 422
-                    timestamp: 2026-04-05T11:38:39.582247
+                    timestamp: 2026-05-01T14:06:05.089753
         "500":
           description: Internal Server Error
           content:
@@ -1972,8 +1972,8 @@ paths:
                     message: Unexpected server error
                     path: /v1/agents
                     status: 500
-                    timestamp: 2026-04-05T11:38:39.582252
-
+                    timestamp: 2026-05-01T14:06:05.089755
+  
   # Campaign APIs
   /v1/campaigns:
     get:
@@ -6586,7 +6586,6 @@ components:
           description: Specifies whether the welcome message is static or dynamically
             generated from a prompt.
           example: static
-          default: static
           enum:
           - static
           - prompt
@@ -6599,6 +6598,16 @@ components:
           example: Welcome to our service! How can I assist you today?
         agentSettings:
           $ref: '#/components/schemas/CreateAgentSettingsRequest'
+        tools:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/VoiceTransferCallTool'
+            - $ref: '#/components/schemas/ExtractVariablesTool'
+            - $ref: '#/components/schemas/IvrNavigatorTool'
+            - $ref: '#/components/schemas/VoiceEndCallTool'
+            - $ref: '#/components/schemas/IntegrationTool'
+  
     CreateAgentSettingsRequest:
       type: object
       properties:
@@ -6826,6 +6835,33 @@ components:
             - conversation_analysed
       description: List of webhook configurations that define external endpoints to
         be notified on specific events.
+    CreateToolRequest:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the tool
+        description:
+          type: string
+          description: When to call this tool.
+      discriminator:
+        propertyName: type
+        mapping:
+          voice_transfer_call: '#/components/schemas/VoiceTransferCallTool'
+          extract_variables: '#/components/schemas/ExtractVariablesTool'
+          ivr_navigator: '#/components/schemas/IvrNavigatorTool'
+          voice_end_call: '#/components/schemas/VoiceEndCallTool'
+          integration_tool: '#/components/schemas/IntegrationTool'
+
+      oneOf:
+      - $ref: '#/components/schemas/VoiceTransferCallTool'
+      - $ref: '#/components/schemas/ExtractVariablesTool'
+      - $ref: '#/components/schemas/IvrNavigatorTool'
+      - $ref: '#/components/schemas/VoiceEndCallTool'
+      - $ref: '#/components/schemas/IntegrationTool'
+
     CreateAgentResponse:
       type: object
       properties:
@@ -6861,6 +6897,10 @@ components:
           example: Welcome to our service! How can I assist you today?
         agentSettings:
           $ref: '#/components/schemas/CreateAgentSettingsResponse'
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateToolResponse'
     CreateAgentSettingsResponse:
       type: object
       properties:
@@ -6952,6 +6992,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PostConversationInsightsRequest'
+    CreateToolResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the tool
+        description:
+          type: string
+          description: When to call this tool.
+      discriminator:
+        propertyName: type
+        mapping:
+          voice_transfer_call: '#/components/schemas/VoiceTransferCallToolResponse'
+          extract_variables: '#/components/schemas/ExtractVariablesToolResponse'
+          ivr_navigator: '#/components/schemas/IvrNavigatorToolResponse'
+          voice_end_call: '#/components/schemas/VoiceEndCallToolResponse'
+          integration_tool: '#/components/schemas/IntegrationToolAgentResponse'
+      oneOf:
+      - $ref: '#/components/schemas/VoiceTransferCallToolResponse'
+      - $ref: '#/components/schemas/ExtractVariablesToolResponse'
+      - $ref: '#/components/schemas/IvrNavigatorToolResponse'
+      - $ref: '#/components/schemas/VoiceEndCallToolResponse'
+      - $ref: '#/components/schemas/IntegrationToolAgentResponse'
     UpdateAgentRequest:
       type: object
       properties:
@@ -6983,6 +7046,16 @@ components:
           example: Welcome to our service! How can I assist you today?
         agentSettings:
           $ref: '#/components/schemas/UpdateAgentSettingsRequest'
+        tools:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/VoiceTransferCallTool'
+            - $ref: '#/components/schemas/ExtractVariablesTool'
+            - $ref: '#/components/schemas/IvrNavigatorTool'
+            - $ref: '#/components/schemas/VoiceEndCallTool'
+            - $ref: '#/components/schemas/IntegrationTool'
+
     UpdateAgentSettingsRequest:
       type: object
       properties:
@@ -7171,7 +7244,350 @@ components:
           description: Flag to enable or disable the webhook.
           example: false
           default: true
-
+    TransferSettings:
+      required:
+      - transferType
+      type: object
+      properties:
+        transferType:
+          pattern: warm|cold
+          type: string
+          description: "Type of transfer to perform. 'warm' keeps the current agent\
+            \ connected during the transfer, while 'cold' disconnects the agent immediately\
+            \ after initiating the transfer."
+          enum:
+          - warm
+          - cold
+        ringingDuration:
+          maximum: 60
+          minimum: 25
+          type: integer
+          description: Specifies the maximum duration (in seconds) to wait for the
+            call to be answered.
+          format: int32
+          example: 40
+          default: 30
+        waitForParticipantAnswer:
+          type: boolean
+          description: "If true, agent will wait for the new participant to answer\
+            \ the call."
+          default: true
+        enableWhisperMessage:
+          type: boolean
+          description: "If true, a whisper message will be played privately to the\
+            \ destination participant before the caller is connected."
+        whisperMessage:
+          type: string
+          description: "The content of the whisper message. Its interpretation depends\
+            \ on whisperMessageType. If the type is 'static', this text is played\
+            \ directly. If the type is 'prompt', the text is treated as a prompt that\
+            \ the system uses to dynamically generate the whisper message."
+        whisperMessageType:
+          pattern: static|prompt
+          type: string
+          description: "Defines how the whisperMessage should be interpreted. 'static'\
+            \ means the message is used as-is, while 'prompt' means the message is\
+            \ treated as a prompt for generating the final whisper message."
+          default: static
+          enum:
+          - static
+          - prompt
+        enableThreeWayMessage:
+          type: boolean
+          description: "If true, a message will be delivered once the call becomes\
+            \ a three-way conversation between the caller, the current agent, and\
+            \ the destination participant."
+        threeWayMessage:
+          type: string
+          description: "The content of the message delivered during the three-way\
+            \ connection. Its interpretation depends on threeWayMessageType. If 'static',\
+            \ the message is used directly. If 'prompt', it is treated as a prompt\
+            \ for generating the final message."
+        threeWayMessageType:
+          pattern: static|prompt
+          type: string
+          description: "Defines how the threeWayMessage should be interpreted. 'static'\
+            \ means the message is used as-is, while 'prompt' means the message is\
+            \ treated as a prompt for generating the final message."
+          default: static
+          enum:
+          - static
+          - prompt
+        customHeaders:
+          type: object
+          additionalProperties:
+            type: string
+            description: Send custom header key and values along with call transfer.
+          description: Send custom header key and values along with call transfer.
+      description: Configuration for the call transfer behaviour
+    Variable:
+      required:
+      - description
+      - variableName
+      type: object
+      properties:
+        variableName:
+          type: string
+          description: Name of the variable
+          example: customer_name
+        dataType:
+          pattern: ^(text|boolean|number|dateTimeIso8601)$
+          type: string
+          description: Data type of the variable to be extracted.
+          example: dateTimeIso8601
+          enum:
+          - text
+          - boolean
+          - number
+          - dateTimeIso8601
+        description:
+          type: string
+          description: Description of what this variable represents
+      description: "Defines a variable to be extracted from a conversation, including\
+        \ its name, data type, and description. "
+    VoiceEndCallTool:
+      required:
+      - type
+      type: object
+      description: Ends the current voice call
+      properties:
+        type:
+          type: string
+          example: voice_end_call
+          enum:
+          - voice_end_call
+        description:
+          type: string
+          description: When to call this tool.
+    VoiceTransferCallTool:
+      required:
+      - transferTo
+      - type
+      type: object
+      description: Transfers the active voice call to another number
+      properties:
+        type:
+          type: string
+          example: voice_transfer_call
+          enum:
+          - voice_transfer_call
+        description:
+          type: string
+          description: When to call this tool.
+        transferTo:
+          type: string
+          description: E.164 formatted phone number to transfer to
+          example: +9187788XXXXX
+        transferSettings:
+          $ref: '#/components/schemas/TransferSettings'
+    ExtractVariablesTool:
+      required:
+      - type
+      - variables
+      type: object
+      description: Extracts and stores named variables from the conversation
+      properties:
+        type:
+          type: string
+          example: extract_variables
+          enum:
+          - extract_variables
+        description:
+          type: string
+          description: When to call this tool.
+        variables:
+          type: array
+          description: List of variables to extract from the conversation
+          items:
+            $ref: '#/components/schemas/Variable'
+    IvrNavigatorTool:
+      required:
+      - type
+      type: object
+      description: This tool is used to navigate through IVR.
+      properties:
+        type:
+          type: string
+          example: ivr_navigator
+          enum:
+          - ivr_navigator
+        description:
+          type: string
+          description: When to call this tool.
+        ivrStartsConversation:
+          type: boolean
+          description: Indicates whether the call is initiated by an IVR (Interactive
+            Voice Response) system. Set to true when the interaction begins with
+            an automated IVR prompt before connecting to an agent or system flow.
+          example: true
+          default: true
+        pauseDelay:
+          maximum: 30000
+          minimum: 500
+          type: integer
+          description: Specifies the duration (in milliseconds) to wait before assuming
+            the IVR system has finished its input or prompt. This delay helps ensure
+            that subsequent actions are triggered only after the IVR interaction
+            is complete.
+          format: int64
+          example: 4000
+          default: 2000
+    IntegrationTool:
+      required:
+      - toolId
+      - type
+      type: object
+      description: "Triggers an action from a connected app (e.g. Shopify, HubSpot)"
+      properties:
+        type:
+          type: string
+          description: Type of the tool
+          example: integration_tool
+          enum:
+          - integration_tool
+        description:
+          type: string
+          description: When to call this tool.
+        toolId:
+          type: string
+          description: The specific tool to execute
+          example: tool_0QqvBhLiudhHyMDC
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+            description: Key-value map of parameters. Values can be static or dynamic
+              variables.
+          description: Key-value map of parameters. Values can be static or dynamic
+            variables.
+        mapVariables:
+            type: object
+            additionalProperties:
+              type: string
+              description: Maps the response paths of the tool to dynamic variables.
+                Each key is the variable name and the value is the mapped response
+                path
+            description: Maps the response paths of the tool to dynamic variables.
+              Each key is the variable name and the value is the mapped response path
+    ExtractVariablesToolResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: extract_variables
+          enum:
+          - extract_variables
+        description:
+          type: string
+          description: When to call this tool.
+        variables:
+          type: array
+          description: List of variables to extract from the conversation
+          items:
+            $ref: '#/components/schemas/Variable'
+      description: Extracts and stores named variables from the conversation
+    IvrNavigatorToolResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ivr_navigator
+          enum:
+          - ivr_navigator
+        description:
+          type: string
+          description: When to call this tool.
+        ivrStartsConversation:
+          type: boolean
+          description: Indicates whether the call is initiated by an IVR (Interactive
+            Voice Response) system. Set to true when the interaction begins with an
+            automated IVR prompt before connecting to an agent or system flow.
+          example: true
+          default: true
+        pauseDelay:
+          maximum: 30000
+          minimum: 500
+          type: integer
+          description: Specifies the duration (in milliseconds) to wait before assuming
+            the IVR system has finished its input or prompt. This delay helps ensure
+            that subsequent actions are triggered only after the IVR interaction is
+            complete.
+          format: int64
+          example: 4000
+          default: 2000
+      description: This tool is used to navigate through IVR.
+    VoiceEndCallToolResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: voice_end_call
+          enum:
+          - voice_end_call
+        description:
+          type: string
+          description: When to call this tool.
+      description: Ends the current voice call
+    VoiceTransferCallToolResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: voice_transfer_call
+          enum:
+          - voice_transfer_call
+        description:
+          type: string
+          description: When to call this tool.
+        transferTo:
+          type: string
+          description: E.164 formatted phone number to transfer to
+          example: +9187788XXXXX
+        transferSettings:
+          $ref: '#/components/schemas/TransferSettings'
+      description: Transfers the active voice call to another number
+    IntegrationToolAgentResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the tool
+          example: integration_tool
+          enum:
+          - integration_tool
+        description:
+          type: string
+          description: When to call this tool.
+        toolId:
+          type: string
+          description: The specific tool to execute
+          example: tool_0QqvBhLiudhHyMDC
+        toolGroupName:
+          type: string
+          description: Name of the connected app
+          example: shopify
+        toolName:
+          type: string
+          description: The specific action to perform
+          example: get_order
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+            description: Key-value map of parameters. Values can be static or dynamic
+              variables.
+          description: Key-value map of parameters. Values can be static or dynamic
+            variables.
+        mapVariables:
+          type: object
+          additionalProperties:
+            type: string
+            description: Maps the response paths of the tool to dynamic variables.
+              Each key is the variable name and the value is the mapped response path
+          description: Maps the response paths of the tool to dynamic variables. Each
+            key is the variable name and the value is the mapped response path
+      description: "Triggers an action from a connected app (e.g. Shopify, HubSpot)"
+    
     # Campaign APIs Schemas
     CreateCampaignRequest:
       required:
